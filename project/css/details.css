@@ -1,0 +1,139 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    margin: 1px;
+    padding: 10px; 
+    font-family: 'Roboto', sans-serif; 
+}
+.nav{
+    top: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+
+}
+/*nav bar*/
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: antiquewhite;
+    overflow: hidden;
+    width: 100%;
+    
+  }
+
+  li {
+    display: inline;
+    float: left;
+  }
+
+  li a {
+    display: block;
+    color: rgb(19, 16, 16);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  /* Change the link color on hover */
+  li a:hover {
+    background-color: #cc3521;
+  }
+.nav-right{
+    display: flex;
+    float: right;
+    
+    
+}
+.nav-right a {
+     margin-left: 5px;
+     margin-right: 20px;
+     margin-top: 20px;
+     font-size:24px;
+     color: #2e0202;
+    transform: translateY(-50%);
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+    
+
+
+  }
+  .nav-right i:hover{
+    color: #e6a10e;
+  }
+
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px;
+    display: flex;
+  }
+
+
+.container .main-image-box{
+    width: 50%;
+    position: relative;
+    border: 1px solid #072442;
+    margin: 0 ;
+
+}
+.main-image-box img{
+    width: 100%;
+  left: 0;
+  top: 10px;
+}*/
+
+.detail-box{
+    width: 50%;
+    border-bottom: 1px solid #E1E8EE;
+  
+}
+.detail-box h3{
+    font-weight: 300;
+  font-size: 52px;
+  color: #072442;
+  letter-spacing: -2px;
+  padding-left: 30px;
+
+}
+.detail-box p{
+font-size: 16px;
+  font-weight: 300;
+  color: #0b1d2d;
+  line-height: 24px;
+  padding-left: 30px;
+}
+.detail-box h4{
+display: flex;
+  align-items: center;
+  padding-left: 30px;
+}
+
+.detail-box  {
+  padding-left: 60px;
+}
+.detail-box input[type="submit"] {
+  display: inline-block;
+  background-color: #be5757;
+  border-radius: 6px;
+  font-size: 20px;
+  color: #FFFFFF;
+  text-decoration: none;
+  padding: 20px 20px;
+  transition: all .5s;
+  width: 30%;
+ 
+    
+    
+}
+
+ input[type="submit"]:hover{
+    background-color: #260303;
+
+}

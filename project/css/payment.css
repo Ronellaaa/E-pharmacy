@@ -1,0 +1,194 @@
+*{
+    margin: 0;
+    padding: 0;
+    
+    
+}
+body{
+    margin: 1px;
+    padding: 10px;
+    
+}
+.nav{
+    top: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+
+}
+/*nav bar*/
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: antiquewhite;
+    overflow: hidden;
+    width: 100%;
+    
+  }
+
+  li {
+    display: inline;
+    float: left;
+  }
+
+
+  li a {
+    display: block;
+    color: rgb(19, 16, 16);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  /* Change the link color on hover */
+  li a:hover {
+    background-color: #cc3521;
+  }
+  .nav-right{
+    display: flex;
+    float: right;
+    
+    
+}
+.nav-right a {
+     margin-left: 5px;
+     margin-right: 20px;
+     margin-top: 20px;
+     font-size:24px;
+     color: #2e0202;
+    transform: translateY(-50%);
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+    
+
+
+  }
+  .nav-right i:hover{
+    color: #e6a10e;
+  }
+  h1, p,a{
+    margin: 0;
+    padding: 0;
+    font-family: 'Lato';
+  }
+   /* Style the links inside the navigation bar */
+   .topnav a {
+    float: left;
+    display: block;
+    color: #111010;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    border-bottom: 3px solid transparent;
+  }
+  
+  .topnav a:hover {
+    border-bottom: 3px solid red;
+  }
+  
+  .topnav a.active {
+    border-bottom: 3px solid red;
+  }
+  /*form*/
+.row {
+
+    display:flexbox; 
+    flex-wrap: wrap; 
+    margin:50px;
+    
+  }
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  .container {
+    background-color: #f2f2f2;
+    padding: 5px 20px 15px 20px;
+    border: 1px solid lightgrey;
+    border-radius: 3px;
+  }
+  .container h3{
+    font-size: 24px; ;
+    color: #111010;
+    padding-bottom:10px ;
+  }
+  .col{
+    float: left;
+  width:40%;
+  margin-top: 6px;
+  padding-right:30px ;
+  }
+  .col2{
+    float: right;
+    width: 40%;
+    margin-top: 6px;
+    
+    
+  }
+  input[type=text],[type=date] {
+    width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: vertical;
+  }
+  
+  label {
+  
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+  }
+  
+  .icon-container {
+    margin-bottom: 20px;
+    padding: 7px 0;
+    font-size: 24px;
+
+  }
+  
+  .btn {
+    background-color: #04AA6D;
+    color: white;
+    padding: 12px;
+    margin: 10px 20px;
+    border: none;
+    width: 40%;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 17px;
+    display: inline;
+  }
+  
+  .btn:hover {
+    background-color: #45a049;
+  }
+  .row h4{
+    font-size: 24px; ;
+    color: #111010;
+    padding-bottom:10px ;
+  }
+  
+  .row span .price {
+  
+  text-align: left;
+  font-size: 20px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: rgb(84, 55, 55);
+    
+  }
+  .price h6{
+  
+      text-align: right;
+      padding-right: 50px;
+      font-size: 20px;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  
+  }
+  
+  

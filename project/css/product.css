@@ -1,0 +1,257 @@
+*{
+    margin: 0;
+    padding: 0;
+    
+    
+}
+body{
+    margin: 1px;
+    padding: 10px;
+    
+}
+.nav{
+    top: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+
+}
+/*nav bar*/
+
+.nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(90, 161, 194);
+    overflow: hidden;
+    width: 100%;
+    
+  }
+
+  .nav li {
+    display: inline;
+    float: left;
+  }
+
+ .nav li a {
+    display: block;
+    color: rgb(19, 16, 16);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  /* Change the link color on hover */
+ .nav li a:hover {
+    background-color: #cc3521;
+  }
+.nav-right{
+    display: flex;
+    float: right;
+    
+    
+}
+.nav-right a {
+     margin-left: 5px;
+     margin-right: 20px;
+     margin-top: 20px;
+     font-size:24px;
+     color: #2e0202;
+    transform: translateY(-50%);
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+    
+
+
+  }
+  .nav-right i:hover{
+    color: #e6a10e;
+  }
+
+  h1, p,a{
+    margin: 0;
+    padding: 0;
+    font-family: 'Lato';
+  }
+  
+  h1 {
+    font-size: 2.8em;
+    padding: 10px 0;
+    font-weight: 800;
+  }
+  
+  p {
+    font-size: 1.1em;
+    font-weight: 100;
+    letter-spacing: 5px;
+  }
+  /*search bar*/
+  .search {
+    width: 500px;
+    height: 40px;
+    margin: 10px auto;
+    background: #f7f4f4;
+    
+    border-radius:  3px;
+    border: 1px solid #fff;
+  }
+.search input {
+      width: 370px;
+      padding: 5px;
+      float: left;
+      color: #130d0d;
+      border: 0;
+      background: transparent;
+      border-radius: 5px;
+      font-size: 14px;
+      height: 40px;
+    
+    }
+    
+ .search input[type="submit"] {
+      position: relative;
+      float: right;
+      border: 0;
+      padding: 0;
+      cursor: pointer;
+      height: 40px;
+      width: 120px;
+      color: #fff;
+      background: transparent;
+      border-left: 1px solid #fff;
+      border-radius: 0 3px 3px 0;
+      background: #310707;
+      
+      }
+/*
+    
+ .search-resurlt-list ul {
+     display: none;
+     position: absolute;
+     top:100% ;
+     width: 100%;
+     left: 0%;
+     max-height: 300px;
+     overflow-y: auto;
+     background-color: #f1f1f1;
+     border: 1px solid #b9c0c1;
+     
+
+    }
+    .search-resurlt-list ul li {
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 3px;
+
+    }
+    .result-box ul li:hover {
+      background-color: #b9c0c1;
+
+    }*/
+
+
+  .header {
+    width: 100%;
+    padding:60px 0;
+    text-align: center;
+    background-image: url("../images/p.jpg");
+  height: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+    color: rgb(4, 31, 88);
+  }
+  .title{
+    background-image: linear-gradient(45deg, #553c9a, #ee4b2b);
+  color: transparent;
+  background-clip: text;
+  text-align: center;
+  font-size: 20px;
+    padding: 10px 0;
+    font-weight: 800;
+    font-family: 'Lato';
+  }
+ 
+  /*category */
+  .cat{
+    padding: 16px;
+  text-align: center;
+  background-color: #fcfbfb;
+  transition: 0.3s;
+  width: 60%;
+  border: 1px solid black;
+  border-radius: 20%;
+  }
+  .cat img{
+    
+    width: 100%;
+  height: auto;
+  }
+  .cat:hover{
+    transform: scale(1.1);
+  }
+   /* product cards*/
+  /* Float four columns side by side */
+.column {
+  float: left;
+  width: 10%;
+  padding: 0 10px;
+}
+
+/* Remove extra left and right margins, due to padding in columns */
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+  padding: 16px;
+  text-align: center;
+  background-color: #f1f1f1;
+  transition: 0.3s;
+}
+.card:hover{
+  transform: scale(1.1);
+}
+.card h4{
+  font-size: 18px;
+  
+  font-weight: 100;
+  font-family: 'Lato';
+}
+.card img{
+  
+    justify-content: space-between;
+	border-radius: 15px;
+    overflow: hidden;
+    width:100%;
+    max-height: fit-content;
+    margin-bottom: 10px;
+    align-content: center;
+    transition: transform 0.5s;
+}
+.card input[type="submit"] {
+  border: none;
+  outline: 0;
+  padding: 10px 10px;
+  color: white;
+  background-color: #310707;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 14px;
+ 
+}
+
+.card input[type="submit"]:hover {
+  opacity: 0.7;
+}  
+

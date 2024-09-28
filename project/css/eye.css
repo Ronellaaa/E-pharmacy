@@ -1,0 +1,229 @@
+*{
+    margin: 0;
+    padding: 0;
+    
+    
+}
+body{
+    margin: 1px;
+    padding: 10px;
+    
+}
+.nav{
+    top: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+
+}
+/*nav bar*/
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: antiquewhite;
+    overflow: hidden;
+    width: 100%;
+    
+  }
+
+  li {
+    display: inline;
+    float: left;
+  }
+
+  li a {
+    display: block;
+    color: rgb(19, 16, 16);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  /* Change the link color on hover */
+  li a:hover {
+    background-color: #cc3521;
+  }
+.nav-right{
+    display: flex;
+    float: right;
+    
+    
+}
+.nav-right a {
+     margin-left: 5px;
+     margin-right: 20px;
+     margin-top: 20px;
+     font-size:24px;
+     color: #2e0202;
+    transform: translateY(-50%);
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+    
+
+
+  }
+  .nav-right i:hover{
+    color: #e6a10e;
+  }
+  h1, p,a{
+    margin: 0;
+    padding: 0;
+    font-family: 'Lato';
+  }
+  
+  h1 {
+    font-size: 2.8em;
+    padding: 10px 0;
+    font-weight: 800;
+  }
+  
+  p {
+    font-size: 24px;
+    font-weight: 100;
+    letter-spacing: 5px;
+  }
+  
+  .header {
+    width: 100%;
+    padding:50px 0;
+    
+  }
+  .header img{
+    width: 100%;
+    height:500px;
+    opacity: 0.5;
+  }
+  .header .text{
+    text-align: left;
+  position: absolute;
+  top:50%;
+  left: 40%;
+  transform: translate(-50%, -50%);
+  color: rgb(56, 33, 3);
+  }
+  /*search bar*/
+ .search {
+    width: 500px;
+    height: 40px;
+    margin: 10px auto;
+    background: #f7f4f4;
+    
+    border-radius:  3px;
+    border: 1px solid #fff;
+  }
+.search input {
+      width: 370px;
+      padding: 5px;
+      float: left;
+      color: #130d0d;
+      border: 0;
+      background: transparent;
+      border-radius: 5px;
+      font-size: 14px;
+      height: 40px;
+    
+    }
+    
+ .search button {
+      position: relative;
+      float: right;
+      border: 0;
+      padding: 0;
+      cursor: pointer;
+      height: 40px;
+      width: 120px;
+      color: #fff;
+      background: transparent;
+      border-left: 1px solid #fff;
+      border-radius: 0 3px 3px 0;
+      background: #310707;
+      
+      }
+      .topnav {
+        background-color: #d8d5d5;
+        overflow: hidden;
+      }
+      
+      /* Style the links inside the navigation bar */
+      .topnav a {
+        float: left;
+        display: block;
+        color: #111010;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+        border-bottom: 3px solid transparent;
+      }
+      
+      .topnav a:hover {
+        border-bottom: 3px solid red;
+      }
+      
+      .topnav a.active {
+        border-bottom: 3px solid red;
+      }
+  /* product cards*/
+  /* Float four columns side by side */
+.column {
+  float: left;
+  width: 20%;
+  padding: 0 10px;
+}
+
+/* Remove extra left and right margins, due to padding in columns */
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+  /* Style the counter cards */
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+    padding: 10px;
+    text-align: center;
+    background-color: #f1f1f1;
+    transition: 0.3s;
+  }
+  .card:hover{
+    transform: scale(1.1);
+  }
+  .card h4{
+    font-size: 16px;
+    
+    font-weight: 100;
+    font-family: 'Lato';
+  }
+  .card img{
+    
+      justify-content: space-between;
+    border-radius: 15px;
+      overflow: hidden;
+      width:100%;
+      max-height: fit-content;
+      margin-bottom: 10px;
+      align-content: center;
+      transition: transform 0.5s;
+  }
+  .card input[type="submit"] {
+    display: inline-block;
+    background-color: #680606;
+    border-radius: 6px;
+    font-size: 16px;
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 10px 20px;
+    transition: all .5s;
+  }
+  
+  .card input[type="submit"]:hover {
+    opacity: 0.7;
+  }  
+  
+   
