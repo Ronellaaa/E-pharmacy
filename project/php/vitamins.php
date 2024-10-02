@@ -51,15 +51,8 @@ if(isset($_POST['addtocart']))
 
   <img src="../images/vit.jpg">
   <!--search bar-->
-<form action="search.php" method="GET" name="search_form">
-    <div class="search">
-  <input type="text" placeholder="Search products..." name="query" >
-  <input type="submit" value="Search" name="search_data">
-  <a href="../php/cart.php"  class="nav-right"><i class="fa fa-shopping-cart"></i></a>
- 
- 
-</div>
-</form>
+
+
 <div class="text">
   
   <h1>VITAMINS</h1>
@@ -76,6 +69,19 @@ if(isset($_POST['addtocart']))
   <a href="../php/hair.php" >Hair Care</a>
   <a href="../php/eye.php">Eye Care</a>
   <a href="../php/vitamins.php" class="active">Vitamins</a>
+
+  <form action="search.php" method="GET" name="search_form">
+    <div class="search">
+  <input type="text" placeholder="Search products..." name="query" >
+  <input type="submit" value="Search" name="search_data">
+ 
+  
+</div>
+
+<a href="../php/cart.php"  class="nav-right"><i class="fa fa-shopping-cart"></i></a>
+
+</form>
+
 </div>
 
 <?php

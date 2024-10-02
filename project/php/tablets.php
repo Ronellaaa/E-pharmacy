@@ -55,8 +55,8 @@ if(isset($_POST['addtocart']))
     <div class="search">
   <input type="text" placeholder="Search products..." name="query" >
   <input type="submit" value="Search" name="search_data">
-  <a href="../php/cart.php"  class="nav-right"><i class="fa fa-shopping-cart"></i></a>
- 
+  
+  <button><a href="../php/cart.php" ><i class="fa fa-shopping-cart"></i></a></button>
  
 </div>
 </form>

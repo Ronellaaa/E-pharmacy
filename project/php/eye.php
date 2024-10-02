@@ -54,12 +54,11 @@ if(isset($_POST['addtocart']))
 <form action="search.php" method="GET" name="search_form">
     <div class="search">
   <input type="text" placeholder="Search products..." name="query" >
-  <input type="submit" value="Search" name="search_data">
-  <a href="../php/cart.php"  class="nav-right"><i class="fa fa-shopping-cart"></i></a>
- 
+  <input type="submit" value="Search" name="search_data"> 
  
 </div>
 </form>
+<button><a href="../php/cart.php" ><i class="fa fa-shopping-cart"></i></a></button>
    <div class="text">
     <h1>EYE CARE</h1>
     <marquee class="marq" direction="up" loop=""><p>Sight and the hearing are the most vital senses,allowing us to navigate the world ,connect with others and experience the beauty around us. At Care Meds, we understand the importance and provide you with the highest quality  products. Shop our ear and eye care essentials today and start enjoying better vision and hearing!</p></marquee>

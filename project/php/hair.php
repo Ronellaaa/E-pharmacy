@@ -55,13 +55,12 @@ if(isset($_POST['addtocart']))
 <form action="search.php" method="GET" name="search_form">
     <div class="search">
   <input type="text" placeholder="Search products..." name="query" >
-  <input type="submit" value="Search" name="search_data">
-  <a href="../php/cart.php"  class="nav-right"><i class="fa fa-shopping-cart"></i></a>
- 
+  <input type="submit" value="Search" name="search_data"> 
  
 </div>
 </form>
-  
+<button><a href="../php/cart.php" ><i class="fa fa-shopping-cart"></i></a></button>
+
 <div class="text">
     <h1>HAIR CARE</h1>
     <H2>"Nourish Your Locks, Love Your Look."</H2>

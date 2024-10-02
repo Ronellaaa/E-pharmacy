@@ -58,11 +58,11 @@
 }
 /*search bar*/
 .search {
-  width: 500px;
+  width: 400px;
   height: 40px;
   margin: 10px 900px;
   background: #f7f4f4;
-
+display: flex;
   border-radius: 3px;
   border: 1px solid #fff;
 }
@@ -78,9 +78,16 @@
   height: 40px;
 }
 
+.search a{
+  margin-left: 10px;
+  font-size: 24px;
+  text-decoration: none;
+}
+
 .search input[type="submit"] {
   position: relative;
   float: right;
+  flex: 1;
   border: 0;
   padding: 0;
   cursor: pointer;
@@ -114,6 +121,11 @@
       overflow: hidden;
     }
 
+    .nav-right{
+      margin-left: 20px;
+      float: right;
+    }
+
       /* Style the links inside the navigation bar */
       .topnav a {
         float: left;
@@ -132,6 +144,13 @@
       
  .topnav a.active {
      border-bottom: 3px solid red;
+  }
+  
+  i{
+    font-size: 50px;
+    position: relative;
+    float: right;
+    cursor: pointer;
   }
 h1,
 p,
