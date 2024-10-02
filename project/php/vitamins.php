@@ -49,15 +49,24 @@ if(isset($_POST['addtocart']))
 <!--header-->
 <section class="header">
 
-  <img src="../images/vit.jpg">
+  <img src="../images/vitamin1.png">
   <!--search bar-->
-
+  <form action="search.php" method="GET" name="search_form">
+    <div class="search-cart-container">
+  <input type="text" placeholder="Search products..." name="query" class="search-bar">
+  <input type="submit" value="Search" name="search_data" class="search-btn">
+  
+  <button class="cart-icon"><a href="../php/cart.php" ><i class="fa-solid fa-cart-shopping"></i></a></button>
+ 
+</div>
+</form>
 
 <div class="text">
-  
+<marquee class="marq" direction="left" loop="">
   <h1>VITAMINS</h1>
-    <h2>"Vitamins: Your Daily Dose of Wellness."</h2>
-    <marquee class="marq" direction="up" loop=""><p>Discover our wide range of high-quality vitamins designed to support your health and wellness. Whether you're looking for daily multivitamins, immune boosters, or specific supplements like Vitamin D, B12, or C, our collection has you covered. Shop now to find trusted brands and expert formulations that promote vitality and well-being for all ages. </p></marquee>
+</marquee>
+  
+    <p>Discover our wide range of high-quality vitamins designed to support your health and wellness. Whether you're looking for daily multivitamins, immune boosters, or specific supplements like Vitamin D, B12, or C, our collection has you covered. Shop now to find trusted brands and expert formulations that promote vitality and well-being for all ages. </p>
 </div>
    
     
@@ -69,7 +78,7 @@ if(isset($_POST['addtocart']))
   <a href="../php/hair.php" >Hair Care</a>
   <a href="../php/eye.php">Eye Care</a>
   <a href="../php/vitamins.php" class="active">Vitamins</a>
-
+<!-- 
   <form action="search.php" method="GET" name="search_form">
     <div class="search">
   <input type="text" placeholder="Search products..." name="query" >
@@ -80,7 +89,9 @@ if(isset($_POST['addtocart']))
 
 <a href="../php/cart.php"  class="nav-right"><i class="fa fa-shopping-cart"></i></a>
 
-</form>
+</form> -->
+
+
 
 </div>
 

@@ -36,7 +36,7 @@ if(isset($_POST['addtocart']))
     <title>product page</title>
     <!--css file-->
     <link rel="stylesheet" href="../css/product.css"/>
-    <link rel="stylesheet" href="../../home-page.css" />
+    <link rel="stylesheet" href="../css/footer.css" />
     <!--fontawsome link-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
@@ -49,7 +49,16 @@ if(isset($_POST['addtocart']))
   
   
 <!--search bar-->
-
+<form action="search.php" method="GET" name="search_form">
+    <div class="search-cart-container">
+  <input type="text" placeholder="Search products..." name="query" class="search-bar">
+  <input type="submit" value="Search" name="search_data" class="search-btn">
+  
+  <button class="cart-icon1"><a href="../php/cart.php" ><i class="fa-solid fa-cart-shopping"></i></a></button>
+ 
+</div>
+</form>
+<!-- 
 <form action="search.php" method="GET" name="search_form">
     <div class="search">
   <input type="text" placeholder="Search products..." name="query" >
@@ -57,9 +66,9 @@ if(isset($_POST['addtocart']))
 
  
 </div>
-</form>
+</form> -->
 <!--cart icon-->
-<div class="cart-icon"><a href="../php/cart.php"><i class="fa fa-shopping-cart"></i></a></div>
+<!-- <div class="cart-icon"><a href="../php/cart.php"><i class="fa fa-shopping-cart"></i></a></div> -->
 
 
 <section class="header">
@@ -185,6 +194,8 @@ if(mysqli_num_rows($result)>0){
 ;};};}
 
 ?>
-
 </body>
 </html>
+<?php
+include('../../hompage-footer.php');
+?>

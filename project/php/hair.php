@@ -50,21 +50,32 @@ if(isset($_POST['addtocart']))
 <!--header-->
 <section class="header">
    
-<img src="../images/u.jpg">
+<img src="../images/shampoo3.png">
 <!--search bar-->
-<form action="search.php" method="GET" name="search_form">
+<!-- <form action="search.php" method="GET" name="search_form">
     <div class="search">
   <input type="text" placeholder="Search products..." name="query" >
   <input type="submit" value="Search" name="search_data"> 
  
 </div>
 </form>
-<button><a href="../php/cart.php" ><i class="fa fa-shopping-cart"></i></a></button>
+<button><a href="../php/cart.php" ><i class="fa fa-shopping-cart"></i></a></button> -->
+
+<form action="search.php" method="GET" name="search_form">
+    <div class="search-cart-container">
+  <input type="text" placeholder="Search products..." name="query" class="search-bar">
+  <input type="submit" value="Search" name="search_data" class="search-btn">
+  
+  <button class="cart-icon"><a href="../php/cart.php" ><i class="fa-solid fa-cart-shopping"></i></a></button>
+ 
+</div>
+</form>
 
 <div class="text">
+<marquee class="marq" direction="left" loop="">
     <h1>HAIR CARE</h1>
-    <H2>"Nourish Your Locks, Love Your Look."</H2>
-    <marquee class="marq" direction="up" loop=""> <p>How you care for your hair matters. The right care can prevent certain types of hair loss and leave your hair looking healthy. Here are simple tips from board-certified dermatologists that can help you take good care of your hair.</p></marquee>
+    </marquee>
+    <p>Explore our premium hair care range for stronger, healthier hair. From shampoos and conditioners to treatments and oils, find the perfect products to enhance your hair’s natural beauty. Give your hair the care it deserves today.</p>
     </div>  
 </section>
 <div class="topnav">
@@ -115,6 +126,9 @@ if(mysqli_num_rows($result)>0){
 <?php
     ;}
 ;};}
+?>
+<?php
+include('../../hompage-footer.php');
 ?>
 </body>
 </html>

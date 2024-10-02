@@ -49,19 +49,32 @@ if(isset($_POST['addtocart']))
 
 <!--header-->
 <div class="header">
-    <img src="../images/eye.jpg" >
+    <img src="../images/eye1.png" >
  <!--search bar-->
-<form action="search.php" method="GET" name="search_form">
+
+ <form action="search.php" method="GET" name="search_form">
+    <div class="search-cart-container">
+  <input type="text" placeholder="Search products..." name="query" class="search-bar">
+  <input type="submit" value="Search" name="search_data" class="search-btn">
+  
+  <button class="cart-icon"><a href="../php/cart.php" ><i class="fa-solid fa-cart-shopping"></i></a></button>
+ 
+</div>
+</form>
+
+<!-- <form action="search.php" method="GET" name="search_form">
     <div class="search">
   <input type="text" placeholder="Search products..." name="query" >
   <input type="submit" value="Search" name="search_data"> 
  
 </div>
-</form>
-<button><a href="../php/cart.php" ><i class="fa fa-shopping-cart"></i></a></button>
+</form> -->
+
    <div class="text">
+   <marquee class="marq" direction="left" loop="">
     <h1>EYE CARE</h1>
-    <marquee class="marq" direction="up" loop=""><p>Sight and the hearing are the most vital senses,allowing us to navigate the world ,connect with others and experience the beauty around us. At Care Meds, we understand the importance and provide you with the highest quality  products. Shop our ear and eye care essentials today and start enjoying better vision and hearing!</p></marquee>
+    </marquee>
+   <p>Sight and the hearing are the most vital senses,allowing us to navigate the world ,connect with others and experience the beauty around us. At Care Meds, we understand the importance and provide you with the highest quality  products. Shop our ear and eye care essentials today and start enjoying better vision and hearing!</p>
     </div>
 </div>
 <div class="topnav">
