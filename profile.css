@@ -1,0 +1,100 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: url('images/bg1.jpg') no-repeat center center fixed;
+    background-size: cover;
+    margin:0;
+    padding:0;
+}
+
+.profile-header {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: #004466;
+}
+
+.profile-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 40px auto;
+    width: 80%;
+    background-color: #B0C4DE;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-details {
+    flex: 3;
+}
+
+.profile-details h2 {
+    margin-bottom: 20px;
+    color: #004466;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color:black;
+}
+
+.form-group input, 
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.images {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.images .profile-img-top,
+.images .profile-img-bottom {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.buttons button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #004466;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.buttons button:hover {
+    background-color: #0077aa;
+}
+
+.buttons button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
