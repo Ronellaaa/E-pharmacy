@@ -52,13 +52,16 @@ if(isset($_POST['addtocart']))
    
 <img src="../images/u.jpg">
 <!--search bar-->
-<form  action="">
+<form action="search.php" method="GET" name="search_form">
     <div class="search">
-  <input type="search" placeholder="Search here..." required>
-  <button type="submit">Search</button>
+  <input type="text" placeholder="Search products..." name="query" >
+  <input type="submit" value="Search" name="search_data">
   <a href="../php/cart.php"  class="nav-right"><i class="fa fa-shopping-cart"></i></a>
-  </div>
-</form> 
+ 
+ 
+</div>
+</form>
+  
 <div class="text">
     <h1>HAIR CARE</h1>
     <H2>"Nourish Your Locks, Love Your Look."</H2>
