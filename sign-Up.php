@@ -49,6 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,8 +59,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link rel="stylesheet" type="text/css" href="sign-Up.css">
 </head>
 <body>
+ 
 
-    <header>
+<?php
+include_once 'homepage-header.php';
+?>
+    <!-- <header>
         <nav>
             <a href="#"><img src="images/logo.jpg" width="60px" height="60px"></a>
             <ul>
@@ -69,9 +74,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <li><a href="#">Contact Us</a></li>
             </ul>
         </nav>
-    </header>
+    </header> -->
 
-    <div class="background"></div>
+    <div class="background-signup">
 
     <div class="form-container">
         <h2>Sign Up</h2>
@@ -115,6 +120,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <button type="submit" class="submit-btn">Submit</button>
         </form>
     </div>
+
+    
+    </div>
+<?php
+include_once 'hompage-footer.php';
+?>
 </body>
 </html>
 
