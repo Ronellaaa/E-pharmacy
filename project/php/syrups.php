@@ -50,13 +50,14 @@ if(isset($_POST['addtocart']))
     <!--search bar-->
  
 <img src="../images/s.jpg" >
-<form  action="">
+<form action="search.php" method="GET" name="search_form">
     <div class="search">
-  <input type="search" placeholder="Search here..." required>
-  <button type="submit">Search</button>
-  <a href="../php/cart.php"  class="nav-right"><i class="fa fa-shopping-cart"></i></a>
-  </div>
-</form> 
+  <input type="text" placeholder="Search products..." name="query" >
+  <input type="submit" value="Search" name="search_data">
+
+ 
+</div>
+</form>
 <div class="text">
     <h1>SYRUPS</h1>
     <h2>"Boost Your Health, One Sip at a Time."</h2>
