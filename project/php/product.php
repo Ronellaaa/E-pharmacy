@@ -49,15 +49,14 @@ if(isset($_POST['addtocart']))
   
   
 <!--search bar-->
-<form action="search.php" method="GET" name="search_form">
-    <div class="search-cart-container">
+<div class="search-cart-container">
+    <form action="search.php" method="GET" name="search_form">
   <input type="text" placeholder="Search products..." name="query" class="search-bar">
   <input type="submit" value="Search" name="search_data" class="search-btn">
-  
-  <button class="cart-icon1"><a href="../php/cart.php" ><i class="fa-solid fa-cart-shopping"></i></a></button>
+  </form>
+  <button class="cart-icon"><a href="../php/cart.php" ><i class="fa-solid fa-cart-shopping"></i></a></button>
  
 </div>
-</form>
 <!-- 
 <form action="search.php" method="GET" name="search_form">
     <div class="search">
@@ -168,7 +167,7 @@ if(mysqli_num_rows($result)>0){
                  <!--get data to send to the details.php-->
 <form action="details.php" method="POST" name="viewform">
 <a href="../php/details.php?ID=<?=$productId;?>">
-<div class="column-1">
+<div class="column-product">
     <div class="card">
         <img src="../images/<?php echo $row["images"];?>" >
             <div class="container-2">
