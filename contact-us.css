@@ -1,0 +1,78 @@
+/* General body styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff6cf;
+}
+
+/* Container for the form and image */
+.contact-container {
+    
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 50px;
+    box-shadow: 
+    5px 5px 10px rgba(0, 0, 0, 0.2),    /* Regular shadow for depth */
+    0px 10px 20px rgba(3, 3, 3, 0.5), /* Yellow shadow for 3D effect */
+    inset 0px -2px 5px rgba(0, 0, 0, 0.1); /* Inner shadow for surface depth */
+transition: transform 0.3s ease; /* Smooth animation */
+border-radius: 10px;
+
+}
+
+/* Styling the image section */
+.contact-image {
+    width: 500px;
+    height: 680px;
+    background-image: url('./contactus-images/contact-bg.jpg');
+    border-radius: 10px;
+}
+
+/* Form section styling */
+.contact-form {
+    background-color: #fff;
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    width: 100%;
+}
+
+.contact-form h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 10px;
+    color: #666;
+}
+
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+.contact-form button {
+    background-color: #f7ca0b;
+    color: black;
+    font-weight: bold;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.contact-form button:hover {
+    background-color: #fae981;
+}
+.contact-btn{
+    float: right;
+}
