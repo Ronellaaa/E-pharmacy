@@ -160,6 +160,7 @@ if(mysqli_num_rows($result)>0){
     //output the data of each row
     while($row = mysqli_fetch_assoc($result)){
         $productId = $row["productId"];
+        $imagePath = $row["image_path"];
 
        
  ?>
@@ -169,17 +170,23 @@ if(mysqli_num_rows($result)>0){
 <a href="../php/details.php?ID=<?=$productId;?>">
 <div class="column-product">
     <div class="card">
-        <img src="../images/<?php echo $row["images"];?>" >
+    
+<?php 
+
+echo '<img src="/E-pharmacy/' . $row['image_path'] . '" alt="Image not found">';
+
+?>
+
             <div class="container-2">
-              <h4><b><?php echo $row["productNmae"];?></b></h4>
+              <h4><b><?php echo $row["productName"];?></b></h4>
 
               </form></a>
                <form action="" method="POST" name="cart">
               <input type="hidden" name="pID" value="<?php echo $row["productId"];?>">
               <input type="hidden" name="price" value="<?php echo $row["productPrice"] ;?>">
-              <input type="hidden" name="img" value="<?php echo $row["images"] ;?>">
-              <input type="hidden" name="cId" value="<?php echo  $crow["cusId"] ;?>">
-              <input type="submit" name="addtocart" value="Add to cart" >
+              <input type="hidden" name="img" value="<?php echo $row["image_path"] ;?>">
+              <input type="hidden" name="cId" value="<?php echo  $crow["custId"] ;?>">
+               <input type="submit" name="addtocart" value="Add to cart" >
               </form>
             </div>
             

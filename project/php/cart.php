@@ -7,6 +7,7 @@ if(isset($_POST['update'])){
     $update_cart=mysqli_query($conn,"UPDATE cart SET quantity='$update' WHERE cartId ='$cartId'");
     if ($update_cart){
         header('location:cart.php');
+        exit();
     }
 }
 
@@ -42,7 +43,7 @@ if(isset($_GET['remove'])){
         </tr>
         <?php
         // Select rows from the cart table
-        $show_cart = mysqli_query($conn,"SELECT * FROM cart ");
+        $show_cart = mysqli_query($conn,"SELECT * FROM cart");
         $total=0;
 
         // If there are items in the cart
@@ -51,13 +52,17 @@ if(isset($_GET['remove'])){
             while($row = mysqli_fetch_assoc($show_cart)){
                 $pID = $row["productId"];
                 // Fetch product information
-                $show_cart2 = mysqli_query($conn,"SELECT images, productNmae FROM products WHERE productId ='$pID'");
+                $show_cart2 = mysqli_query($conn,"SELECT image_path, productName FROM products WHERE productId ='$pID'");
                 if(mysqli_num_rows($show_cart2) > 0){
                     while($row2 = mysqli_fetch_assoc($show_cart2)){
         ?>
         <tr> 
-            <td><img src="../images/<?php echo $row2["images"]; ?>"></td>
-            <td><?php echo $row2["productNmae"]; ?></td>
+        <td>   
+        <?php 
+        echo '<img src="/E-pharmacy/' . $row['image_path'] . '" alt="Image not found">';
+         ?>
+     </td>
+            <td><?php echo $row2["productName"]; ?></td>
             <td class="price">Rs. <?php echo $row["price"]; ?>/-</td>
             <td>
                 <form method="post" action="cart.php">

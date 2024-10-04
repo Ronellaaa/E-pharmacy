@@ -61,11 +61,16 @@ if(mysqli_num_rows($result)>0){
     <div class="container-1">
  
         <div class="main-image-box">
-            <img src="../images/<?php echo $row["images"];?>" >
+               
+<?php 
+
+echo '<img src="/E-pharmacy/' . $row['image_path'] . '" alt="Image not found">';
+
+?>
         </div>
     
     <div class="detail-box">
-        <h3><?php echo $row["productNmae"];?></h3><br>
+        <h3><?php echo $row["productName"];?></h3><br>
         <h4>price: Rs. <?php echo $row["productPrice"];?></h4><br>
         <h4>Stock:  <?php echo $row["productQty"]; ?></h4><br>
         <h4>Specifications:</h4><br><br>
@@ -75,8 +80,8 @@ if(mysqli_num_rows($result)>0){
         <form action="" method="POST" name="cart">
               <input type="hidden" name="pID" value="<?php echo $row["productId"];?>">
               <input type="hidden" name="price" value="<?php echo $row["productPrice"] ;?>">
-              <input type="hidden" name="img" value="<?php echo $row["images"] ;?>">
-              <input type="hidden" name="cId" value="<?php echo  $crow["cusId"] ;?>">
+              <input type="hidden" name="img" value="<?php echo $row["image_path"] ;?>">
+              <input type="hidden" name="cId" value="<?php echo  $crow["custId"] ;?>">
               <input type="submit" name="addtocart" value="Add to cart" >
               </form>
       
