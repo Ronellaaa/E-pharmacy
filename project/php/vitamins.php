@@ -99,7 +99,7 @@ if(isset($_POST['addtocart']))
 <?php
 
  // php for product page main view
-$all_product = "SELECT * FROM products WHERE categoryId = '5' ORDER BY productId DESC";
+$all_product = "SELECT * FROM products WHERE categoryId = '62' ORDER BY productId DESC";
 $result =  mysqli_query($conn,$all_product);
 
 if(mysqli_num_rows($result)>0){
@@ -114,15 +114,19 @@ if(mysqli_num_rows($result)>0){
 <a href="../php/details.php?ID=<?=$productId;?>">
 <div class="column">
     <div class="card">
-        <img src="../images/<?php echo $row["images"];?>" >
+    <?php 
+//path of the where images are stored
+echo '<img src="/E-pharmacy/' . $row['image_path'] . '" alt="Image not found">';
+
+?>
             <div class="container-2">
-              <h4><b><?php echo $row["productNmae"];?></b></h4>
+              <h4><b><?php echo $row["productName"];?></b></h4>
 
               </form>
                <form action="" method="POST" name="cart">
               <input type="hidden" name="pID" value="<?php echo $row["productId"];?>">
               <input type="hidden" name="price" value="<?php echo $row["productPrice"] ;?>">
-              <input type="hidden" name="img" value="<?php echo $row["images"] ;?>">
+              <input type="hidden" name="img" value="<?php echo $row["image_path"] ;?>">
               <input type="hidden" name="cId" value="<?php echo  $crow["cusId"] ;?>">
               <input type="submit" name="addtocart" value="Add to cart" class="btn">
               </form>

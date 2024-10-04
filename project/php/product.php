@@ -172,7 +172,7 @@ if(mysqli_num_rows($result)>0){
     <div class="card">
     
 <?php 
-
+//path of the where images are stored
 echo '<img src="/E-pharmacy/' . $row['image_path'] . '" alt="Image not found">';
 
 ?>
