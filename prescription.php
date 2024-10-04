@@ -64,6 +64,10 @@ $result = mysqli_query($conn, $fetchQuery);
 </head>
 <body>
 
+<?php
+include_once 'homepage-header.php';
+?>
+
     <header>
         <h1>Prescriptions</h1>
     </header>

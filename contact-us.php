@@ -54,6 +54,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST["submit"]) ) {
 <body>
     <!--navigation bar -->
   
+<?php
+include_once 'homepage-header.php';
+?>
 
     <div class="contact-container">
         <div class="contact-image">
@@ -87,7 +90,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST["submit"]) ) {
         </div>
     </div>
 
-    <!-- footer -->
+ <!-- footer -->
+<?php
+include_once 'hompage-footer.php';
+?>
+
+   
     
 </body>
 </html>

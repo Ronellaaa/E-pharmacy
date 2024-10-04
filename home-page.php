@@ -17,6 +17,11 @@
     <?php
 require 'dbconnection.php';
 ?>
+
+
+<?php
+include_once 'homepage-header.php';
+?>
       <!-- <div class="container">
         <div class="logo">
           <img src="./assets/2-removebg-preview.png" alt="logo image" />

@@ -24,28 +24,28 @@
             </li>
           </ul>
         </nav>
-        <?php
-        if(isset($_SESSION['custuid'])){
-        echo '<div class="login-button">
+        
+    
+       <div class="login-button">
                     <a href="profile.php">
-                        <button class="btn-login">' . $_SESSION['useruid'] . '</button>
+                        <button class="btn-login"></button>
                     </a>
                     <a href="includes/logout.inc.php">
                         <button class="btn-login">Logout</button>
                     </a>
-                </div>';
-              }else{
-                echo '<div class="login-button">
+                </div>
+             
+              <div class="login-button">
                     <a href="login.php">
                         <button class="btn-login">Login</button>
                     </a>
                     <a href="sign-Up.php">
                         <button class="btn-login">Sign up</button>
                     </a>
-                </div>';
-              }
+                </div>
+              
 
-        ?>
+       
       
       </div>
 
