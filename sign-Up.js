@@ -12,6 +12,11 @@ document.getElementById('signUpForm').addEventListener('submit', function(event)
         return; // Stop further execution if passwords do not match
     }
 
+    if (password.length < 5) {
+        alert('Password must be more than 5 characters.');
+        return;
+    }
+
     let phone = document.getElementById('phone').value;
 
     // Validate phone number (only 10 digits)

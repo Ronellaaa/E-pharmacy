@@ -20,7 +20,7 @@
               <a href="http://localhost/E-pharmacy/home-page.php" class="link">Home</a>
               <a href="http://localhost/E-pharmacy/about-Us.php" class="link">About Us</a>
               <a href="http://localhost/E-pharmacy/project/php/product.php" class="link">Products</a>
-              <a href="#" class="link">Contact Us</a>
+              <a href="http://localhost/E-pharmacy/contact-us.php" class="link">Contact Us</a>
             </li>
           </ul>
         </nav>

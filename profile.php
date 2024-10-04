@@ -30,21 +30,6 @@ if (isset($_POST['update_account'])) {
 }
 
 
-// if (isset($_POST['delete_account'])) {
-//     $deleteQuery = "DELETE FROM profile WHERE email = ?";
-//     $deleteStmt = $conn->prepare($deleteQuery);
-//     $deleteStmt->bind_param('s', $email);
-    
-//     if ($deleteStmt->execute()) {
-       
-//         session_destroy(); 
-//         header("Location:  profile-update.php"); 
-//         exit();
-//     } else {
-//         echo "<script>alert('Failed to delete account!');</script>";
-//     }
-// }
-
 ?>
 
 <!DOCTYPE html>

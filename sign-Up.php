@@ -19,6 +19,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit();
     }
 
+    if ($password < 5 ){
+        echo "<script>alert('Password must be more than 5 characters'); window.history.back();</script>";
+        exit();
+    }
+
     
     $sql = "INSERT INTO customer (custName, dob, gender, custPhoneNumber, custEmail, custAddress, custPassword) 
             VALUES (?, ?, ?, ?, ?, ?, ?)";
@@ -66,19 +71,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <?php
 include_once 'homepage-header.php';
 ?>
-    <!-- <header>
-        <nav>
-            <a href="#"><img src="images/logo.jpg" width="60px" height="60px"></a>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Products</a></li>
-                <li><a href="#">Contact Us</a></li>
-            </ul>
-        </nav>
-    </header> -->
-
-
     <div class="background-signup">
         
 
