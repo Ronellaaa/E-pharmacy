@@ -57,6 +57,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CareMeds</title>
     <link rel="stylesheet" type="text/css" href="sign-Up.css">
+    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
+    
 </head>
 <body>
  
@@ -76,7 +78,9 @@ include_once 'homepage-header.php';
         </nav>
     </header> -->
 
+
     <div class="background-signup">
+        
 
     <div class="form-container">
         <h2>Sign Up</h2>
@@ -92,8 +96,10 @@ include_once 'homepage-header.php';
           
           
                 <label>Gender</label>
-                <input type="radio" id="male" name="gender" value="male" required> Male
-                <input type="radio" id="female" name="gender" value="female" required> Female
+                <input type="radio" id="male" name="gender" value="male" class=
+                "gender" required> Male
+                <input type="radio" id="female" name="gender" value="female" required class=
+                "gender"> Female
          
           
                 <label for="phone">Phone Number</label>
@@ -118,11 +124,12 @@ include_once 'homepage-header.php';
             
 </div>
 <button type="submit" class="submit-btn">Submit</button>
+
         </form>
     </div>
-
-    
+   
     </div>
+   
 <?php
 include_once 'hompage-footer.php';
 ?>

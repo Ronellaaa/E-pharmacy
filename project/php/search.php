@@ -20,7 +20,7 @@ if(isset($_GET['search_data'])){
 $user_search = $_GET['query'];
 
 }else{
-    echo "please enter a server term";
+    echo "pleaseenter name correctly...";
 }
 
 $search =mysqli_query($conn,"SELECT * FROM products WHERE productNmae LIKE '%$user_search%'");

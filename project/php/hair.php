@@ -35,7 +35,8 @@ if(isset($_POST['addtocart']))
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>product page</title>
     <link rel="stylesheet" href="../css/eye.css"/>
-    <link rel="stylesheet" href="../../home-page.css" />
+    <link rel="stylesheet" href="../../header.css" />
+    <link rel="stylesheet" href="../css/footer.css" />
     <!--fontawsome link-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -61,15 +62,15 @@ if(isset($_POST['addtocart']))
 </form>
 <button><a href="../php/cart.php" ><i class="fa fa-shopping-cart"></i></a></button> -->
 
-<form action="search.php" method="GET" name="search_form">
-    <div class="search-cart-container">
+
+<div class="search-cart-container">
+    <form action="search.php" method="GET" name="search_form">
   <input type="text" placeholder="Search products..." name="query" class="search-bar">
   <input type="submit" value="Search" name="search_data" class="search-btn">
-  
+  </form>
   <button class="cart-icon"><a href="../php/cart.php" ><i class="fa-solid fa-cart-shopping"></i></a></button>
  
 </div>
-</form>
 
 <div class="text">
 <marquee class="marq" direction="left" loop="">
