@@ -19,9 +19,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit();
     }
 
-    if ($password < 5 ){
+    if (strlen($password) < 5 ){
         echo "<script>alert('Password must be more than 5 characters'); window.history.back();</script>";
-        exit();
+         exit();
     }
 
     
