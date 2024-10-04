@@ -1,7 +1,10 @@
 <?php
+
+$isMac = (PHP_OS === 'Darwin');
+
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = $isMac ? 'Oggy2012' : ''; 
 $dbname = "pharmacydatabase";
 
 // Create connection

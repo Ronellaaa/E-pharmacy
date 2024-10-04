@@ -1,5 +1,4 @@
 
-
 <?php
 $con = new mysqli("localhost", "root","Oggy2012", "pharmacydatabase", 3306);
 
