@@ -1,5 +1,5 @@
 <?php
-include('homepage-header.php');
+require 'dbconnection.php';
 ?>
 <?php
 // db.php - Include this for database connection

@@ -8,19 +8,19 @@
 </head>
 <body>
 <?php
-    require 'includes/db_connection.php';
+   require 'dbconnection.php';
     $message = '';
 
     if($_SERVER['REQUEST_METHOD']=='POST'){
       $categoryName = $_POST['category_name'];
       $sql = "INSERT INTO categories (categoryName) VALUES ('$categoryName')";
 
-      if($con->query($sql)===TRUE){
+      if($conn->query($sql)===TRUE){
         $message = "Category added successfully!";
     } else {
-        $message = "Error: " . $con->error;
+        $message = "Error: " . $conn->error;
       }
-      $con->close();
+      $conn->close();
     }
     
   ?>

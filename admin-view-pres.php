@@ -9,10 +9,10 @@
 </head>
 <body>
   <?php 
-  require './includes/db_connection.php';
+  require 'dbconnection.php';
   $query = "SELECT 	id, patient_name, patient_email, patient_phone, prescription_file, prescription_date,	fulfillment_type,	payment_method,	status,	created_at	FROM prescriptions";
   
-  $result = mysqli_query($con,$query);
+  $result = mysqli_query($conn,$query);
   ?>				
 
 <button class="close-btn" onclick="closePage()">X</button>

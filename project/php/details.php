@@ -1,5 +1,5 @@
 <?php
-require 'connect.php';
+require '../../dbconnection.php';
 //get the selected product id
 if(isset($_GET['ID']) ){
 
@@ -39,25 +39,16 @@ if(isset($_POST['addtocart']))
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Details</title>
     <link rel="stylesheet" href="../css/details.css"/>
+    <link rel="stylesheet" href="../../header.css" />
+    <link rel="stylesheet" href="../css/footer.css" />
     <!--fontawsome link-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
         <!--navbar-->
-        <div class="nav">
-  
-  <ul>
-      <li><a class="nav-link" href="#">Home</a></li>
-      <li><a class="nav-link" href="#">About Us</a></li>
-      <li><a class="nav-link" href="product.php" >Products</a></li>
-      <li><a class="nav-link" href="#" >Contact Us</a></li>
-</ul>
-<div class="nav-right">
-  <a href="../php/cart.php"><i class="fa fa-shopping-cart"></i></a>
-  <a href="#"><i class="fa fa-user"></i></a>
-
-</div>
-</div>
+        <?php
+    include('./homepage-header1.php');
+    ?>
 
 <?php
 $product = "SELECT * FROM products WHERE productId= $productId LIMIT 1";
@@ -67,7 +58,7 @@ if(mysqli_num_rows($result)>0){
     //output the data of each row
     while($row = mysqli_fetch_assoc($result)){
 ?>
-    <div class="container">
+    <div class="container-1">
  
         <div class="main-image-box">
             <img src="../images/<?php echo $row["images"];?>" >
@@ -75,9 +66,9 @@ if(mysqli_num_rows($result)>0){
     
     <div class="detail-box">
         <h3><?php echo $row["productNmae"];?></h3><br>
-        <h4>price:<?php echo $row["productPrice"];?></h4><br>
-        <h4>Stock:<?php echo $row["productQty"]; ?></h4><br>
-        <h4>Specifications</h4><br><br>
+        <h4>price: Rs. <?php echo $row["productPrice"];?></h4><br>
+        <h4>Stock:  <?php echo $row["productQty"]; ?></h4><br>
+        <h4>Specifications:</h4><br><br>
         <p><?php echo $row["productDescription"];?></p>
         <br><br>
      
@@ -96,6 +87,10 @@ if(mysqli_num_rows($result)>0){
 <?php
     ;}
 ;};};}
+?>
+
+<?php
+include('../../hompage-footer.php');
 ?>
 </body>
 </html>

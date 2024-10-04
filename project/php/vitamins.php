@@ -1,5 +1,5 @@
 <?php
-require 'connect.php';
+require '../../dbconnection.php';
 
 $customer= mysqli_query($conn,"SELECT *  FROM customer");//get the cusID from the login page
 if(mysqli_num_rows($customer )>0){
@@ -35,7 +35,8 @@ if(isset($_POST['addtocart']))
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>product page</title>
     <link rel="stylesheet" href="../css/eye.css"/>
-    <link rel="stylesheet" href="../../home-page.css" />
+    <link rel="stylesheet" href="../../header.css" />
+    <link rel="stylesheet" href="../css/footer.css" />
     <!--fontawsome link-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -49,15 +50,24 @@ if(isset($_POST['addtocart']))
 <!--header-->
 <section class="header">
 
-  <img src="../images/vit.jpg">
+  <img src="../images/vitamin1.png">
   <!--search bar-->
-
+  
+  <div class="search-cart-container">
+    <form action="search.php" method="GET" name="search_form">
+  <input type="text" placeholder="Search products..." name="query" class="search-bar">
+  <input type="submit" value="Search" name="search_data" class="search-btn">
+  </form>
+  <button class="cart-icon"><a href="../php/cart.php" ><i class="fa-solid fa-cart-shopping"></i></a></button>
+ 
+</div>
 
 <div class="text">
-  
+<marquee class="marq" direction="left" loop="">
   <h1>VITAMINS</h1>
-    <h2>"Vitamins: Your Daily Dose of Wellness."</h2>
-    <marquee class="marq" direction="up" loop=""><p>Discover our wide range of high-quality vitamins designed to support your health and wellness. Whether you're looking for daily multivitamins, immune boosters, or specific supplements like Vitamin D, B12, or C, our collection has you covered. Shop now to find trusted brands and expert formulations that promote vitality and well-being for all ages. </p></marquee>
+</marquee>
+  
+    <p>Discover our wide range of high-quality vitamins designed to support your health and wellness. Whether you're looking for daily multivitamins, immune boosters, or specific supplements like Vitamin D, B12, or C, our collection has you covered. Shop now to find trusted brands and expert formulations that promote vitality and well-being for all ages. </p>
 </div>
    
     
@@ -69,7 +79,7 @@ if(isset($_POST['addtocart']))
   <a href="../php/hair.php" >Hair Care</a>
   <a href="../php/eye.php">Eye Care</a>
   <a href="../php/vitamins.php" class="active">Vitamins</a>
-
+<!-- 
   <form action="search.php" method="GET" name="search_form">
     <div class="search">
   <input type="text" placeholder="Search products..." name="query" >
@@ -80,7 +90,9 @@ if(isset($_POST['addtocart']))
 
 <a href="../php/cart.php"  class="nav-right"><i class="fa fa-shopping-cart"></i></a>
 
-</form>
+</form> -->
+
+
 
 </div>
 
@@ -124,6 +136,9 @@ if(mysqli_num_rows($result)>0){
 <?php
     ;}
 ;};}
+?>
+<?php
+include('../../hompage-footer.php');
 ?>
 </body>
 </html>

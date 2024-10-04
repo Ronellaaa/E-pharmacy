@@ -13,26 +13,64 @@ error_reporting(E_ALL);
     <title>CareMeds</title>
     <link rel="stylesheet" href="admin-styles/admin-dashboard.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
   </head>
   <body>
     <?php
-    require './includes/db_connection.php';
+    require 'dbconnection.php';
+    $sqlCategory = "SELECT c.categoryName, COUNT(p.categoryId) AS CategoryCount 
+           FROM categories c 
+           LEFT JOIN products p ON c.categoryId = p.categoryId 
+           GROUP BY c.categoryName";
+           
+    // $sqlBar = "SELECT p.productName, COUNT(o.productId) AS ProductCount
+    //       FROM products p
+    //       INNER JOIN orders o ON p.productId = o.productId
+    //       GROUP BY p.productName
+    //       ORDER BY ProductCount DESC
+    //       LIMIT 5";
+
+    $sqlBar = "SELECT p.productName, p.productQty AS ProductCount FROM products p";
 
     $sqlOrders= "SELECT COUNT(orderId) AS total_orders FROM orders";
     $sqlProducts="SELECT COUNT(ProductId) AS total_products FROM products";
-    $sqlCategory="SELECT COUNT(categoryId) AS total_categories FROM categories";
     $sqlCustomers="SELECT COUNT(custId) AS total_customers FROM customer";
     $sqlTotalPrice="SELECT SUM(totalAmount) AS total_price FROM orders" ;
 
-    $totalOrders = fetchCount($con,$sqlOrders);
-    $totalProducts = fetchCount($con,$sqlProducts);
-    $totalCategory = fetchCount($con,$sqlCategory);
-    $totalCustomers = fetchCount($con,$sqlCustomers);
-    $totalPrice = fetchTotalPrice($con,$sqlTotalPrice);
+    $totalOrders = fetchCount($conn,$sqlOrders);
+    $totalProducts = fetchCount($conn,$sqlProducts);
+    $totalCategory = fetchCount($conn,$sqlCategory);
+    $totalCustomers = fetchCount($conn,$sqlCustomers);
+    $totalPrice = fetchTotalPrice($conn,$sqlTotalPrice);
+    
+    $resultPieChart = $conn ->query($sqlBar);
+    $productNames = [];
+    $productCounts = [];
 
-    function fetchCount ($con,$sql){
-      $result = $con->query($sql);
+    if($resultPieChart->num_rows > 0){
+      while($row = $resultPieChart->fetch_assoc()){
+          $productNames[] = $row['productName'];
+          $productCounts[] = $row['ProductCount'];
+      }
+  }
+
+
+
+
+    $resultBar = $conn->query($sqlCategory);
+    $categories =[];
+    $counts =[];
+
+    if($resultBar->num_rows > 0){
+      while($row = $resultBar->fetch_assoc()){
+        $categories[] = $row['categoryName'];
+        $counts[] = $row['CategoryCount'];
+      }
+
+    }
+
+    function fetchCount ($conn,$sql){
+      $result = $conn->query($sql);
       if($result && $result -> num_rows >0 ){
         $row =$result->fetch_assoc();
         return $row[array_keys($row)[0]];
@@ -40,8 +78,8 @@ error_reporting(E_ALL);
       return 0;
     }
 
-    function fetchTotalPrice($con,$sql){
-      $result = $con -> query($sql);
+    function fetchTotalPrice($conn,$sql){
+      $result = $conn -> query($sql);
       if($result && $result -> num_rows >0){
         $row = $result->fetch_assoc();
         return $row['total_price']; // Return total price
@@ -49,7 +87,7 @@ error_reporting(E_ALL);
     return 0;
 
     }
-    $con->close();
+    $conn->close();
 
 
     ?>
@@ -109,21 +147,21 @@ error_reporting(E_ALL);
       </div>
         <div class="grid-item large-width">
           <h2>No of Products</h2>
-           <p><?php echo $totalProducts; ?></p>
+           <p><canvas id="productChart" width="400" height="300"></canvas></p>
         </div>
         <div class="grid-item large-height">
+          <h2>No of Categories</h2>
+          <p><canvas id="categoryChart" width="400" height="200"></canvas></p>
+        </div>
+        <div class="grid-item grid-cus">
           <h2>No of Customers</h2>
           <p><?php echo $totalCustomers; ?></p>
-        </div>
-        <div class="grid-item">
-          <h2>No of Category</h2>
-          <p><?php echo $totalCategory; ?></p>
         </div>
         <!-- <div class="grid-item">
           <h2>No of Manufactures</h2>
           <p></p>
         </div> -->
-        <div class="grid-item">
+        <div class="grid-item grid-tot">
           <h2>Total net</h2>
           <p><?php echo $totalPrice; ?></p>
         </div>
@@ -131,7 +169,12 @@ error_reporting(E_ALL);
         
       </div>
     </div>
-
+    <script>
+    var categoryNames = <?php echo json_encode($categories); ?>;
+    var categoryCounts = <?php echo json_encode($counts); ?>;
+    var productNames = <?php echo json_encode($productNames); ?>;
+    var productCounts = <?php echo json_encode($productCounts); ?>;
+   </script>
     <script src="admin-dashboard.js"></script>
   </body>
 </html>

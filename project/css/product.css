@@ -5,58 +5,7 @@
   padding: 0;
 }
 
-.nav {
-  top: 0;
-  right: 0;
-  display: flex;
-  justify-content: space-between;
-}
-/*nav bar*/
 
-.nav ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  background-color: rgb(90, 161, 194);
-  overflow: hidden;
-  width: 100%;
-}
-
-.nav li {
-  display: inline;
-  float: left;
-}
-
-.nav li a {
-  display: block;
-  color: rgb(19, 16, 16);
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-/* Change the link color on hover */
-.nav li a:hover {
-  background-color: #cc3521;
-}
-.nav-right {
-  display: flex;
-  float: right;
-}
-.nav-right a {
-  margin-left: 5px;
-  margin-right: 20px;
-  margin-top: 20px;
-  font-size: 24px;
-  color: #2e0202;
-  transform: translateY(-50%);
-  cursor: pointer;
-  position: relative;
-  transition: all 0.3s ease;
-}
-.nav-right i:hover {
-  color: #e6a10e;
-}
 
 h1,
 p,
@@ -81,88 +30,65 @@ p {
   font-weight: 100;
   letter-spacing: 5px;
 }
-/*search bar*/
-.search {
-  width: 500px;
-  height: 40px;
-  margin: 10px 900px;
-  background: #f7f4f4;
 
-  border-radius: 3px;
-  border: 1px solid #fff;
-}
-.search input {
-  width: 370px;
-  padding: 5px;
-  float: left;
-  color: #130d0d;
-  border: 0;
-  background: transparent;
-  border-radius: 5px;
-  font-size: 14px;
-  height: 40px;
+
+.search-cart-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 10px;
+  gap: 2px;
+  margin-top: 20px;
 }
 
-.search input[type="submit"] {
-  position: relative;
-  float: right;
-  border: 0;
-  padding: 0;
+.cart-icon1 {
+  font-size: 23px;
+  color: #131313;
   cursor: pointer;
-  height: 40px;
-  width: 120px;
-  color: #fff;
-  background: transparent;
-  border-left: 1px solid #fff;
-  border-radius: 0 3px 3px 0;
-  background: #310707;
+
+  background-color: #e8e4d5;
+  border: none;
 }
-/*
-    
- .search-resurlt-list ul {
-     display: none;
-     position: absolute;
-     top:100% ;
-     width: 100%;
-     left: 0%;
-     max-height: 300px;
-     overflow-y: auto;
-     background-color: #f1f1f1;
-     border: 1px solid #b9c0c1;
-     
 
-    }
-    .search-resurlt-list ul li {
-      padding: 10px;
-      cursor: pointer;
-      border-radius: 3px;
+.search-bar {
+  padding: 15px;
+  width: 350px; /* Adjust width to fit your design */
+  border: 1px solid #222020;
+  border-radius: 5px 5px 5px 0;
+  margin-bottom: 10px;
+}
 
-    }
-    .result-box ul li:hover {
-      background-color: #b9c0c1;
-
-    }*/
+.search-btn {
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  margin-right: 10px;
+  background-color: #39251a;
+  color: #e8e4d5;
+  font-size: 16px;
+}
 /* 
-.header {
-  width: 100%;
-  padding: 180px 0;
-  text-align: center;
-  background-image: url("../../assets/image copy 17.png");
-  height: 50%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
-  color: rgb(4, 31, 88);
+.cart-icon {
+  font-size: 23px;
+  color: #131313;
+  cursor: pointer;
+
+  background-color: #e8e4d5;
+  border: none;
 } */
- .cart-icon i{
-  float: right;
-  margin: 10px 900px;
-  font-size:30px;
-  color: #2e0202;
- transform: translateY(-50%);
- cursor: pointer;
- transition: all 0.3s ease;
+
+.search-cart-container a {
+  color: #000000;
+  font-size: 30px;
+}
+
+.fa-solid,
+.fas {
+  font-weight: 900;
+  /* margin-top: 10; */
+  background-color: #e8e4d5;
+  border: none;
+  margin-bottom: 10px;
 }
 .header {
   width: 100%;
@@ -261,71 +187,62 @@ p {
   clear: both;
 }
 
- /* product cards*/
-  /* Float four columns side by side */
-  .column-1 {
-    float: left;
-   height: 300px;
-    padding: 40px 10px;
-    display: flex;
-    max-width: 500px;
-    justify-content: space-between; /* Creates equal spacing between columns */
+/* product cards*/
+/* Float four columns side by side */
+.column-product {
+  float: left;
+  height: 300px;
+  padding: 40px 10px;
+  display: flex;
+  max-width: 500px;
+  justify-content: space-between; /* Creates equal spacing between columns */
   flex-wrap: nowrap;
   margin-top: 150px;
   margin-left: 100px;
-  }
-  
- 
-    /* Style the counter cards */
-    .card {
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
-      padding: 10px;
-      text-align: center;
-      background-color: #f1f1f1;
-      transition: 0.3s;
-      width: 300px;
-      height: 300px;
+}
 
-    }
-    .card:hover{
-      transform: scale(1.1);
-    }
-   
-    .card .container-2 a{
-      font-size: 20px;
-      font-weight: 150;
-      font-family: 'Lato';
-      text-decoration: none;
-      color: #642907;
-      
-    }
-    .card img{
-      
-        justify-content: space-between;
-      border-radius: 15px;
-        overflow: hidden;
-        width:100%;
-        height: 100%;
-        margin-bottom: 10px;
-        align-content: center;
-        transition: transform 0.5s;
-    }
-    .container-2 input[type="submit"] {
-     
-      background-color: #6b3f16;
-      border-radius: 6px;
-      font-size: 16px;
-      color: #FFFFFF;
-      text-decoration: none;
-      padding: 10px 20px;
-      transition: all .5s;
-      float: l;
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+  padding: 10px;
+  text-align: center;
+  background-color: #f1f1f1;
+  transition: 0.3s;
+  width: 300px;
+  height: 300px;
+}
+.card:hover {
+  transform: scale(1.1);
+}
 
-      
-    }
-    
-    .container-2 input[type="submit"]:hover {
-      opacity: 0.7;
-    }  
-    
-     
+.card .container-2 a {
+  font-size: 20px;
+  font-weight: 150;
+  font-family: "Lato";
+  text-decoration: none;
+  color: #642907;
+}
+.card img {
+  justify-content: space-between;
+  border-radius: 15px;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 10px;
+  align-content: center;
+  transition: transform 0.5s;
+}
+.container-2 input[type="submit"] {
+  background-color: #6b3f16;
+  border-radius: 6px;
+  font-size: 16px;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 10px 20px;
+  transition: all 0.5s;
+  float: l;
+}
+
+.container-2 input[type="submit"]:hover {
+  opacity: 0.7;
+}

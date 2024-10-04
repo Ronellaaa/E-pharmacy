@@ -15,7 +15,7 @@
   <body>
     <div class="full">
     <?php
-include_once 'homepage-header.php';
+require 'dbconnection.php';
 ?>
       <!-- <div class="container">
         <div class="logo">
@@ -62,12 +62,14 @@ include_once 'homepage-header.php';
 
     <!-- //////////////////////////////////// -->
     <div class="product-listt">
+      <div class="product-p">
       <h1>PRODUCTS</h1>
       <p>
         Discover a wide range of quality medications and health products
         tailored to meet your needs. Fast, reliable, and delivered right to your
         doorstep.
       </p>
+      </div>
       <div class="home-products">
         <div class="slide">
           <div

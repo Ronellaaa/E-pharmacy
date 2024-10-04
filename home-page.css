@@ -121,47 +121,21 @@ img {
 }
 
 .back {
-  width: 100%;
-  height: 100%;
+  width: 110%;
+  height: 110%;
   object-fit: cover;
-
   -webkit-mask-image: url(./assets/circlee.png); /* Use the uploaded mask image */
   -webkit-mask-size: cover; /* Fit mask to container */
   -webkit-mask-repeat: no-repeat; /* No repeating */
   -webkit-mask-position: center; /* Center the mask */
-
   mask-image: url(./assets/circlee.png);
   mask-size: cover;
   mask-repeat: no-repeat;
   mask-position: center;
-  /* float: right; */
+  margin-left: 600px;
+  margin-top: 100px;
 }
 .full {
-  /* background: linear-gradient(
-    to left,
-    #000000 0%,
-    #000000 50%,
-    #ffffff 50%,
-    #ffffff 100%
-  ); */
-  /* background: radial-gradient(
-    circle at -8.9% 51.2%,
-    #af8f6f 15.9%,
-    #d0b89c 15.9%,
-    #d0b89c 24.4%,
-    #e8e4d5 24.5%,
-    #e8e4d5 66%
-  ); */
-  /* 
-  background: radial-gradient(
-    circle at -6.9% 15.2%,
-     #af8f6f 15.9%,
-    #d0b89c 15.9%,
-    #d0b89c 24.4%,
-    #e8e4d5 24.5%,
-    #e8e4d5 66%
-  ); */
-
   background: radial-gradient(
     circle at 93.1% 84.8%,
     #e8e4d5 0%,
@@ -171,11 +145,11 @@ img {
     #af8f6f 66.2%,
     #af8f6f 100%
   );
+  height: 750px;
 }
 .middle-part {
   text-align: center;
   color: #1b1918;
-
   position: absolute;
   top: 50%;
   left: 42%;
@@ -193,6 +167,7 @@ img {
 .middle-part h1 {
   padding: 10px;
   font-size: 58px;
+  margin-top: 70px;
 }
 
 .middle-part span {
@@ -233,6 +208,7 @@ rgb(19, 30, 37) 66% */
   border-radius: 20%;
   background: rgb(246, 245, 245);
   box-shadow: 0 30px 50px #dbdbdb;
+  margin-top: 120px;
 }
 
 body {
@@ -393,6 +369,7 @@ body {
   min-height: 100vh;
   width: 100%;
   padding: 1rem;
+
   /* text-align: center; */
 }
 
@@ -404,13 +381,13 @@ body {
 
 .test-header p {
   letter-spacing: 2px;
-  font-size: 1rem;
+  font-size: 2rem;
   font-weight: 500;
 }
 
 .test-header h1 {
   font-family: "Noto serif", "serif";
-  font-size: 2rem;
+  font-size: 3rem;
   font-weight: 900;
 }
 
@@ -420,6 +397,7 @@ body {
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
   margin-bottom: 2rem;
+  margin-top: 100px;
 }
 
 .testimonial-car {
@@ -457,9 +435,14 @@ body {
   padding-top: 10px;
   text-align: center;
   font-family: "Poppins";
-  font-size: 2rem;
+  font-size: 3rem;
   font-weight: 500;
   letter-spacing: 2px;
+}
+
+.product-p {
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 .test-footer button {
   border-radius: 50px;
@@ -472,6 +455,8 @@ body {
   font-family: "Noto serif", "serif";
   font-size: 20px;
 }
+
+
 .test-footer p {
   padding: 10px;
 }
@@ -479,7 +464,7 @@ body {
 .social-icons {
   /* margin-top: 40px; */
   background-color: #af8f6f;
-  padding: 50px 563px;
+  padding: 50px 741px;
 }
 .social-icons a {
   text-decoration: none;
@@ -503,6 +488,7 @@ body {
   border-radius: 50px;
   padding: 10px 20px;
   background-color: rgb(182, 165, 150);
-  font-size: 15px;
+  font-size: 20px;
   font-family: "poppins";
+  margin-top: 30px;
 }

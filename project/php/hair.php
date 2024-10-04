@@ -1,5 +1,5 @@
 <?php
-require 'connect.php';
+require '../../dbconnection.php';
 
 $customer= mysqli_query($conn,"SELECT *  FROM customer");//get the cusID from the login page
 if(mysqli_num_rows($customer )>0){
@@ -35,7 +35,8 @@ if(isset($_POST['addtocart']))
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>product page</title>
     <link rel="stylesheet" href="../css/eye.css"/>
-    <link rel="stylesheet" href="../../home-page.css" />
+    <link rel="stylesheet" href="../../header.css" />
+    <link rel="stylesheet" href="../css/footer.css" />
     <!--fontawsome link-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -50,21 +51,32 @@ if(isset($_POST['addtocart']))
 <!--header-->
 <section class="header">
    
-<img src="../images/u.jpg">
+<img src="../images/shampoo3.png">
 <!--search bar-->
-<form action="search.php" method="GET" name="search_form">
+<!-- <form action="search.php" method="GET" name="search_form">
     <div class="search">
   <input type="text" placeholder="Search products..." name="query" >
   <input type="submit" value="Search" name="search_data"> 
  
 </div>
 </form>
-<button><a href="../php/cart.php" ><i class="fa fa-shopping-cart"></i></a></button>
+<button><a href="../php/cart.php" ><i class="fa fa-shopping-cart"></i></a></button> -->
+
+
+<div class="search-cart-container">
+    <form action="search.php" method="GET" name="search_form">
+  <input type="text" placeholder="Search products..." name="query" class="search-bar">
+  <input type="submit" value="Search" name="search_data" class="search-btn">
+  </form>
+  <button class="cart-icon"><a href="../php/cart.php" ><i class="fa-solid fa-cart-shopping"></i></a></button>
+ 
+</div>
 
 <div class="text">
+<marquee class="marq" direction="left" loop="">
     <h1>HAIR CARE</h1>
-    <H2>"Nourish Your Locks, Love Your Look."</H2>
-    <marquee class="marq" direction="up" loop=""> <p>How you care for your hair matters. The right care can prevent certain types of hair loss and leave your hair looking healthy. Here are simple tips from board-certified dermatologists that can help you take good care of your hair.</p></marquee>
+    </marquee>
+    <p>Explore our premium hair care range for stronger, healthier hair. From shampoos and conditioners to treatments and oils, find the perfect products to enhance your hair’s natural beauty. Give your hair the care it deserves today.</p>
     </div>  
 </section>
 <div class="topnav">
@@ -115,6 +127,9 @@ if(mysqli_num_rows($result)>0){
 <?php
     ;}
 ;};}
+?>
+<?php
+include('../../hompage-footer.php');
 ?>
 </body>
 </html>

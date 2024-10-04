@@ -1,6 +1,6 @@
 <?php
 // Include config file
-require_once 'dbconnection.php';
+require 'dbconnection.php';
 
 if(isset($_GET['deleteId'])){
     $custID = intval($_GET['deleteId']);

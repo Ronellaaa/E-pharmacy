@@ -98,8 +98,8 @@ if (isset($_POST['update_account'])) {
 
         <!-- Images at the top-right and bottom-right -->
         <div class="images">
-            <img src="images/mission.jpg" alt="Profile Picture" class="profile-img-top">
-            <img src="images/vision.jpg" alt="Banner" class="profile-img-bottom">
+            <img src="assets/image copy 33.png" alt="Profile Picture" class="profile-img-top">
+           
         </div>
     </div>
 

@@ -1,6 +1,5 @@
 <?php
-require 'connect.php';
-
+require '../../dbconnection.php';
 $customer= mysqli_query($conn,"SELECT *  FROM customer");//get the cusID from the login page
 if(mysqli_num_rows($customer )>0){
     while($crow = mysqli_fetch_assoc($customer)){
@@ -35,7 +34,8 @@ if(isset($_POST['addtocart']))
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>product page</title>
     <link rel="stylesheet" href="../css/eye.css"/>
-    <link rel="stylesheet" href="../../home-page.css" />
+    <link rel="stylesheet" href="../../header.css" />
+    <link rel="stylesheet" href="../css/footer.css" />
     <!--fontawsome link-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -49,19 +49,32 @@ if(isset($_POST['addtocart']))
 
 <!--header-->
 <div class="header">
-    <img src="../images/eye.jpg" >
+    <img src="../images/eye1.png" >
  <!--search bar-->
-<form action="search.php" method="GET" name="search_form">
+
+ 
+ <div class="search-cart-container">
+    <form action="search.php" method="GET" name="search_form">
+  <input type="text" placeholder="Search products..." name="query" class="search-bar">
+  <input type="submit" value="Search" name="search_data" class="search-btn">
+  </form>
+  <button class="cart-icon"><a href="../php/cart.php" ><i class="fa-solid fa-cart-shopping"></i></a></button>
+ 
+</div>
+
+<!-- <form action="search.php" method="GET" name="search_form">
     <div class="search">
   <input type="text" placeholder="Search products..." name="query" >
   <input type="submit" value="Search" name="search_data"> 
  
 </div>
-</form>
-<button><a href="../php/cart.php" ><i class="fa fa-shopping-cart"></i></a></button>
+</form> -->
+
    <div class="text">
+   <marquee class="marq" direction="left" loop="">
     <h1>EYE CARE</h1>
-    <marquee class="marq" direction="up" loop=""><p>Sight and the hearing are the most vital senses,allowing us to navigate the world ,connect with others and experience the beauty around us. At Care Meds, we understand the importance and provide you with the highest quality  products. Shop our ear and eye care essentials today and start enjoying better vision and hearing!</p></marquee>
+    </marquee>
+   <p>Sight and the hearing are the most vital senses,allowing us to navigate the world ,connect with others and experience the beauty around us. At Care Meds, we understand the importance and provide you with the highest quality  products. Shop our ear and eye care essentials today and start enjoying better vision and hearing!</p>
     </div>
 </div>
 <div class="topnav">

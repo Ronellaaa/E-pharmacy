@@ -1,5 +1,5 @@
 <?php
-require 'connect.php';
+require '../../dbconnection.php';
 
 $customer= mysqli_query($conn,"SELECT *  FROM customer");//get the cusID from the login page
 if(mysqli_num_rows($customer )>0){
@@ -36,7 +36,7 @@ if(isset($_POST['addtocart']))
     <title>product page</title>
     <!--css file-->
     <link rel="stylesheet" href="../css/product.css"/>
-    <link rel="stylesheet" href="../../home-page.css" />
+    <link rel="stylesheet" href="../css/footer.css" />
     <!--fontawsome link-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
@@ -49,7 +49,15 @@ if(isset($_POST['addtocart']))
   
   
 <!--search bar-->
-
+<div class="search-cart-container">
+    <form action="search.php" method="GET" name="search_form">
+  <input type="text" placeholder="Search products..." name="query" class="search-bar">
+  <input type="submit" value="Search" name="search_data" class="search-btn">
+  </form>
+  <button class="cart-icon"><a href="../php/cart.php" ><i class="fa-solid fa-cart-shopping"></i></a></button>
+ 
+</div>
+<!-- 
 <form action="search.php" method="GET" name="search_form">
     <div class="search">
   <input type="text" placeholder="Search products..." name="query" >
@@ -57,9 +65,9 @@ if(isset($_POST['addtocart']))
 
  
 </div>
-</form>
+</form> -->
 <!--cart icon-->
-<div class="cart-icon"><a href="../php/cart.php"><i class="fa fa-shopping-cart"></i></a></div>
+<!-- <div class="cart-icon"><a href="../php/cart.php"><i class="fa fa-shopping-cart"></i></a></div> -->
 
 
 <section class="header">
@@ -159,7 +167,7 @@ if(mysqli_num_rows($result)>0){
                  <!--get data to send to the details.php-->
 <form action="details.php" method="POST" name="viewform">
 <a href="../php/details.php?ID=<?=$productId;?>">
-<div class="column-1">
+<div class="column-product">
     <div class="card">
         <img src="../images/<?php echo $row["images"];?>" >
             <div class="container-2">
@@ -185,6 +193,8 @@ if(mysqli_num_rows($result)>0){
 ;};};}
 
 ?>
-
 </body>
 </html>
+<?php
+include('../../hompage-footer.php');
+?>

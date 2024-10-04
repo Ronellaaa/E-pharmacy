@@ -9,12 +9,12 @@
 </head>
 <body>
   <?php 
-  require './includes/db_connection.php';
+  require 'dbconnection.php';
   $query = "SELECT o.orderId, o.orderDate, o.orderStatus, o.totalAmount, o.payment_status, c.custName 
   FROM orders o
   JOIN customer c ON o.custId = c.custId";
   
-  $result = mysqli_query($con,$query);
+  $result = mysqli_query($conn,$query);
   ?>				
 
 <button class="close-btn" onclick="closePage()">X</button>

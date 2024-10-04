@@ -6,7 +6,7 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background: url('images/bg1.jpg') no-repeat center center fixed;
+    /* background: url('assets/image copy 37.png'); */
     background-size: cover;
     margin:0;
     padding:0;
@@ -24,7 +24,7 @@ body {
     justify-content: space-between;
     margin: 40px auto;
     width: 80%;
-    background-color: #B0C4DE;
+    background-color: #b0deb8;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -65,12 +65,13 @@ body {
     justify-content: space-between;
 }
 
-.images .profile-img-top,
-.images .profile-img-bottom {
-    width: 200px;
-    height: 200px;
+.images .profile-img-top
+ {
+    width: 450px;
+    height: 700px;
     object-fit: cover;
     border-radius: 5px;
+    margin-left: 10px;
 }
 
 .buttons {

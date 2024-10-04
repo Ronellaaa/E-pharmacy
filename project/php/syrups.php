@@ -1,5 +1,5 @@
 <?php
-require 'connect.php';
+require '../../dbconnection.php';
 
 $customer= mysqli_query($conn,"SELECT *  FROM customer");//get the cusID from the login page
 if(mysqli_num_rows($customer )>0){
@@ -35,7 +35,8 @@ if(isset($_POST['addtocart']))
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>product page</title>
     <link rel="stylesheet" href="../css/eye.css"/>
-    <link rel="stylesheet" href="../../home-page.css" />
+    <link rel="stylesheet" href="../../header.css" />
+  <link rel="stylesheet" href="../css/footer.css" />
     <!--fontawsome link-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -49,8 +50,18 @@ if(isset($_POST['addtocart']))
 <section class="header">
     <!--search bar-->
  
-<img src="../images/s.jpg" >
-<div class="search-container">
+<img src="../images/syrup4.png" >
+
+    <div class="search-cart-container">
+    <form action="search.php" method="GET" name="search_form">
+  <input type="text" placeholder="Search products..." name="query" class="search-bar">
+  <input type="submit" value="Search" name="search_data" class="search-btn">
+  </form>
+  <button class="cart-icon"><a href="../php/cart.php" ><i class="fa-solid fa-cart-shopping"></i></a></button>
+ 
+</div>
+
+<!-- <div class="search-container">
 <form action="search.php" method="GET" name="search_form">
     <div class="search">
   <input type="text" placeholder="Search products..." name="query" >
@@ -60,11 +71,12 @@ if(isset($_POST['addtocart']))
 </div>
 </form>
 </div>
-<button><a href="../php/cart.php" ><i class="fa fa-shopping-cart"></i></a></button>
+<button><a href="../php/cart.php" ><i class="fa fa-shopping-cart"></i></a></button> -->
 <div class="text">
+<marquee class="marq" direction="left" loop="">
     <h1>SYRUPS</h1>
-    <h2>"Boost Your Health, One Sip at a Time."</h2>
-    <marquee class="marq" direction="up" loop=""><p>syrup has been significant to Indigenous peoples for thousands of years, helping to sustain them.We have variety of syrups for cure your illnesses.Kindly,do not use these products to treat cold symptoms in children younger than 6 years unless specifically directed by the doctor.To decrease the risk for side effects, carefully follow all dosage directions.  </p></marquee>
+    </marquee>
+   <p>Browse our selection of syrups designed to address a variety of health concerns. Whether for coughs, colds, or digestive aid, our trusted brands offer fast and soothing relief. Take control of your well-being with the right syrup today. </p>
     </div> 
    
 </section>
@@ -115,6 +127,9 @@ if(mysqli_num_rows($result)>0){
 <?php
     ;}
 ;};}
+?>
+<?php
+include('../../hompage-footer.php');
 ?>
 </body>
 </html>

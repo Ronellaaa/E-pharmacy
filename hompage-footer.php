@@ -11,7 +11,7 @@
     <title>Care Meds</title>
   </head>
   <body>
-    <div class="full">
+    <!-- <div class="full"> -->
       
       
 
@@ -33,7 +33,7 @@
     </div>
     </div>
 </div>
-    </div>
+    <!-- </div> -->
 
  
   </body>

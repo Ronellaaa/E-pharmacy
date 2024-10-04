@@ -1,5 +1,5 @@
 <?php
-include 'connection.php';
+require 'dbconnection.php';
 
 // Check if the ID is passed through URL
 if (isset($_GET['id'])) {
