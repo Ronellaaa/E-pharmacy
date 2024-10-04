@@ -1,5 +1,5 @@
 <?php
-include 'db-connection.php';
+require 'dbconnection.php';
 
 $sql = $conn->prepare("
     SELECT o.orderId, o.orderStatus, c.custName, c.custAddress 

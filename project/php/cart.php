@@ -1,5 +1,5 @@
 <?php
-require 'connect.php';
+require '../../dbconnection.php';
 
 if(isset($_POST['update'])){
     $update= $_POST['update_quan'];

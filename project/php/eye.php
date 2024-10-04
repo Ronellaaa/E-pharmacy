@@ -1,6 +1,5 @@
 <?php
-require 'connect.php';
-
+require '../../dbconnection.php';
 $customer= mysqli_query($conn,"SELECT *  FROM customer");//get the cusID from the login page
 if(mysqli_num_rows($customer )>0){
     while($crow = mysqli_fetch_assoc($customer)){

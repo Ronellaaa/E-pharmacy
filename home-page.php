@@ -15,7 +15,7 @@
   <body>
     <div class="full">
     <?php
-include_once 'homepage-header.php';
+require 'dbconnection.php';
 ?>
       <!-- <div class="container">
         <div class="logo">

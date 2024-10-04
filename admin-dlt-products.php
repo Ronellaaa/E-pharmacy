@@ -1,11 +1,11 @@
 
 <?php
-require 'includes/db_connection.php';
+require 'dbconnection.php';
 
 $productID = isset($_GET['id'])?intval($_GET['id']):0;
 if($productID){
   $query = 'DELETE FROM products WHERE productId = ?';
-  $stmt =$con->prepare($query);
+  $stmt =$conn->prepare($query);
   $stmt -> bind_param('i',$productID);
 
   if($stmt->execute()){
@@ -18,7 +18,7 @@ if($productID){
 }else{
   echo("Invalid ProductId");
 }
-$con->close();
+$conn->close();
 
 
 ?>

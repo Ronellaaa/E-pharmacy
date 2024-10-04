@@ -1,5 +1,5 @@
 <?php
-require 'connect.php';
+require '../../dbconnection.php';
 //get the selected product id
 if(isset($_GET['ID']) ){
 

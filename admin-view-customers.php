@@ -9,12 +9,12 @@
 </head>
 <body>
   <?php 
-  require './includes/db_connection.php';
+  require 'dbconnection.php';
   $query_customers = "SELECT custId, custName, custAddress, custPhoneNumber, custEmail, dob, gender FROM customer";
-  $result_customers = mysqli_query($con,$query_customers);
+  $result_customers = mysqli_query($conn,$query_customers);
 
   $query_ContactUs = "SELECT contactID, customerName, cutomerAddress,customerEmail,phone_number,Message,createdDate	FROM contactUs";
-  $result_contactUs = mysqli_query($con,$query_ContactUs);
+  $result_contactUs = mysqli_query($conn,$query_ContactUs);
 ?>				
 
 <button class="close-btn" onclick="closePage()">X</button>

@@ -1,6 +1,6 @@
 <?php
 
-include 'db-connection.php';
+require 'dbconnection.php';
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST["submit"]) ) {

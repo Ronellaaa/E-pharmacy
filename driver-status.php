@@ -1,5 +1,5 @@
 <?php
-include 'db-connection.php';
+require 'dbconnection.php';
 
 // Fetch the most recent order along with customer details
 $sql = $conn->prepare("

@@ -9,11 +9,11 @@
 </head>
 <body>
 <?php
-require 'includes/db_connection.php';
+require 'dbconnection.php';
 
 // Fetch categories from the database
 $sql = "SELECT categoryId, categoryName FROM categories";
-$result = $con->query($sql);
+$result = $conn->query($sql);
 $categories = [];
 
 if ($result->num_rows > 0) {
@@ -28,7 +28,7 @@ error_log("Product ID being updated: $productID");
 
 if ($productID) {
     $sql = "SELECT * FROM products WHERE productId = ?";
-    $stmt = $con->prepare($sql);
+    $stmt = $conn->prepare($sql);
     $stmt->bind_param('i', $productID);
     $stmt->execute();
     $product = $stmt->get_result()->fetch_assoc();
@@ -87,7 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     // Update product data in the database (only if there are no errors)
     if (empty($message)) {
       $sql = "UPDATE products SET productName = ?, categoryId = ?, productQty = ?, productDescription = ?, productPrice = ?, image_path = ? WHERE productId = ?";
-      $stmt = $con->prepare($sql);
+      $stmt = $conn->prepare($sql);
   
       if ($stmt) {
         
@@ -106,14 +106,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
           }
           $stmt->close();
       } else {
-          $message = "Error preparing statement: " . $con->error;
+          $message = "Error preparing statement: " . $conn->error;
           
       }
   }
 }
 
 // Close the database connection
-$con->close();
+$conn->close();
 ?>
 
 

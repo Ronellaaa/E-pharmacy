@@ -17,7 +17,7 @@ error_reporting(E_ALL);
   </head>
   <body>
     <?php
-    require './includes/db_connection.php';
+    require 'dbconnection.php';
     $sqlCategory = "SELECT c.categoryName, COUNT(p.categoryId) AS CategoryCount 
            FROM categories c 
            LEFT JOIN products p ON c.categoryId = p.categoryId 
@@ -37,13 +37,13 @@ error_reporting(E_ALL);
     $sqlCustomers="SELECT COUNT(custId) AS total_customers FROM customer";
     $sqlTotalPrice="SELECT SUM(totalAmount) AS total_price FROM orders" ;
 
-    $totalOrders = fetchCount($con,$sqlOrders);
-    $totalProducts = fetchCount($con,$sqlProducts);
-    $totalCategory = fetchCount($con,$sqlCategory);
-    $totalCustomers = fetchCount($con,$sqlCustomers);
-    $totalPrice = fetchTotalPrice($con,$sqlTotalPrice);
+    $totalOrders = fetchCount($conn,$sqlOrders);
+    $totalProducts = fetchCount($conn,$sqlProducts);
+    $totalCategory = fetchCount($conn,$sqlCategory);
+    $totalCustomers = fetchCount($conn,$sqlCustomers);
+    $totalPrice = fetchTotalPrice($conn,$sqlTotalPrice);
     
-    $resultPieChart = $con ->query($sqlBar);
+    $resultPieChart = $conn ->query($sqlBar);
     $productNames = [];
     $productCounts = [];
 
@@ -57,7 +57,7 @@ error_reporting(E_ALL);
 
 
 
-    $resultBar = $con->query($sqlCategory);
+    $resultBar = $conn->query($sqlCategory);
     $categories =[];
     $counts =[];
 
@@ -69,8 +69,8 @@ error_reporting(E_ALL);
 
     }
 
-    function fetchCount ($con,$sql){
-      $result = $con->query($sql);
+    function fetchCount ($conn,$sql){
+      $result = $conn->query($sql);
       if($result && $result -> num_rows >0 ){
         $row =$result->fetch_assoc();
         return $row[array_keys($row)[0]];
@@ -78,8 +78,8 @@ error_reporting(E_ALL);
       return 0;
     }
 
-    function fetchTotalPrice($con,$sql){
-      $result = $con -> query($sql);
+    function fetchTotalPrice($conn,$sql){
+      $result = $conn -> query($sql);
       if($result && $result -> num_rows >0){
         $row = $result->fetch_assoc();
         return $row['total_price']; // Return total price
@@ -87,7 +87,7 @@ error_reporting(E_ALL);
     return 0;
 
     }
-    $con->close();
+    $conn->close();
 
 
     ?>

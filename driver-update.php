@@ -1,5 +1,5 @@
 <?php
-include 'db-connection.php';
+require 'dbconnection.php';
 
 if (isset($_POST['orderId']) && isset($_POST['orderStatus'])) {
     $orderId = $_POST['orderId'];

@@ -9,12 +9,12 @@
 </head>
 <body>
 <?php
-require 'includes/db_connection.php';
+require 'dbconnection.php';
   if(isset($_GET['orderId'])){
     $orderId = intval($_GET['orderId']);
 
     $query = 'SELECT * FROM orders WHERE orderId = ? ';
-    $stmt = $con->prepare($query);
+    $stmt = $conn->prepare($query);
     $stmt -> bind_param('i',$orderId);
     $stmt -> execute();
     $order = $stmt -> get_result()->fetch_assoc();
@@ -25,7 +25,7 @@ require 'includes/db_connection.php';
     $newStatus = $_POST['orderStatus'];
 
     $query = 'UPDATE orders SET orderStatus = ? WHERE orderId = ? ';
-    $stmt = $con->prepare($query);
+    $stmt = $conn->prepare($query);
     $stmt -> bind_param('si', $newStatus, $orderId);
 
     if($stmt -> execute()){
@@ -33,12 +33,12 @@ require 'includes/db_connection.php';
       header('Location:admin-view-orders.php');
       exit;
     }else{
-      echo "Error Updating the status. ".$con->error;
+      echo "Error Updating the status. ".$conn->error;
     }
     $stmt -> close();
   }
 
-$con->close();
+$conn->close();
 
 ?>
 <button class="close-btn" onclick="closePage()">X</button>

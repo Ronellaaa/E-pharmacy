@@ -1,7 +1,6 @@
 <?php
 // Include config file
-require_once 'dbconnection.php';
-
+require 'dbconnection.php';
 // // Start session
  session_start();
 

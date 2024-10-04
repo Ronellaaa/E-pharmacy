@@ -9,10 +9,10 @@
 </head>
 <body>
   <?php
-     require 'includes/db_connection.php';
+     require 'dbconnection.php';
      // Fetch categories from the database
     $sql = "SELECT categoryId, categoryName FROM categories";
-    $result = $con->query($sql);
+    $result = $conn->query($sql);
     $categories = [];
 
 if ($result->num_rows > 0) {
@@ -64,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
                             VALUES (?, ?, ?, ?, ?, ?)";
 
                     
-                    $stmt = $con->prepare($sql);
+                    $stmt = $conn->prepare($sql);
 
                     if ($stmt) {
                         $stmt->bind_param("siisds", $productName, $category, $productQty, $productDes, $productPrice, $targetFile);
@@ -75,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
                         }
                         $stmt->close();
                     } else {
-                        $message = "Error preparing statement: " . $con->error;
+                        $message = "Error preparing statement: " . $conn->error;
                     }
                 } else {
                     $message = "Error moving the uploaded file.";
@@ -92,7 +92,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
 }
 
 // Close the database connection after all operations are done
-$con->close();
+$conn->close();
 
   ?>
 

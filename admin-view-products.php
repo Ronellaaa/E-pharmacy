@@ -9,11 +9,11 @@
 </head>
 <body>
   <?php 
-  require './includes/db_connection.php';
+  require 'dbconnection.php';
   $query = "SELECT p.productId, p.productName, p.productQty, p.productDescription, p.productPrice, p.image_path, c.categoryName 
             FROM products p
             JOIN categories c ON p.categoryId = c.categoryId";
-  $result = mysqli_query($con,$query);
+  $result = mysqli_query($conn,$query);
   ?>
 
 <button class="close-btn" onclick="closePage()">X</button>
