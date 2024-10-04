@@ -3,7 +3,7 @@
 
    $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "Oggy2012";
 $dbname = "pharmacydatabase";
 
 // create connection

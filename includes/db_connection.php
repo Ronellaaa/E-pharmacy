@@ -1,7 +1,7 @@
 
 
 <?php
-$con = new mysqli("localhost", "root","", "pharmacydatabase", 3306);
+$con = new mysqli("localhost", "root","Oggy2012", "pharmacydatabase", 3306);
 
 
 if($con -> connect_error){

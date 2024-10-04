@@ -7,7 +7,7 @@ error_reporting(E_ALL);
 
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "Oggy2012";
 $db_name = "pharmacydatabase";
 
 
