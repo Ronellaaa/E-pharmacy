@@ -1,20 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Get the orderId from the URL
-    const params = new URLSearchParams(window.location.search);
-    const orderId = params.get('orderId'); 
-
-    if (!orderId) {
-        console.error('No orderId provided in the URL');
-        return;
-    }
-
-    // Fetch order details from the PHP script
-    fetch(`path/to/your/php/script.php?orderId=${orderId}`)
+    
+    fetch('order-status.php')
         .then(response => {
             if (!response.ok) {
-                throw new Error('Network response was not ok ' + response.statusText);
+                throw new Error('Network response was not ok');
             }
-            return response.json();
+            return response.json(); // Parse the JSON response
         })
         .then(data => {
             if (data.error) {
@@ -22,37 +13,37 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            // Updates HTML elements with the fetched data
-            document.getElementById('orderId').innerText = orders.orderId;
-            document.getElementById('customerName').innerText = customer.custName;
-            document.getElementById('customerAddress').innerText = customer.custAddress;
-            document.getElementById('productName').innerText = products.productName;
-            document.getElementById('productQty').innerText = order_items.quantity;
-            document.getElementById('totalPrice').innerText = orders.totalAmount;
+            // Update the HTML elements with the fetched data
+            document.getElementById('orderId').innerText = data.orderId;
+            document.getElementById('customerName').innerText = data.custName;
+            document.getElementById('customerAddress').innerText = data.custAddress;
+            document.getElementById('status').innerText = data.orderStatus || "N/A"; // Fallback if status is empty
 
-            
-            const status = orders.orderStatus; 
-
-            // Example logic to update steps
-            const step1 = document.getElementById('step1');
-            const step2 = document.getElementById('step2');
-            const step3 = document.getElementById('step3');
-
-            if (status === 'processed') {
-                step1.style.backgroundColor = '#28a745'; 
-                step2.style.backgroundColor = '#e0e0e0'; 
-                step3.style.backgroundColor = '#e0e0e0'; 
-            } else if (status === 'out for delivery') {
-                step1.style.backgroundColor = '#28a745'; 
-                step2.style.backgroundColor = '#ffc107'; 
-                step3.style.backgroundColor = '#e0e0e0'; 
-            } else if (status === 'delivered') {
-                step1.style.backgroundColor = '#28a745'; 
-                step2.style.backgroundColor = '#ffc107'; 
-                step3.style.backgroundColor = '#28a745'; 
+            // Update progress bar based on orderStatus
+            if (data.orderStatus.toLowerCase() === 'pending') {
+                document.getElementById('step1').classList.add('current-item');
+            } else if (data.orderStatus.toLowerCase() === 'delivered') {
+                document.getElementById('step1').classList.add('current-item');
+                document.getElementById('step2').classList.add('current-item');
             }
         })
+        fetch('driver-update.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: `orderId=${orderId}&orderStatus=${orderStatus}`
+        })
+        .then(response => response.json())  // Change this line to parse JSON
+        .then(data => {
+            if (data.error) {
+                alert(data.error);  // Show error message if there is an error
+            } else {
+                alert(data.message);  // Show success message
+            }
+            location.reload(); // Reload the page to update the displayed status
+        })
         .catch(error => {
-            console.error('Error fetching order details:', error);
+            console.error('Error updating order status:', error);
         });
 });

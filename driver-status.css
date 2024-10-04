@@ -8,6 +8,7 @@ body {
     background-color: #f4f4f9; /* Optional: For a soft background */
 }
 
+
 .container {
     display: flex;
     flex-direction: column;
@@ -132,29 +133,4 @@ body {
 
 .current-item .progress-count {
     color: #21d4fd;
-}
-
-/* New styles for status update dropdown */
-.status-update {
-    margin-top: 20px;
-}
-
-#orderStatus {
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    margin-right: 10px;
-}
-
-#updateStatusBtn {
-    padding: 10px 20px;
-    background-color: #27ae60;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-#updateStatusBtn:hover {
-    background-color: #2ecc71;
 }

@@ -2,9 +2,11 @@
 
 * {
   font-family: 'Poppins', sans-serif;
-  margin: 0; padding: 0;
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
-  outline: none; border: none;
+  outline: none;
+  border: none;
   text-transform: capitalize;
   transition: all .2s linear;
 }
@@ -57,8 +59,8 @@
   padding: 10px 15px;
   font-size: 15px;
   text-transform: none;
-  border-radius: 8px; /* Add rounded corners */
-  background: rgba(255, 255, 255, 0.8); /* Shaded look */
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.8);
 }
 
 .container form .row .col .inputBox input:focus {
@@ -68,10 +70,6 @@
 .container form .row .col .flex {
   display: flex;
   gap: 15px;
-}
-
-.container form .row .col .flex .inputBox {
-  margin-top: 5px;
 }
 
 .container form .row .col .inputBox img {
@@ -106,4 +104,23 @@
 
 .payment-button:hover {
   background: #2ecc71;
+}
+
+.cancel-btn {
+  padding: 10px 15px;
+  background: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.cancel-btn:hover {
+  background: #c0392b;
+}
+
+.container form .row .col .inputBox input:disabled {
+  background-color: #f0f0f0;
+  cursor: not-allowed;
 }

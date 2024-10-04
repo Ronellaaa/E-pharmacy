@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST["submit"]) ) {
 
     // Execute statement
     if ($stmt->execute()) {
-        echo "Message sent successfully!";
+        echo " ";
     } else {
         echo "Error: Please try again. " . $stmt->error;
     }

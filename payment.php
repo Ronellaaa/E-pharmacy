@@ -2,13 +2,19 @@
 include 'db-connection.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-   
 
-    // Fetching order details (assuming orderId is passed via POST)
     if (isset($_POST['orderId'])) {
         $orderId = $_POST['orderId']; 
+        $paymentMethod = $_POST['paymentMethod'];
+        $paymentStatus = 'Pending';
+
+        // Cash on Delivery cancels form completion
+        if ($paymentMethod === 'COD') {
+            $paymentStatus = 'Pending Confirmation';
+        }
+
+        // Fetching order details
         $sql = "SELECT totalAmount FROM orders WHERE orderId = ?";
-        
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("i", $orderId); 
         $stmt->execute();
@@ -17,17 +23,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($order) {
             $totalAmount = $order['totalAmount'];
-            
-            // Update the payments table
-            $stmt = $conn->prepare("INSERT INTO payments (orderId, paymentMethod, paymentStatus, amount) VALUES (?, 'Online', 'Completed', ?)");
-            $stmt->bind_param("id", $orderId, $totalAmount);
+
+            // Insert payment details
+            $stmt = $conn->prepare("INSERT INTO payments (orderId, paymentMethod, paymentStatus, amount) VALUES (?, ?, ?, ?)");
+            $stmt->bind_param("issd", $orderId, $paymentMethod, $paymentStatus, $totalAmount);
             $stmt->execute();
 
-            $stmt = $conn->prepare("UPDATE orders SET payment_status = 'Completed' WHERE orderId = ?");
-            $stmt->bind_param("i", $orderId);
-            $stmt->execute();
+            if ($paymentMethod === 'Online') {
+                $stmt = $conn->prepare("UPDATE orders SET payment_status = 'Completed' WHERE orderId = ?");
+                $stmt->bind_param("i", $orderId);
+                $stmt->execute();
 
-            echo "Payment successful!";
+                echo "Payment successful!";
+            } else {
+                echo "Cash on Delivery selected. Please confirm.";
+            }
         } else {
             echo "Order not found.";
         }
@@ -38,6 +48,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $conn->close();
 }
 ?>
+
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -50,13 +63,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <div class="container">
         <form id="paymentForm" action="payment.php" method="POST">
-            <input type="hidden" name="orderId" id="orderId" value="<!-- Add dynamic orderId here if needed -->">
+            <input type="hidden" name="orderId" id="orderId" value="123"> <!-- Example order ID -->
+            
             <div class="row">
                 <div class="col">
                     <h3 class="title">Billing Address</h3>
                     <div class="inputBox">
                         <span>Full Name :</span>
-                        <input type="text" name="fullName" placeholder="John Doe" required>
+                        <input type="text" name="fullName" required>
                     </div>
                     <div class="inputBox">
                         <span>Email :</span>
@@ -70,23 +84,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <span>City :</span>
                         <input type="text" name="city" placeholder="Mumbai" required>
                     </div>
-                    <div class="flex">
-                        <div class="inputBox">
-                            <span>State :</span>
-                            <input type="text" name="state" placeholder="India" required>
-                        </div>
-                        <div class="inputBox">
-                            <span>Zip Code :</span>
-                            <input type="text" name="zipCode" placeholder="123 456" required>
-                        </div>
-                    </div>
                 </div>
 
                 <div class="col">
                     <h3 class="title">Payment</h3>
                     <div class="inputBox">
                         <span>Cards Accepted :</span>
-                        <img src="payment-images\card_img.png" alt="Cards Accepted">
+                        <img src="payment-images/card_img.png" alt="Cards Accepted">
                     </div>
                     <div class="inputBox">
                         <span>Name on Card :</span>
@@ -112,12 +116,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </div>
                     <div class="inputBox">
                         <span>Payment Method :</span>
-                        <button type="button" class="payment-button" id="onlinePaymentBtn">Online Payment</button>
-                        <button type="button" class="payment-button" id="cashOnDeliveryBtn">Cash on Delivery</button>
+                        <input type="radio" name="paymentMethod" value="Online" id="onlinePaymentBtn"> Online Payment
+                        <input type="radio" name="paymentMethod" value="Cash on Delivery" id="cashOnDeliveryBtn"> Cash on Delivery
                     </div>
                 </div>
             </div>
+            
             <input type="submit" value="Proceed to Checkout" class="submit-btn">
+            <input type="button" value="Cancel Payment" class="cancel-btn" id="cancelPaymentBtn">
         </form>
     </div>    
     

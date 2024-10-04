@@ -27,6 +27,10 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log('We recieved your message! We will respond shortly');
         form.submit();
 
+        alert("Your form was cancelled");
+        console.log('Your form was cancelled');
+        form.cancel();
+
         
     });
 });
