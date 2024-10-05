@@ -5,7 +5,7 @@ require 'dbconnection.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST["submit"]) ) {
     // Prepare SQL query
-    $sql = "INSERT INTO contactus (customerName, customerAddress, customerEmail, phone_number, Message) VALUES (?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO contactus (customerName, custAddress, customerEmail, phone_number, Message) VALUES (?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
 
     // Check if prepare() was successful
@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST["submit"]) ) {
     }
 
     $customerName = filter_var($_POST['customerName'], FILTER_SANITIZE_STRING);
-    $customerAddress = filter_var($_POST['customerAddress'], FILTER_SANITIZE_STRING); 
+    $custAddress = filter_var($_POST['custAddress'], FILTER_SANITIZE_STRING); 
     $customerEmail = filter_var($_POST['customerEmail'], FILTER_SANITIZE_EMAIL);
     $phone_number = filter_var($_POST['phone_number'], FILTER_SANITIZE_STRING);
     $Message = filter_var($_POST['Message'], FILTER_SANITIZE_STRING);
@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST["submit"]) ) {
     }
 
     // Bind parameters (removed $contactID)
-    $stmt->bind_param("sssss", $customerName, $customerAddress, $customerEmail, $phone_number, $Message);
+    $stmt->bind_param("sssss", $customerName, $custAddress, $customerEmail, $phone_number, $Message);
 
     // Execute statement
     if ($stmt->execute()) {
@@ -71,7 +71,7 @@ include_once 'homepage-header.php';
                 <input type="text" id="customerName" name="customerName" required>
                 
                 <label for="cutomerAddress">Address:</label> 
-                <input type="text" id="customerAddress" name="customerAddress" required>
+                <input type="text" id="custAddress" name="custAddress" required>
             
                 <label for="customerEmail">Email:</label>
                 <input type="email" id="customerEmail" name="customerEmail" required>
