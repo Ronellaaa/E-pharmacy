@@ -115,7 +115,7 @@ include_once 'homepage-header.php';
             
             
 </div>
-<button type="submit" class="submit-btn">Submit</button>
+<button type="submit" class="submit-btn" name="submit">Submit</button>
 
         </form>
     </div>

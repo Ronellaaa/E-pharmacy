@@ -1,32 +1,44 @@
 <?php
+
 require '../../dbconnection.php';
+session_start(); 
 
-$customer= mysqli_query($conn,"SELECT *  FROM customer");//get the cusID from the login page
-if(mysqli_num_rows($customer )>0){
-    while($crow = mysqli_fetch_assoc($customer)){
-//check whether the button is clicked or not if clicked then 
-if(isset($_POST['addtocart']))
-{
-    //take the form input data
-    $id= $_POST['pID'];
-    $quan =1;
-    $price=$_POST['price'];
-    $cid = $_POST['cId'];
 
-    $select_cart=mysqli_query($conn,"SELECT * FROM cart WHERE productId = $id");
-//check wheather the product is in the cart
-    if(mysqli_num_rows($select_cart)>0){
-        echo '<script>alert("Already in the cart")</script>';}
+// Handle 'Add to Cart' button click
+if (isset($_POST['addtocart'])) {
 
-        //if not add to the cart
-    else{
-        $insert= mysqli_query($conn,"INSERT INTO cart (custId,productId,quantity,price) VALUES ('$cid','$id','$quan','$price') ");
-        echo '<script>alert(" Sucessfully added to the cart")</script>';
+  if (!isset($_SESSION['userId'])) {
+    // If the user is not logged in, show an alert and redirect them to the login page
+    echo "<script>alert('Please log in first!'); window.location.href='../../login.php';</script>";
+    exit();
+}
+
+    // Get the form input data
+    $productId = $_POST['pID'];
+    $quantity = 1; // Default quantity
+    $price = $_POST['price'];
+
+    // Use the customer ID from the session (foreign key)
+    $custId = $_SESSION['userId']; 
+
+    // Check if the product is already in the cart for this customer
+    $select_cart = mysqli_query($conn, "SELECT * FROM cart WHERE productId = $productId AND custId = $custId");
+
+    if (mysqli_num_rows($select_cart) > 0) {
+        echo '<script>alert("Product is already in the cart!");</script>';
+    } else {
+        // Insert the product into the cart
+        $insert = mysqli_query($conn, "INSERT INTO cart (productId, quantity, price, custId) VALUES ('$productId', '$quantity', '$price', '$custId')");
+
+        if ($insert) {
+            echo '<script>alert("Successfully added to the cart");</script>';
+        } else {
+            echo '<script>alert("Error adding to the cart");</script>';
+        }
     }
-    
-
-}}
+}
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -130,7 +142,7 @@ echo '<img src="/E-pharmacy/' . $row['image_path'] . '" alt="Image not found">';
  
 <?php
     ;}
-;};}
+;};
 ?>
 <?php
 include('../../hompage-footer.php');

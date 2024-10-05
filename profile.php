@@ -2,16 +2,16 @@
 session_start();
 include 'dbconnection.php'; 
 
-
-if (!isset($_SESSION['custId'])) {
-    header("Location: profile-update.php"); 
+if (!isset($_SESSION['userId'])) {
+    header("Location: login.php"); // Redirect to login page
     exit();
 }
 
 
-$custId = $_SESSION['custId'];
 
 
+// Fetch user data based on session userId
+$custId = $_SESSION['userId'];
 $query = "SELECT * FROM customer WHERE custId = ?";
 $stmt = $conn->prepare($query);
 $stmt->bind_param('i', $custId);
@@ -23,13 +23,6 @@ if (!$user) {
     echo "<script>alert('No user found!'); window.location.href='sign-Up.php';</script>";
     exit();
 }
-
-if (isset($_POST['update_account'])) {
-    header("Location: profile-update.php"); 
-    exit();
-}
-
-
 ?>
 
 <!DOCTYPE html>

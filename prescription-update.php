@@ -1,4 +1,5 @@
 <?php
+session_start();
 require 'dbconnection.php';
 
 // Check if the ID is passed through URL
@@ -29,13 +30,13 @@ if (isset($_POST['update'])) {
     $fulfillment_type = $_POST['fulfillment_type'];
     $payment_method = $_POST['payment_method'];
     $prescription_date = $_POST['prescription_date'];
-    $status = $_POST['status'];
+   
 
     // Update query to modify the prescription data
     $updateQuery = "UPDATE prescriptions 
                     SET patient_name = '$patient_name', patient_email = '$patient_email', patient_phone = '$patient_phone', 
                         fulfillment_type = '$fulfillment_type', payment_method = '$payment_method', 
-                        prescription_date = '$prescription_date', status = '$status' 
+                        prescription_date = '$prescription_date' 
                     WHERE id = '$prescription_id'";
 
     // Execute the update query

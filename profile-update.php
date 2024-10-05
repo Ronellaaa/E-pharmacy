@@ -1,32 +1,33 @@
 <?php
+session_start();
 // Include config file
+
 require 'dbconnection.php';
-// // Start session
- session_start();
 
 
-// Ensure user is logged in
-if (!isset($_SESSION['custId'])) {
-    echo "<script>alert('Please log in first.'); window.location.href='sign-Up.php';</script>";
+if (!isset($_SESSION['userId'])) {
+    header("Location: login.php"); // Redirect to login page
     exit();
 }
 
-// Get custId from session
-$custID = $_SESSION['custId'];
+$custId = $_SESSION['userId'];
 
-// Fetch user profile data
-$sql = "SELECT * FROM customer WHERE custId = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("i", $custID);
+// Fetch user information for pre-filling the form
+$query = "SELECT * FROM customer WHERE custId = ?";
+$stmt = $conn->prepare($query);
+$stmt->bind_param('i', $custId);
 $stmt->execute();
 $result = $stmt->get_result();
+$user = $result->fetch_assoc(); 
 
-if ($result->num_rows > 0) {
-    $user = $result->fetch_assoc();
-} else {
-    echo "<script>alert('No user found! Redirecting to sign-up page.'); window.location.href='sign-Up.php';</script>";
+if (!$user) {
+    echo "<script>alert('No user found!'); window.location.href='sign-Up.php';</script>";
     exit();
 }
+
+
+
+
 
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
@@ -42,10 +43,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     $sql = "UPDATE customer SET custName=?,custAddress=?, custPhoneNumber=?,custEmail=?, dob=?,gender=? WHERE custId=?";
     
     if ($stmt = $conn->prepare($sql)) {
-        $stmt->bind_param("ssssssi", $name, $address,$phone,$email,$dob,$gender, $custID);
+        $stmt->bind_param("ssssssi", $name, $address,$phone,$email,$dob,$gender, $custId);
         
         if ($stmt->execute()) {
             header("location: profile.php?success=edit");
+            // Check collected data
+
+
             exit;
         } else {
             echo "Something went wrong. Please try again.";
