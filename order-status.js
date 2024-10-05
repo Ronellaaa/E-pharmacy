@@ -22,10 +22,10 @@ document.addEventListener('DOMContentLoaded', () => {
             // Update progress bar based on orderStatus
             if (data.orderStatus.toLowerCase() === 'pending') {
                 document.getElementById('step1').classList.add('current-item');
-            } else if (data.orderStatus.toLowerCase() === 'delivered') {
+            } else if (data.orderStatus.toLowerCase() === 'completed') {
                 document.getElementById('step1').classList.add('current-item');
                 document.getElementById('step2').classList.add('current-item');
-            }
+            } 
         })
         fetch('driver-update.php', {
             method: 'POST',
@@ -46,4 +46,5 @@ document.addEventListener('DOMContentLoaded', () => {
         .catch(error => {
             console.error('Error updating order status:', error);
         });
+        
 });

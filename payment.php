@@ -74,15 +74,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </div>
                     <div class="inputBox">
                         <span>Email :</span>
-                        <input type="email" name="email" placeholder="example@example.com" required>
+                        <input type="email" name="email" required>
                     </div>
                     <div class="inputBox">
                         <span>Address :</span>
-                        <input type="text" name="address" placeholder="Room - Street - Locality" required>
+                        <input type="text" name="address" placeholder="House Number - Street - Locality" required>
                     </div>
                     <div class="inputBox">
                         <span>City :</span>
-                        <input type="text" name="city" placeholder="Mumbai" required>
+                        <input type="text" name="city" required>
                     </div>
                 </div>
 
@@ -94,7 +94,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </div>
                     <div class="inputBox">
                         <span>Name on Card :</span>
-                        <input type="text" id="cardName" name="cardName" placeholder="Mr. John Doe" required>
+                        <input type="text" id="cardName" name="cardName" required>
                     </div>
                     <div class="inputBox">
                         <span>Credit Card Number :</span>
