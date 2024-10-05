@@ -3,10 +3,10 @@ require 'dbconnection.php';
 
 // Fetch the most recent order along with customer details
 $sql = $conn->prepare("
-    SELECT o.orderId, o.orderStatus, c.custName, c.custAddress 
-    FROM orders o
-    JOIN customer c ON o.custId = c.custId  
-    ORDER BY o.orderId DESC LIMIT 1
+   SELECT o.orderId, o.orderStatus, o.custId, c.custName, c.custAddress 
+    FROM orders o, customer c
+    ORDER BY o.orderId DESC 
+    LIMIT 1
 ");
 $sql->execute();
 $result = $sql->get_result();
@@ -14,8 +14,8 @@ $result = $sql->get_result();
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
 } else {
-    echo json_encode(['error' => 'Order not found']);
-    exit();
+    $row = ['orderId' => 'N/A', 'custName' => 'N/A', 'custAddress' => 'N/A'];
+
 }
 
 $conn->close();

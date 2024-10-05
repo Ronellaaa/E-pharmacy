@@ -2,9 +2,8 @@
 require 'dbconnection.php';
 
 $sql = $conn->prepare("
-    SELECT o.orderId, o.orderStatus, c.custName, c.custAddress 
-    FROM orders o 
-    JOIN customer c ON o.custId = c.custId 
+    SELECT o.orderId, o.orderStatus, o.custId, c.custName, c.custAddress 
+    FROM orders o, customer c
     ORDER BY o.orderId DESC 
     LIMIT 1
 ");
@@ -15,7 +14,7 @@ if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
     echo json_encode($row); // Output the fetched data as JSON
 } else {
-    echo json_encode(['error' => 'Order not found']);
+    $row = ['orderId' => 'N/A', 'custName' => 'N/A', 'custAddress' => 'N/A'];
 }
 
 $conn->close();
