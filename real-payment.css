@@ -17,14 +17,16 @@
   align-items: center;
   padding: 25px;
   min-height: 100vh;
-  background: linear-gradient(90deg, #2ecc71 60%, #27ae60 40.1%);
+  background: linear-gradient(90deg, #d0b89c, #af8f6f);
 }
 
 .container form {
   padding: 20px;
   width: 700px;
-  background: #fff;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
+  background:#e7e3d4;
+  opacity: 80%;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
 }
 
 .container form .row {
@@ -82,42 +84,29 @@
   width: 100%;
   padding: 12px;
   font-size: 17px;
-  background: #27ae60;
+  background: #9a7943;
   color: #fff;
   margin-top: 5px;
   cursor: pointer;
 }
 
 .container form .submit-btn:hover {
-  background: #2ecc71;
+  background: #cc9f59;
 }
 
-.payment-button {
-  padding: 10px 15px;
-  background: #27ae60;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 10px;
-}
-
-.payment-button:hover {
-  background: #2ecc71;
-}
 
 .cancel-btn {
   padding: 10px 15px;
-  background: #e74c3c;
+  background: #ff9e01;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 25px;
   cursor: pointer;
   margin-top: 10px;
 }
 
 .cancel-btn:hover {
-  background: #c0392b;
+  background: #f4c882;
 }
 
 .container form .row .col .inputBox input:disabled {

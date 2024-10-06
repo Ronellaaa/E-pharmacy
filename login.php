@@ -1,6 +1,51 @@
-
 <?php
 session_start();
+include 'dbconnection.php';
+
+if (isset($_POST['submit'])) {
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+
+        // Prepare statement to select user by email and password
+        $stmt = $conn->prepare("SELECT * FROM customer WHERE custEmail = ? AND custpassword = ?");
+        $stmt->bind_param("ss", $email, $password);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+    
+
+        if ($result->num_rows > 0) {
+            $user = $result->fetch_assoc();
+            $_SESSION['userId'] = $user['custId'];
+            $_SESSION['userName'] = $user['custName'];
+            $_SESSION['userRole'] = 'Customer';
+
+            echo "Email: $email, Password: $password <br>";
+
+            // Check if Admin or Driver
+            if ($email === 'ronelladias17@gmail.com' && $password === 'caremeds') {
+                $_SESSION['userRole'] = 'Admin';
+                header("Location: admin-dashboard.php");
+                exit();
+            } elseif ($email === 'imanlatiffa@gmail.com' && $password === 'caremeds12') {
+                $_SESSION['userRole'] = 'Driver';
+                header("Location: driver-status.php");
+                exit();
+            }
+
+            // Redirect to home page for regular customers
+            header("Location: home-page.php");
+            exit();
+        } else {
+            echo "Invalid email or password";
+        }
+
+        // Close statement and connection
+        $stmt->close();
+        $conn->close();
+    }
+}
 ?>
 
 
@@ -24,7 +69,7 @@ session_start();
  
 <div class="main-box">
  
-    <form  method="POST" action="login.inc.php" class="form-login">
+    <form  method="POST" action="login.php" class="form-login">
     <h1>Login</h1>
       <label for="username" class="label-login">
         username:
@@ -46,16 +91,8 @@ session_start();
   
     </div>
 
-    <!-- <img src="./assets/image copy 21.png" alt=""> -->
-    <?php
-if(isset($_GET["error"])){
-if($_GET["error"]== "emptyinput"){
-  echo "<p>Fill in all fields</p>";
-}else if($_GET["error"] == "wronglogin"){
-echo "<p>Incorrect login infomation</p>";
-}
-}
-?>
+  
+
 
   </div>
 

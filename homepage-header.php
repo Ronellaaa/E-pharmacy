@@ -1,4 +1,12 @@
+<?php
+session_start();
+if(isset($_SESSION['userId'])) {
+  // User is logged in
+  $userRole = $_SESSION['userRole'];  // Get the user role
+  $userName = $_SESSION['userName'];  // Get the user name
+}
 
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -20,35 +28,34 @@
               <a href="http://localhost/E-pharmacy/home-page.php" class="link">Home</a>
               <a href="http://localhost/E-pharmacy/about-Us.php" class="link">About Us</a>
               <a href="http://localhost/E-pharmacy/project/php/product.php" class="link">Products</a>
-              <a href="#" class="link">Contact Us</a>
+              <a href="http://localhost/E-pharmacy/contact-us.php" class="link">Contact Us</a>
             </li>
           </ul>
         </nav>
         
     
-       <div class="login-button">
-                    <a href="profile.php">
-                        <button class="btn-login"></button>
-                    </a>
-                    <a href="includes/logout.inc.php">
-                        <button class="btn-login">Logout</button>
-                    </a>
-                </div>
-             
-              <div class="login-button">
-                    <a href="login.php">
-                        <button class="btn-login">Login</button>
-                    </a>
-                    <a href="sign-Up.php">
-                        <button class="btn-login">Sign up</button>
-                    </a>
-                </div>
-              
+        <div class="login-button">
+          <?php if(isset($_SESSION['userId'])): ?>
+              <!-- If user is logged in, show Profile and Logout -->
+              <a href="profile.php">
+                  <button class="btn-login"><i class="fa-solid fa-user"></i> <?php echo $_SESSION['userName'] ; ?></button>
+              </a>
+              <a href="logout.php">
+                  <button class="btn-login">Logout</button>
+              </a>
+          <?php else: ?>
+              <!-- If user is not logged in, show Login and Sign up -->
+              <a href="login.php">
+                  <button class="btn-login">Login</button>
+              </a>
+              <a href="sign-Up.php">
+                  <button class="btn-login">Sign up</button>
+              </a>
+          <?php endif; ?>
+        </div>
 
-       
-      
       </div>
-
+   
    
  
 </body>

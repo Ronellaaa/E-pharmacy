@@ -1,9 +1,13 @@
+
 <?php
+session_start();
 require 'dbconnection.php';
-?>
-<?php
-// db.php - Include this for database connection
-include 'connection.php';
+
+if (!isset($_SESSION['userId'])) {
+    echo "<script>alert('Please log in first!'); window.location.href='login.php';</script>";
+    exit();
+}
+
 // Check if the form is submitted
 if (isset($_POST['submit'])) {
     $patient_name = $_POST['patient_name'];
@@ -13,11 +17,13 @@ if (isset($_POST['submit'])) {
     $payment_method = $_POST['payment_method'];
     $prescription_date = $_POST['prescription_date'];
     $status = "Pending";
+    $custId = $_SESSION['userId'];
 
     // File upload handling
     $file_name = $_FILES["prescription_file"]["name"];
     $temp_name = $_FILES["prescription_file"]["tmp_name"];
     $file_type = $_FILES["prescription_file"]["type"];
+    
 
     // Set upload directory
     $upload_dir = 'uploads/';
@@ -27,8 +33,8 @@ if (isset($_POST['submit'])) {
     if ($file_type == 'image/jpeg' || $file_type == 'image/png' || $file_type == 'application/pdf') {
         if (move_uploaded_file($temp_name, $target_file)) {
             // Insert data into the database
-            $query = "INSERT INTO prescriptions (patient_name, patient_email, patient_phone, prescription_file, prescription_date, fulfillment_type, payment_method, status) 
-                      VALUES ('$patient_name', '$patient_email', '$patient_phone', '$target_file', '$prescription_date', '$fulfillment_type', '$payment_method', '$status')";
+            $query = "INSERT INTO prescriptions (patient_name, patient_email, patient_phone, prescription_file, prescription_date, fulfillment_type, payment_method, status,custId) 
+                      VALUES ('$patient_name', '$patient_email', '$patient_phone', '$target_file', '$prescription_date', '$fulfillment_type', '$payment_method', '$status','$custId')";
 
             // Execute the query
             if (mysqli_query($conn, $query)) {
@@ -38,6 +44,8 @@ if (isset($_POST['submit'])) {
             }
         } else {
             echo "Failed to upload file.";
+           
+
         }
     } else {
         echo "Invalid file type. Only JPEG, PNG, and PDF are allowed.";
@@ -124,7 +132,15 @@ include_once 'homepage-header.php';
             ?>
         </section>
     </main>
-  
+  <script>
+
+    const isLogged ="<?php echo isset($_SESSION['userId']) ? 'true' : 'false'; ?>";
+    if (isLoggedIn === "false") {
+        // If user is not logged in, redirect them to the login page
+        alert("You must log in to upload a prescription.");
+        window.location.href = "login.php";
+    }
+  </script>
     <?php
 include 'hompage-footer.php';
 ?>

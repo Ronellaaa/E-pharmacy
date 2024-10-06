@@ -82,9 +82,9 @@ include_once 'homepage-header.php';
             style="background-image: url(./assets/image\ copy\ 2.png)"
           >
             <div class="content">
-              <div class="name">Skin Care</div>
-              <div class="des">Best products</div>
-              <button class="btn-see">See More</button>
+              <div class="name">Eye Care</div>
+              <div class="des">Protect and maintain your vision with our trusted eye care solutions.</div>
+              <button class="btn-see"><a href="http://localhost/E-pharmacy/project/php/product.php">See More</a></button>
             </div>
           </div>
 
@@ -94,8 +94,8 @@ include_once 'homepage-header.php';
           >
             <div class="content">
               <div class="name">Hair Care</div>
-              <div class="des">Best products</div>
-              <button class="btn-see">See More</button>
+              <div class="des">Nourish and revitalize your hair with our premium hair care products.</div>
+              <button class="btn-see"><a href="http://localhost/E-pharmacy/project/php/product.php">See More</a></button>
             </div>
           </div>
 
@@ -106,9 +106,9 @@ include_once 'homepage-header.php';
             <div class="content">
               <div class="name">Vitamins</div>
               <div class="des">
-                LORES IPSUM DOLOR SIT AMET CONSERTDE ADIPIYTIO DIDE AB DJ
+              Boost your health with essential vitamins for a stronger immune system!
               </div>
-              <button class="btn-see">See More</button>
+              <button class="btn-see"><a href="http://localhost/E-pharmacy/project/php/product.php">See More</a></button>
             </div>
           </div>
 
@@ -117,11 +117,11 @@ include_once 'homepage-header.php';
             style="background-image: url(./assets/image\ copy\ 11.png)"
           >
             <div class="content">
-              <div class="name">Antibiotis</div>
+              <div class="name">Syrups</div>
               <div class="des">
-                LORES IPSUM DOLOR SIT AMET CONSERTDE ADIPIYTIO DIDE AB DJ
+              Easy-to-take syrups for fast acting relief and nutrition.
               </div>
-              <button class="btn-see">See More</button>
+              <button class="btn-see"><a href="http://localhost/E-pharmacy/project/php/product.php">See More</a></button>
             </div>
           </div>
 
@@ -130,11 +130,11 @@ include_once 'homepage-header.php';
             style="background-image: url(./assets/image\ copy\ 6.png)"
           >
             <div class="content">
-              <div class="name">First Aid</div>
+              <div class="name">Tablets</div>
               <div class="des">
-                LORES IPSUM DOLOR SIT AMET CONSERTDE ADIPIYTIO DIDE AB DJ
+              Convenient and effective tablets for your daily wellness needs.
               </div>
-              <button class="btn-see">See More</button>
+              <button class="btn-see"><a href="http://localhost/E-pharmacy/project/php/product.php"></a>See More</button>
             </div>
           </div>
         </div>
@@ -156,39 +156,36 @@ include_once 'homepage-header.php';
           <div class="testimonial-car">
             <span><i class="fa-solid fa-quote-left"></i></span>
             <p>
-              i have been working with these guysfor a long time i can say that
-              my house is in perfect hands
+            Thanks to this pharmacy portal, I never miss a prescription refill! It's reliable, convenient, and has saved me so much time.
             </p>
             <hr />
             <img src="assets/image copy 7.png" alt="" />
-            <p class="test-name">Allaya meegoda</p>
+            <p class="test-name">Ashanthi Meegoda</p>
           </div>
 
           <div class="testimonial-car">
             <span><i class="fa-solid fa-quote-left"></i></span>
             <p>
-              i have been working with these guysfor a long time i can say that
-              my house is in perfect hands
+            The online pharmacy portal made ordering my medications so easy! Fast delivery and great customer service highly recommend!
             </p>
             <hr />
             <img src="assets/image copy 9.png" alt="" />
-            <p class="test-name">Allaya meegoda</p>
+            <p class="test-name">Nadun Fernando</p>
           </div>
           <div class="testimonial-car">
             <span><i class="fa-solid fa-quote-left"></i></span>
             <p>
-              i have been working with these guysfor a long time i can say that
-              my house is in perfect hands
+            I love how simple and efficient this portal is. I can quickly find everything I need for my family's health, all in one place!
             </p>
             <hr />
             <img src="assets/image copy 8.png" alt="" />
-            <p class="test-name">Allaya meegoda</p>
+            <p class="test-name">Evan Perera</p>
           </div>
         </div>
         <div class="test-footer">
-          <h4>No two homes are alike!</h4>
-          <p>LORES IPSUM DOLOR SIT AMET CONSERTDE ADIPIYTIO DIDE AB DJ</p>
-          <button>GET A QUOTE</button>
+          <h4>Quick, easy, and reliable my go-to pharmacy for all my health needs!</h4>
+          <p>Care Meds</p>
+          <button><a href="http://localhost/E-pharmacy/contact-us.php">Contact Us</a></button>
           <!-- <div class="social-icons">
             <a href="https://www.facebook.com/"
               ><i class="fa-brands fa-facebook"></i

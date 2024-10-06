@@ -35,6 +35,8 @@ $conn->close();
         <!-- Navbar -->
     </div>
     
+
+    
     <div class="container">
         <h1>Delivery Status</h1>
         <div class="order-status">
@@ -48,9 +50,9 @@ $conn->close();
                         <span class="progress-count">1</span>
                         <span class="progress-label">Pending</span>
                     </li>
-                    <li class="step-wizard-item <?php echo ($row['orderStatus'] == 'Delivered') ? 'current-item' : ''; ?>">
+                    <li class="step-wizard-item <?php echo ($row['orderStatus'] == 'Completed') ? 'current-item' : ''; ?>">
                         <span class="progress-count">2</span>
-                        <span class="progress-label">Delivered</span>
+                        <span class="progress-label">Completed</span>
                     </li>
                 </ul>
             </section>
@@ -60,7 +62,8 @@ $conn->close();
                 <select id="orderStatus">
                     <option value="" disabled>Select status</option>
                     <option value="Pending" <?php echo ($row['orderStatus'] == 'Pending') ? 'selected' : ''; ?>>Pending</option>
-                    <option value="Delivered" <?php echo ($row['orderStatus'] == 'Delivered') ? 'selected' : ''; ?>>Delivered</option>
+                    <option value="Completed" <?php echo ($row['orderStatus'] == 'Completed') ? 'selected' : ''; ?>>Completed</option>
+                    <option value="Cancelled" <?php echo ($row['orderStatus'] == 'Cancelled') ? 'selected' : ''; ?>>Cancelled</option>
                 </select>
                 <button id="updateStatusBtn">Update Status</button>
             </div>
