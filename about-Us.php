@@ -11,17 +11,9 @@
 <body>
     <div class="main-container">
 
-        <header>
-            <nav>
-                <a href="#"><img src="images/logo.jpg" width="60px" height="60px"></a>
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Products</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                </ul>
-            </nav>
-        </header>
+    <?php
+include_once 'homepage-header.php';
+?>
 
         <div class="background"></div>
 
@@ -76,14 +68,14 @@
             </div>
         </div>
 
-        <footer>
-            <hr>
-            &copy; 2024 Copyright Reserved - CareMeds <br>
-            <small>emailcaremeds.com</small>
-        </footer>
+       
 
         <!-- Ensure the JavaScript file is correctly linked -->
         <script src="about-Us.js"></script>
     </div>
+     
+<?php
+include_once 'hompage-footer.php';
+?>
 </body>
 </html>

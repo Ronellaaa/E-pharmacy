@@ -87,11 +87,9 @@ include_once 'homepage-header.php';
                 <input type="date" id="dob" name="dob" required>
           
           
-                <label>Gender</label>
-                <input type="radio" id="male" name="gender" value="male" class=
-                "gender" required> Male
-                <input type="radio" id="female" name="gender" value="female" required class=
-                "gender"> Female
+                <label  for="gender" class="gender">Gender</label>
+                <input type="radio" id="male" name="gender" value="male" class="gender" required> Male
+                <input type="radio" id="female" name="gender" value="female" required class= "gender"> Female
          
           
                 <label for="phone">Phone Number</label>

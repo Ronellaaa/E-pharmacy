@@ -30,7 +30,7 @@ body {
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   border: 1px solid rgba(255, 255, 255, 0.3);
-  width: 850px;
+  width: 650px;
 }
 
 .background-signup::before {
@@ -98,4 +98,8 @@ body {
 /* Address Field */
 textarea {
   resize: vertical;
+}
+
+.form-group .gender {
+  font-size: 30px;
 }
