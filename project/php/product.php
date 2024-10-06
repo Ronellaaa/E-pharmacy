@@ -57,17 +57,7 @@ if(isset($_POST['addtocart']))
   <button class="cart-icon"><a href="../php/cart.php" ><i class="fa-solid fa-cart-shopping"></i></a></button>
  
 </div>
-<!-- 
-<form action="search.php" method="GET" name="search_form">
-    <div class="search">
-  <input type="text" placeholder="Search products..." name="query" >
-  <input type="submit" value="Search" name="search_data">
 
- 
-</div>
-</form> -->
-<!--cart icon-->
-<!-- <div class="cart-icon"><a href="../php/cart.php"><i class="fa fa-shopping-cart"></i></a></div> -->
 
 
 <section class="header">
