@@ -79,9 +79,9 @@ if (isset($_POST['submit'])) {
         Password:
       </label>
       <input type="password" id="password" name="password" class="box" ></br></br>
-      <a href="#" class="a">Forgot password?</a>
+     
       <input type="submit" id="submit-btn-login" value="Login" name="submit">
-      <p >Dont have an Account? <a href="#"> Sign UP</a></p>
+      <p >Dont have an Account? <a href="./sign-Up.php"> Sign UP</a></p>
       
       
     </form>

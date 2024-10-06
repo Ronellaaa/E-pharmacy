@@ -102,7 +102,7 @@ img {
 
 .container nav ul li a:hover::after {
   width: 100%;
-  background-color: #05f7ff;
+  background-color: #6c451f;
   box-shadow: 0 0 10px #ffffff, 0 0 20px #fff, 0 0 30px #fff;
   transform: scaleY(1.5);
 }
