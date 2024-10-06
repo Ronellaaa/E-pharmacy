@@ -147,10 +147,11 @@ if (isset($_POST['addtocart'])) {
 <br><hr><br>
 
 <!--all product view-->
-<section>
+
 <div class="title">
   <h2>All products</h2>
 </div>
+<div class="row">
 <?php
 
  // php for product page main view
@@ -167,8 +168,9 @@ if(mysqli_num_rows($result)>0){
  ?>
  
                  <!--get data to send to the details.php-->
-<form action="details.php" method="POST" name="viewform">
+<!-- <form action="details.php" method="POST" name="viewform"> -->
 <a href="../php/details.php?ID=<?=$productId;?>">
+
 <div class="column-product">
     <div class="card">
     
@@ -181,7 +183,7 @@ echo '<img src="/E-pharmacy/' . $row['image_path'] . '" alt="Image not found">';
             <div class="container-2">
               <h4><b><?php echo $row["productName"];?></b></h4>
 
-              </form></a>
+              <!-- </form> --></a>
                <form action="" method="POST" name="cart">
               <input type="hidden" name="pID" value="<?php echo $row["productId"];?>">
               <input type="hidden" name="price" value="<?php echo $row["productPrice"] ;?>">
@@ -196,11 +198,12 @@ echo '<img src="/E-pharmacy/' . $row['image_path'] . '" alt="Image not found">';
 
   </div>
 
-  </section>
+ 
 <?php
 ;};};
 
 ?>
+ </div>
 </body>
 </html>
 <?php

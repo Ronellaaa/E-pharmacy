@@ -147,30 +147,22 @@ a {
 
 /* Remove extra left and right margins, due to padding in columns */
 .row {
-  margin: 0 -5px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 35px; /* Adjust as needed */
 }
 
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
 .column {
-  float: left;
-  height: 300px;
-  padding: 30px 10px;
-  display: flex;
-  max-width: 500px;
-  justify-content: space-between; /* Creates equal spacing between columns */
-  flex-wrap: nowrap;
-  margin-top: 150px;
-  margin-left: 100px;
+  flex: 1; /* Equal size columns */
+  padding: 10px;
+  max-width: 300px; /* Optional: set max width */
+  height:500px ;
 }
 
 /* Style the counter cards */
 .card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); 
   padding: 10px;
   text-align: center;
   background-color: #f1f1f1;
@@ -178,9 +170,14 @@ a {
   width: 300px;
   height: 300px;
 }
+
+
+
 .card:hover {
   transform: scale(1.1);
 }
+
+
 .card .container-2 a {
   font-size: 20px;
   font-weight: 150;

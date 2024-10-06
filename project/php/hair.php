@@ -64,15 +64,7 @@ if (isset($_POST['addtocart'])) {
 <section class="header">
    
 <img src="../images/shampoo3.png">
-<!--search bar-->
-<!-- <form action="search.php" method="GET" name="search_form">
-    <div class="search">
-  <input type="text" placeholder="Search products..." name="query" >
-  <input type="submit" value="Search" name="search_data"> 
- 
-</div>
-</form>
-<button><a href="../php/cart.php" ><i class="fa fa-shopping-cart"></i></a></button> -->
+
 
 
 <div class="search-cart-container">
@@ -99,6 +91,7 @@ if (isset($_POST['addtocart'])) {
   <a href="../php/vitamins.php">Vitamins</a>
 </div>
 
+<div class="row">
 <?php
 
  // php for product page main view
@@ -113,7 +106,7 @@ if(mysqli_num_rows($result)>0){
        
  ?>
   <!--get data to send to the details.php-->
-<form action="details.php" method="POST" name="viewform">
+
 <a href="../php/details.php?ID=<?=$productId;?>">
 <div class="column">
     <div class="card">
@@ -125,12 +118,11 @@ echo '<img src="/E-pharmacy/' . $row['image_path'] . '" alt="Image not found">';
             <div class="container-2">
               <h4><b><?php echo $row["productName"];?></b></h4>
 
-              </form>
+              </a>
                <form action="" method="POST" name="cart">
               <input type="hidden" name="pID" value="<?php echo $row["productId"];?>">
               <input type="hidden" name="price" value="<?php echo $row["productPrice"] ;?>">
               <input type="hidden" name="img" value="<?php echo $row["image_path"] ;?>">
-              <input type="hidden" name="cId" value="<?php echo  $crow["cusId"] ;?>">
               <input type="submit" name="addtocart" value="Add to cart" class="btn">
               </form>
             </div>
@@ -138,12 +130,13 @@ echo '<img src="/E-pharmacy/' . $row['image_path'] . '" alt="Image not found">';
             </div>
   </div>
 
-</a>
+
   
 <?php
     ;}
 ;};
 ?>
+</div>
 <?php
 include('../../hompage-footer.php');
 ?>
