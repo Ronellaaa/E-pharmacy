@@ -2,7 +2,7 @@ function closePage() {
   var confirmation = confirm("Are you sure you want to exit this page? ");
 
   if (confirmation) {
-    window.location.href = "admin-products.php";
+    window.location.href = "admin-dashboard.php";
   }
 }
 

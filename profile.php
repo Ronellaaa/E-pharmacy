@@ -32,6 +32,10 @@ if (!$user) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Profile</title>
     <link rel="stylesheet" type="text/css" href="profile.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
 </head>
 <body>
 
@@ -46,7 +50,7 @@ if (!$user) {
                 <label for="dob">Date of Birth:</label>
                 <input type="date" id="dob" name="dob" value="<?php echo htmlspecialchars($user['dob']); ?>" disabled>
             </div>
-            <div class="form-group">
+            <div class="form-group gender">
                 <label for="gender">Gender:</label>
                 <input type="radio" id="male" name="gender" value="male" <?php echo ($user['gender'] == 'male') ? 'checked' : ''; ?> disabled> Male
                 <input type="radio" id="female" name="gender" value="female" <?php echo ($user['gender'] == 'female') ? 'checked' : ''; ?> disabled> Female
@@ -66,19 +70,27 @@ if (!$user) {
 
             <!-- Buttons below the profile details -->
             <div class="buttons">
-                <a href="profile-update.php?updateId=<?php echo $user['custId']?>" id="updateBtn">Update btn</a>
+               <button> <a href="profile-update.php?updateId=<?php echo $user['custId']?>" id="updateBtn">Update btn</a></button>
                 <!-- <button id="updateBtn">Update Account</button> -->
                 <button id="saveBtn" type="submit" disabled>Save</button>
                 <!-- <button id="deleteBtn">Delete Account</button> -->
-                  <a href="profile-delete.php?deleteId=<?php echo $user['custId']?>" id="deleteBtn">Delete btn</a>
+                <button><a href="profile-delete.php?deleteId=<?php echo $user['custId']?>" id="deleteBtn">Delete btn</a></button>
             </div>
         </div>
 
         <!-- Images at the top-right and bottom-right -->
         <div class="images">
-            <img src="assets/image copy 33.png" alt="Profile Picture" class="profile-img-top">
-           
+        <a href="./home-page.php"> <button class="close-home"><i class="fa-solid fa-x"></i></button></a>
+        <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
+
+            <dotlottie-player src="https://lottie.host/50a35443-5e8f-403f-8920-8fe51affb2e4/E8fLiEuelG.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></dotlottie-player>
+
+
+        <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
+
+<dotlottie-player src="https://lottie.host/efd8cbda-4a3a-4569-89fd-a6eeae65c3df/OKOD7qWrxJ.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay class="profile-img-bottom"></dotlottie-player>
         </div>
+
     </div>
 
     <script src="profile.js"></script>

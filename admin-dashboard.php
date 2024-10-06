@@ -3,6 +3,10 @@ session_start();
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+if (!isset($_SESSION['userId']) || $_SESSION['userRole'] !== 'Admin') {
+  header("Location: login.php");
+  exit();
+}
 ?>
 
 
@@ -19,19 +23,17 @@ error_reporting(E_ALL);
   <body>
     <?php
     require 'dbconnection.php';
-    $sqlCategory = "SELECT c.categoryName, COUNT(p.categoryId) AS CategoryCount 
+           $sqlCategory = "SELECT c.categoryName, SUM(p.productQty) AS CategoryCount 
            FROM categories c 
            LEFT JOIN products p ON c.categoryId = p.categoryId 
            GROUP BY c.categoryName";
            
-    // $sqlBar = "SELECT p.productName, COUNT(o.productId) AS ProductCount
-    //       FROM products p
-    //       INNER JOIN orders o ON p.productId = o.productId
-    //       GROUP BY p.productName
-    //       ORDER BY ProductCount DESC
-    //       LIMIT 5";
+           $sqlBar = "SELECT p.productName, c.quantity AS ProductQty
+           FROM products p
+           INNER JOIN cart c ON p.productId = c.productId
+           ORDER BY c.quantity DESC
+           LIMIT 5";
 
-    $sqlBar = "SELECT p.productName, p.productQty AS ProductCount FROM products p";
 
     $sqlOrders= "SELECT COUNT(orderId) AS total_orders FROM orders";
     $sqlProducts="SELECT COUNT(ProductId) AS total_products FROM products";
@@ -51,7 +53,8 @@ error_reporting(E_ALL);
     if($resultPieChart->num_rows > 0){
       while($row = $resultPieChart->fetch_assoc()){
           $productNames[] = $row['productName'];
-          $productCounts[] = $row['ProductCount'];
+          $productCounts[] = $row['ProductQty'];
+
       }
   }
 
@@ -100,7 +103,7 @@ error_reporting(E_ALL);
         <div class="admin-user">
           <img src="./admin-images/driver.png" class="admin-user-img" alt="">
           <div class="admin-user-text" >
-          <h2>John Doe</h2>
+          <h2><?php echo $_SESSION['userName'] ;?></h2>
           <p>Admin</p>
           </div>
         </div>
@@ -132,11 +135,11 @@ error_reporting(E_ALL);
           </li>
           <li><i class="fa-solid fa-users admin-icons"></i>
         
-          <a href="admin-view-customers.php">View Customers</a>
+          <a href="admin-customer.php">View Customers</a>
         </li>
         </ul>
         <ul class="side-nav-ul">
-          <li><img src="./admin-images/logout.png "width="30px" class="admin-logout" alt=""><a href="#">Logout</a></li>
+          <li><img src="./admin-images/logout.png "width="30px" class="admin-logout" alt=""><a href="logout.php">Logout</a></li>
         </ul>
     
       </div>
