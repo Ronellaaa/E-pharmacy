@@ -70,10 +70,6 @@ $conn->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Profile</title>
     <link rel="stylesheet" type="text/css" href="profile.css">
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-    />
 </head>
 <body>
 
@@ -118,13 +114,8 @@ $conn->close();
 
         <!-- Images at the top-right and bottom-right -->
         <div class="images">
-        <a href="./profile.php"> <button class="close-home"><i class="fa-solid fa-x"></i></button></a>
-        <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
-
-<dotlottie-player src="https://lottie.host/289e9c1a-9380-49ac-b00f-dcac0584b334/FB4HUh1Vmj.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></dotlottie-player>
-<script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
-
-<dotlottie-player src="https://lottie.host/86d0d259-db46-48b3-a819-d1c70cc8c88a/VAEqnFdE5O.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></dotlottie-player>
+            <img src="images/mission.jpg" alt="Profile Picture" class="profile-img-top">
+            <img src="images/vision.jpg" alt="Banner" class="profile-img-bottom">
         </div>
     </div>
 
