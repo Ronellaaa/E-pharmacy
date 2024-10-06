@@ -22,7 +22,7 @@ function closePage() {
   var confirmation = confirm("Are you sure you want to exit this page? ");
 
   if (confirmation) {
-    window.location.href = "admin-products.php";
+    window.location.href = "admin-dashboard.php";
   }
 }
 
@@ -84,41 +84,6 @@ var chart = new Chart(ctx, {
 
 var ctx1 = document.getElementById("productChart").getContext('2d');
 
-// var pieChart = new Chart(ctx, {
-//     type: 'pie',  // Set the chart type to "pie"
-//     data: {
-//         labels: productNames,  // Product names as labels
-//         datasets: [{
-//             data: productCounts,  // Product counts as data
-//             backgroundColor: [
-//                 'rgba(255, 99, 132, 0.2)',
-//                 'rgba(54, 162, 235, 0.2)',
-//                 'rgba(255, 206, 86, 0.2)',
-//                 'rgba(75, 192, 192, 0.2)',
-//                 'rgba(153, 102, 255, 0.2)',
-//                 'rgba(255, 159, 64, 0.2)'
-//             ],
-//             borderColor: [
-//                 'rgba(255, 99, 132, 1)',
-//                 'rgba(54, 162, 235, 1)',
-//                 'rgba(255, 206, 86, 1)',
-//                 'rgba(75, 192, 192, 1)',
-//                 'rgba(153, 102, 255, 1)',
-//                 'rgba(255, 159, 64, 1)'
-//             ],
-//             borderWidth: 1
-//         }]
-//     },
-//     options: {
-//         responsive: true,
-//         plugins: {
-//             legend: {
-//                 position: 'top'
-//             }
-//         }
-//     }
-// });
-
 var pieChart = new Chart(ctx1, {
   type: 'pie',
   data: {
@@ -126,20 +91,20 @@ var pieChart = new Chart(ctx1, {
       datasets: [{
           data: productCounts,  // Directly use product quantities
           backgroundColor: [
-              'rgb(121, 87, 87, 0.8)',
-              'rgb(185, 148, 112, 0.8)',
-              'rgba(255, 206, 86, 0.2)',
-              'rgba(75, 192, 192, 0.2)',
-              'rgba(153, 102, 255, 0.2)',
-              'rgba(255, 159, 64, 0.2)'
+            'rgb(169, 68, 56, 0.7)',
+            'rgb(210, 69, 69, 0.7)',
+            'rgb(230, 186, 163,0.7)',
+             'rgb(67, 118, 108,0.7)',
+            'rgb(228, 222, 190,0.7)'
           ],
           borderColor: [
-              'rgba(121, 87, 87, 2)',
-              'rgba(185, 148, 112, 2)',
-              'rgba(255, 206, 86, 1)',
-              'rgba(75, 192, 192, 1)',
-              'rgba(153, 102, 255, 1)',
-              'rgba(255, 159, 64, 1)'
+              
+              'rgb(210, 69, 69, 2)',
+              'rgb(230, 186, 163,2)',
+              'rgb(230, 186, 163,2)',
+              'rgb(67, 118, 108,2)',
+              'rgb(228, 222, 190,2)'
+             
           ],
           borderWidth: 1
       }]

@@ -1,8 +1,13 @@
 <?php
 session_start();
-
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+if (!isset($_SESSION['userId']) || $_SESSION['userRole'] !== 'Admin') {
+  header("Location: login.php");
+  exit();
+}
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,7 +15,7 @@ session_start();
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CareMeds</title>
-    <link rel="stylesheet" href="admin-styles/admin-products.css" />
+    <link rel="stylesheet" href="admin-styles/admin-view-cust.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   </head>
   <body>
@@ -67,11 +72,11 @@ session_start();
       
     
       </div>
-      <div class="admin-products-container">
+      <div class="admin-customer-container">
     
-             <div class="admin-products">
-                <div class="admin-pick-category"><a href="admin-add-category.php">Add Category</a></div>
-                <div class="admin-pick-products"><a href="admin-add-products.php">Add Products</a></div>
+             <div class="admin-customer">
+                <div class="admin-pick-customer"><a href="admin-view-customers.php">View Customers</a></div>
+                <div class="admin-pick-cust-con"><a href="admin-contact.php">View ContactUs Messages</a></div>
              </div>
        </div>
     </div>

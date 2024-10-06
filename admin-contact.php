@@ -10,7 +10,9 @@
 <body>
 <?php 
 session_start(); 
-
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 ?>
 
   <?php 
@@ -24,27 +26,31 @@ session_start();
 
 <button class="close-btn" onclick="closePage()">X</button>
 
+
   <div class="products-container">
-    <h1>View Customers</h1>
+    <h1>View Contact Us</h1>
   <table >
-    <th>custId</th>
-    <th>custName</th>
-    <th>custAddress</th>
-    <th>custPhoneNumber</th>
-    <th>custEmail</th>
-    <th>dob</th>
-    <th>gender</th>
+    <th>contactID</th>
+    <th>customerName</th>
+    <th>cutomerAddress</th>
+    <th>customerEmail</th>
+    <th>phone_number</th>
+    <th>Message</th>
+   
     <tr>
+    						
+
+
       <?php 
-      while ($row = mysqli_fetch_assoc($result_customers)){
+      while ($row = mysqli_fetch_assoc($result_contactUs)){
         ?>
-        <td> <?php echo $row['custId'] ?></td>
-        <td> <?php echo $row['custName'] ?></td>
+        <td> <?php echo $row['contactID'] ?></td>
+        <td> <?php echo $row['customerName'] ?></td>
         <td> <?php echo $row['custAddress'] ?></td>
-        <td> <?php echo $row['custPhoneNumber'] ?> </td>
-        <td> <?php echo $row['custEmail'] ?> </td>
-        <td> <?php echo $row['dob'] ?> </td>
-        <td> <?php echo $row['gender'] ?></td>
+        <td> <?php echo $row['customerEmail'] ?> </td>
+        <td> <?php echo $row['phone_number'] ?> </td>
+        <td> <?php echo $row['Message'] ?> </td>
+      
        
       </tr>
       <?php 
@@ -52,7 +58,6 @@ session_start();
     ?>
   </table>
   </div>
-
   <script src="admin-forms-alert.js"></script>
 </body>
 </html>
