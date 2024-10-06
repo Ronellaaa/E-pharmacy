@@ -88,7 +88,6 @@ echo '<img src="/E-pharmacy/' . $row['image_path'] . '" alt="Image not found">';
               <input type="hidden" name="pID" value="<?php echo $row["productId"];?>">
               <input type="hidden" name="price" value="<?php echo $row["productPrice"] ;?>">
               <input type="hidden" name="img" value="<?php echo $row["image_path"] ;?>">
-              <input type="hidden" name="cId" value="<?php echo  $crow["custId"] ;?>">
               <input type="submit" name="addtocart" value="Add to cart" >
               </form>
       

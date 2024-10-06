@@ -12,7 +12,7 @@ p,
 a {
   margin: 0;
   padding: 0;
-  /* font-family: 'Lato'; */
+  
 }
 
 .header h1 {
@@ -67,15 +67,7 @@ p {
   color: #e8e4d5;
   font-size: 16px;
 }
-/* 
-.cart-icon {
-  font-size: 23px;
-  color: #131313;
-  cursor: pointer;
 
-  background-color: #e8e4d5;
-  border: none;
-} */
 
 .search-cart-container a {
   color: #000000;
@@ -85,10 +77,10 @@ p {
 .fa-solid,
 .fas {
   font-weight: 900;
-  /* margin-top: 10; */
-  background-color: #e8e4d5;
+  background-color:  #e8e4d5;
   border: none;
   margin-bottom: 10px;
+  
 }
 .header {
   width: 100%;
@@ -127,9 +119,7 @@ p {
   border: none;
 }
 
-/* #d0b89c 66.1%,
-    #af8f6f 66.2%,
-    #af8f6f 100% */
+
 .cat img {
   width: 240px;
   height: 240px;
@@ -168,18 +158,18 @@ p {
 .row {
   display: flex;
   justify-content: space-between; 
-  flex-wrap: nowrap; 
-  margin: 0 -15px; 
+  flex-wrap: wrap; 
+  margin: 20px; 
   padding-top: 100px;
-  padding-bottom: 100px;
+  padding-bottom: 200px;
+  
 } 
 
 .columns {
-  flex: 1; /* Makes all columns take equal space */
-  max-width: 33.33%; /* Each column will take one-third of the row */
-  padding: 15px; /* Adds space around the column */
-  box-sizing: border-box; /* Ensures padding and border are included in the column width */
-}
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0 -5px; /* Adjust as needed */}
 
 /* Clear floats after the columns */
 .row:after {
@@ -190,19 +180,14 @@ p {
 
 /* product cards*/
 /* Float four columns side by side */
-.column-product {
-  float: left;
-  height: 300px;
-  padding: 40px 10px;
-  display: flex;
-  max-width: 500px;
-  justify-content: space-between; 
-  flex-wrap: nowrap;
-  margin-top: 150px;
-  margin-left: 100px;
-}
-
-
+ .column-product {
+  flex: 1; /* Equal size columns */
+  padding: 10px;
+  max-width: 300px; /* Optional: set max width */
+  height:500px ;
+ 
+ }
+  
 
 
 
@@ -254,4 +239,4 @@ p {
 
 .container-2 input[type="submit"]:hover {
   opacity: 0.7;
-}
+} 

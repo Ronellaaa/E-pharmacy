@@ -35,6 +35,8 @@ $conn->close();
         <!-- Navbar -->
     </div>
     
+
+    
     <div class="container">
         <h1>Delivery Status</h1>
         <div class="order-status">
@@ -48,9 +50,9 @@ $conn->close();
                         <span class="progress-count">1</span>
                         <span class="progress-label">Pending</span>
                     </li>
-                    <li class="step-wizard-item <?php echo ($row['orderStatus'] == 'Delivered') ? 'current-item' : ''; ?>">
+                    <li class="step-wizard-item <?php echo ($row['orderStatus'] == 'Completed') ? 'current-item' : ''; ?>">
                         <span class="progress-count">2</span>
-                        <span class="progress-label">Delivered</span>
+                        <span class="progress-label">Completed</span>
                     </li>
                 </ul>
             </section>

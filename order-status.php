@@ -40,6 +40,9 @@ $conn->close();
     
     <div class="container">
         <h1>Your Order Status</h1>
+        <div class="animation">
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script><lottie-player src="https://lottie.host/7c28de65-75a0-4545-a896-7e6ba41dbc7e/pBp6UWhpee.json" background="transparent" speed="1" style="width: 300px; height: 300px" direction="1" mode="normal" loop autoplay></lottie-player>
+</div>
         <div class="order-status">
             <p><strong>Order ID :</strong> <span id="orderId"><?php echo $row['orderId']; ?></span></p> 
             <p><strong>Name :</strong> <span id="customerName"><?php echo $row['custName']; ?></span></p> 
@@ -53,12 +56,15 @@ $conn->close();
                     </li>
                     <li class="step-wizard-item" id="step2">
                         <span class="progress-count">2</span>
-                        <span class="progress-label">Delivered</span>
+                        <span class="progress-label">Completed</span>
                     </li>
+            
                 </ul>
             </section>
         </div>
+       
     </div>
+
 
     <script src="order-status.js"></script> 
 </body>

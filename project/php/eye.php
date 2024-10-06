@@ -98,6 +98,8 @@ if (isset($_POST['addtocart'])) {
   <a href="../php/vitamins.php">Vitamins</a>
 </div>
 
+
+<div class="row">
 <?php
 
  // php for product page main view
@@ -112,8 +114,9 @@ if(mysqli_num_rows($result)>0){
        
  ?>
   <!--get data to send to the details.php-->
-<form action="details.php" method="POST" name="viewform">
+
 <a href="../php/details.php?ID=<?=$productId;?>">
+ 
 <div class="column">
     <div class="card">
     <?php 
@@ -124,12 +127,11 @@ echo '<img src="/E-pharmacy/' . $row['image_path'] . '" alt="Image not found">';
             <div class="container-2">
               <h4><b><?php echo $row["productName"];?></b></h4>
 
-              </form>
+              </a>
                <form action="" method="POST" name="cart">
               <input type="hidden" name="pID" value="<?php echo $row["productId"];?>">
               <input type="hidden" name="price" value="<?php echo $row["productPrice"] ;?>">
               <input type="hidden" name="img" value="<?php echo $row["image_path"] ;?>">
-              <input type="hidden" name="cId" value="<?php echo  $crow["cusId"] ;?>">
               <input type="submit" name="addtocart" value="Add to cart" >
               </form>
             </div>
@@ -139,13 +141,13 @@ echo '<img src="/E-pharmacy/' . $row['image_path'] . '" alt="Image not found">';
 
   </div>
 
-</a>
+ 
 
 <?php
     ;}
 ;};
 ?>
-
+</div>
 </body>
 </html>
 <?php
