@@ -24,6 +24,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
          exit();
     }
 
+    // Server-side validation for phone number (exactly 10 digits and numeric)
+    if (strlen($phone) !== 10 || !is_numeric($phone)) {
+        echo "<script>alert('Phone number must be exactly 10 digits and contain only numbers.'); window.history.back();</script>";
+        exit();
+    }
+
+    // Check if email already exists in the database
+    $emailCheckQuery = "SELECT custEmail FROM customer WHERE custEmail = ?";
+    if ($stmt = $conn->prepare($emailCheckQuery)) {
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $stmt->store_result();
+
+        if ($stmt->num_rows > 0) {
+            echo "<script>alert('Email already exists! Please use a different email.'); window.history.back();</script>";
+            $stmt->close();
+            exit();
+        }
+
+        $stmt->close();
+    }
+
+
     
     $sql = "INSERT INTO customer (custName, dob, gender, custPhoneNumber, custEmail, custAddress, custPassword) 
             VALUES (?, ?, ?, ?, ?, ?, ?)";
