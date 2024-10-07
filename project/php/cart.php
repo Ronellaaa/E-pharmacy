@@ -29,34 +29,19 @@ if (isset($_GET['remove'])) {
     $removeId = $_GET['remove'];
     $delete_row = mysqli_query($conn, "DELETE FROM cart WHERE cartId ='$removeId' AND custId = '$userId'");
 }
-
 //inserting data into the order table
 
-if (isset($_GET['cartId'])) {
-    $_SESSION['cartId'] = $_GET['cartId']; // Store cartId in session for future use
-} 
+ if (isset($_GET['cartId'])) {
+   $_SESSION['cartId'] = $_GET['cartId']; // Store cartId in session for future use
+ } 
 
-$cartId = $_SESSION['cartId']; // Now cartId is available throughout the session
+ $cartId = $_SESSION['cartId']; // Now cartId is available throughout the session
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['order_confirm'])) {
     // Retrieve cartId from session
     if (isset($_SESSION['cartId'])) {
         $cartId = $_SESSION['cartId'];
 
-        // Get current date and time
-        $currentDateTime = date('Y-m-d H:i:s');
-        $totalOrder = $_POST['total'];
-
-        // Insert data into orders table
-        $order_insert = mysqli_query($conn, "INSERT INTO orders (custId, orderDate, orderStatus, totalAmount, payment_status, cartId) VALUES ('$userId', '$currentDateTime', 'Pending', '$totalOrder', 'Pending', '$cartId')");
-        if ($order_insert) {
-            echo "<script>alert('Confirm order successfully.');</script>";
-            header('Location: cart.php');
-            exit();
-        } else {
-            echo "<script>alert('Error confirming order.');</script>";
-        }
-    } else {echo "<script>alert('Cart ID not found.');</script>";
     }
 }
 
