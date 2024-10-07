@@ -30,7 +30,7 @@ if (isset($_POST['submit'])) {
                 exit();
             } elseif ($email === 'imanlatiffa@gmail.com' && $password === 'caremeds12') {
                 $_SESSION['userRole'] = 'Driver';
-                header("Location: driver-status.php");
+                header("Location: new-driver.php");
                 exit();
             }
 
