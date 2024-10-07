@@ -47,7 +47,7 @@ if(isset($_SESSION['userId'])) {
               <button class="btn-login"><i class="fa-regular fa-user"></i> <?php echo $_SESSION['userName'] ; ?></button>
               </a>
               <a href="./cart.php">
-                  <button class="btn-login"><i class="fa-solid fa-cart-shopping"></i></button>
+                  <a href="../../orderStatus.php"><button class="btn-login">Order Status</i></button></a>
               </a>
           <?php else: ?>
               <!-- If user is not logged in, show Login and Sign up -->

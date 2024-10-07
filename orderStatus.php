@@ -4,28 +4,27 @@ session_start();
 // Include the database connection file
 require 'dbconnection.php';
 
-// Prepare the SQL query to retrieve the latest order details
+// Retrieve the logged-in user's ID from the session
+$custId = $_SESSION['userId'];
+
+// Prepare the SQL query to retrieve the latest order details for the logged-in user
 $sql = $conn->prepare("
     SELECT o.orderId, o.orderStatus, c.custName, c.custAddress 
     FROM orders o 
     JOIN customer c ON o.custId = c.custId 
-    ORDER BY o.orderId DESC 
+    WHERE o.custId = ? 
+    ORDER BY o.orderId DESC LIMIT 1
 ");
+
+// Bind the user ID to the query
+$sql->bind_param("i", $custId);
 
 // Execute the query
 $sql->execute();
 $result = $sql->get_result();
 
-// Check if any results were returned
-//if ($result->num_rows > 0) {
-    // Fetch the data as an associative array
-    $row = $result->fetch_assoc();
-    // Output the fetched data as JSON
-    //echo json_encode($row);
-//} else {
-    // Return an error message if no order was found
-    //echo json_encode(['error' => 'Order not found']);
-//}
+// Fetch the data as an associative array
+$row = $result->fetch_assoc();
 
 // Close the database connection
 $conn->close();
@@ -40,6 +39,10 @@ $conn->close();
     <title>Order Status</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="orderStatus.css"> 
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
 </head>
 <body>
     <div class="header">
@@ -48,6 +51,7 @@ $conn->close();
     
     <div class="container">
         <h1>Your Order Status</h1>
+        <a href="./project/php/product.php"> <button class="close-home"><i class="fa-solid fa-x"></i></button></a>
         <div class="animation">
 <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script><lottie-player src="https://lottie.host/7c28de65-75a0-4545-a896-7e6ba41dbc7e/pBp6UWhpee.json" background="transparent" speed="1" style="width: 300px; height: 300px" direction="1" mode="normal" loop autoplay></lottie-player>
 </div>

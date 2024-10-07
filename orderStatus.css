@@ -7,6 +7,8 @@ body {
     font-family: "Poppins", sans-serif;
     background: url("contact-bg/order-status-bg.jpeg");
     background-size: cover;
+    background-color: rgb(248, 236, 223);
+
 }
 
 
@@ -15,7 +17,7 @@ body {
     flex-direction: column;
     align-items: center;
     padding: 20px;
-    background-color: #fff;
+
 }
 
 .order-status {
@@ -24,6 +26,7 @@ body {
     padding: 20px;
     background: white;
     border-radius: 8px;
+
 }
 
 .step-wizard {
@@ -61,7 +64,7 @@ body {
     position: absolute;
     left: 0;
     top: 19px;
-    background: #21d4fd;
+    background: #d121fd;
     width: 100%;
     height: 2px;
     transform: translateX(-50%);
@@ -86,7 +89,7 @@ body {
     content: "";
     height: 40px;
     width: 40px;
-    background: #21d4fd;
+    background: #a521fd;
     position: absolute;
     left: 50%;
     top: 50%;
@@ -134,7 +137,7 @@ body {
 }
 
 .current-item .progress-count {
-    color: #21d4fd;
+    color: #c621fd;
 }
 
 .animation {
@@ -144,5 +147,17 @@ body {
     width: 50%;
     border-radius: 0 40px 40px 0;
     background-color: rgb(248, 236, 223);
+  }
+  
+   
+.close-home {
+    padding: 15px;
+    border-radius: 50px;
+    position: absolute; /* Change to absolute */
+    right: 300px; /* Adjust distance from the right */
+   top: 20px; /* Adjust distance from the top */
+    background-color: rgba(222, 158, 95, 0.7);
+    border: none;
+    cursor: pointer;
   }
   
