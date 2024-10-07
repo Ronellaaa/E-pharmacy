@@ -29,21 +29,21 @@ if (isset($_GET['remove'])) {
     $removeId = $_GET['remove'];
     $delete_row = mysqli_query($conn, "DELETE FROM cart WHERE cartId ='$removeId' AND custId = '$userId'");
 }
-//inserting data into the order table
+// //inserting data into the order table
 
- if (isset($_GET['cartId'])) {
-   $_SESSION['cartId'] = $_GET['cartId']; // Store cartId in session for future use
- } 
+//  if (isset($_GET['cartId'])) {
+//    $_SESSION['cartId'] = $_GET['cartId']; // Store cartId in session for future use
+//  } 
 
- $cartId = $_SESSION['cartId']; // Now cartId is available throughout the session
+//  $cartId = $_SESSION['cartId']; // Now cartId is available throughout the session
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['order_confirm'])) {
-    // Retrieve cartId from session
-    if (isset($_SESSION['cartId'])) {
-        $cartId = $_SESSION['cartId'];
+// if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['order_confirm'])) {
+//     // Retrieve cartId from session
+//     if (isset($_SESSION['cartId'])) {
+//         $cartId = $_SESSION['cartId'];
 
-    }
-}
+//     }
+// }
 
 ?>
 
@@ -132,10 +132,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['order_confirm'])) {
         
         <button class="btn"><a href="../../payment-new.php?cartId=<?php echo $cartId; ?>">Checkout </a>&nbsp<i class="fa fa-arrow-right"></i></button>
 
-        <form action="cart.php" method="post" name="order_insert_form">
+        <!-- <form action="cart.php" method="post" name="order_insert_form">
         <input type="hidden" value="<?php echo $total; ?>" name="total">
         <input type="submit" value ="Confirm order"  name="order_confirm">
-        </form>
+        </form> -->
     </div>
 </div>
 

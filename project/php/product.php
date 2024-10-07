@@ -36,9 +36,9 @@ if (isset($_POST['addtocart'])) {
             // Get the last inserted cartId and send it to the cart.php file
             //since cartID is a foriegn key in the orders table
             
-              $cartId = $conn->insert_id; 
-              header("Location: cart.php?cartId=" . $cartId);
-              exit();
+              // $cartId = $conn->insert_id; 
+              // header("Location: cart.php?cartId=" . $cartId);
+              // exit();
           
         }
          else {
