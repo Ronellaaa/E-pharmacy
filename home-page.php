@@ -18,33 +18,13 @@
 require 'dbconnection.php';
 ?>
 
-
+<!-- Header  -->
 <?php
 include_once 'homepage-header.php';
 ?>
-      <!-- <div class="container">
-        <div class="logo">
-          <img src="./assets/2-removebg-preview.png" alt="logo image" />
-        </div>
-        <nav class="nav-bar">
-          <ul>
-            <li>
-              <a href="http://localhost/E-pharmacy/home-page.php" class="link">Home</a>
-              <a href="#" class="link">About Us</a>
-              <a href="#" class="link">Products</a>
-              <a href="#" class="link">Contact Us</a>
-            </li>
-          </ul>
-        </nav>
-        <div class="login-button">
-           <a href="http://localhost/E-pharmacy/login.php" class="a-lgn"> 
-            <button class="btn-login">Login</button>
-          </a>
-          <button class="btn-login">Sign Up</button>
-        </div> 
-      </div>-->
-
+   <!-- hero section that includes the video and the welcome messege  -->
       <div class="home-hero">
+        <!-- display the Video  -->
         <video
           autoplay
           loop
@@ -65,7 +45,7 @@ include_once 'homepage-header.php';
       </div>
     </div>
 
-    <!-- //////////////////////////////////// -->
+    <!-- Display the products (Slider) -->
     <div class="product-listt">
       <div class="product-p">
       <h1>PRODUCTS</h1>
@@ -75,6 +55,8 @@ include_once 'homepage-header.php';
         doorstep.
       </p>
       </div>
+
+      <!-- Slider -->
       <div class="home-products">
         <div class="slide">
           <div
@@ -152,6 +134,7 @@ include_once 'homepage-header.php';
           <p>TESTIMONIALS</p>
           <h1>what our clients says about us.</h1>
         </div>
+        <!-- 3 testamonials -->
         <div class="testimonals-grid">
           <div class="testimonial-car">
             <span><i class="fa-solid fa-quote-left"></i></span>
@@ -186,16 +169,9 @@ include_once 'homepage-header.php';
           <h4>Quick, easy, and reliable my go-to pharmacy for all my health needs!</h4>
           <p>Care Meds</p>
           <button><a href="http://localhost/E-pharmacy/contact-us.php">Contact Us</a></button>
-          <!-- <div class="social-icons">
-            <a href="https://www.facebook.com/"
-              ><i class="fa-brands fa-facebook"></i
-            ></a>
-            <a href=""><i class="fa-brands fa-twitter-square"></i></a>
-            <a href=""><i class="fa-brands fa-instagram"></i></a>
-            <a href=""><i class="fa-brands fa-linkedin"></i></a>
-          </div> -->
         </div>
       </div>
+      <!-- footer -->
       <div class="social-icons">
         <a href="https://www.facebook.com/"
           ><i class="fa-brands fa-facebook"></i
