@@ -130,7 +130,7 @@ if (isset($_GET['remove'])) {
     <div class="btn-group">
         <button class="btn"><i class="fa fa-arrow-left"></i><a href="./product.php"> Continue shopping</a></button>
         
-        <button class="btn"><a href="../../payment-new.php?cartId=<?php echo $cartId; ?>">Checkout </a>&nbsp<i class="fa fa-arrow-right"></i></button>
+        <button class="btn"><a href="../../payment-new.php">Checkout </a>&nbsp<i class="fa fa-arrow-right"></i></button>
 
         <!-- <form action="cart.php" method="post" name="order_insert_form">
         <input type="hidden" value="<?php echo $total; ?>" name="total">
