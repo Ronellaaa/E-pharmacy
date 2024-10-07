@@ -2,24 +2,37 @@
 require 'dbconnection.php';
 session_start(); // Start session to track logged-in users
 
+if (!isset($_SESSION['userId'])) {
+    echo "<script>alert('Please log in first!'); window.location.href='../../login.php';</script>";
+    exit();
+}
 
+$userId = $_SESSION['userId'];
 
+// Retrieve the `orderId` from the URL
+if (isset($_GET['orderId'])) {
+    $orderId = intval($_GET['orderId']);
+} else {
+    echo "<script>alert('No order found for this user.'); window.location.href='../../cart.php';</script>";
+    exit();
+}
+
+// Process the form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
     if (isset($_POST['orderId'])) {
         $orderId = $_POST['orderId']; 
         $paymentMethod = $_POST['paymentMethod'];
         $paymentStatus = 'Pending';
 
         // Cash on Delivery cancels form completion
-        if ($paymentMethod === 'COD') {
+        if ($paymentMethod === 'Cash on Delivery') {
             $paymentStatus = 'Pending Confirmation';
         }
 
         // Fetching order details
-        $sql = "SELECT totalAmount FROM orders WHERE orderId = ?";
+        $sql = "SELECT totalAmount FROM orders WHERE orderId = ? AND custId = ?";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("i", $orderId); 
+        $stmt->bind_param("ii", $orderId, $userId); 
         $stmt->execute();
         $result = $stmt->get_result();
         $order = $result->fetch_assoc();
@@ -55,6 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -66,7 +80,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <div class="container">
         <form id="paymentForm" action="payment-new.php" method="POST">
-            <input type="hidden" name="orderId" id="orderId" value="123"> <!-- Example order ID -->
+        <input type="hidden" name="orderId" id="orderId" value="<?php echo htmlspecialchars($orderId); ?>">
+            
             
             
             <div class="row">

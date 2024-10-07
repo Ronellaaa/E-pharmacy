@@ -1,5 +1,7 @@
 <?php
-
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 require '../../dbconnection.php';
 session_start(); // Start session to track logged-in users
 
@@ -46,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['order_confirm'])) {
         $totalOrder = $_POST['total'];
 
         // Insert data into orders table
-        $order_insert = mysqli_query($conn, "INSERT INTO orders (custId, orderDate, orderStatus, totalAmount, payment_status, cartId) VALUES ('$userId', '$currentDateTime', 'Confirm', '$totalOrder', 'Pending', '$cartId')");
+        $order_insert = mysqli_query($conn, "INSERT INTO orders (custId, orderDate, orderStatus, totalAmount, payment_status, cartId) VALUES ('$userId', '$currentDateTime', 'Pending', '$totalOrder', 'Pending', '$cartId')");
         if ($order_insert) {
             echo "<script>alert('Confirm order successfully.');</script>";
             header('Location: cart.php');
@@ -143,7 +145,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['order_confirm'])) {
     <div class="btn-group">
         <button class="btn"><i class="fa fa-arrow-left"></i><a href="./product.php"> Continue shopping</a></button>
         
-        <button class="btn"><a href="../../payment-new.php">Checkout </a>&nbsp<i class="fa fa-arrow-right"></i></button>
+        <button class="btn"><a href="../../payment-new.php?cartId=<?php echo $cartId; ?>">Checkout </a>&nbsp<i class="fa fa-arrow-right"></i></button>
+
         <form action="cart.php" method="post" name="order_insert_form">
         <input type="hidden" value="<?php echo $total; ?>" name="total">
         <input type="submit" value ="Confirm order"  name="order_confirm">
