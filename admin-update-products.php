@@ -135,6 +135,7 @@ $conn->close();
             <div class="current-image">
                 <img src="<?php echo $product['image_path']; ?>" alt="Product Image" style="max-width: 200px; max-height: 200px;">
                 <p>Current Image</p>
+                <p>Current file: <?php echo basename($product['image_path']); ?></p>
             </div>
         <?php endif; ?>
 
