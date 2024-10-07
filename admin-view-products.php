@@ -10,6 +10,9 @@
 <body>
   <?php 
   require 'dbconnection.php';
+
+  $targetFile = isset($product['image_path']) ? $product['image_path'] : '';
+
   $query = "SELECT p.productId, p.productName, p.productQty, p.productDescription, p.productPrice, p.image_path, c.categoryName 
             FROM products p
             JOIN categories c ON p.categoryId = c.categoryId";
@@ -34,7 +37,12 @@
       while ($row = mysqli_fetch_assoc($result)){
         ?>
         <td> <?php echo $row['productId'] ?></td>
-        <td> <img src="<?php echo $row['image_path']; ?>" alt="Product Image" width="100"> </td>
+        <td> 
+        <?php 
+        $imagePath = !empty($row['image_path']) && file_exists($row['image_path']) ? $row['image_path'] : 'uploads/default-placeholder.png';
+        ?>
+        <img src="<?php echo $imagePath; ?>" alt="Product Image" width="100"> 
+        </td>
         <td> <?php echo $row['productName'] ?></td>
         <td> <?php echo $row['productQty'] ?></td>
         <td> <?php echo $row['categoryName'] ?> </td>
