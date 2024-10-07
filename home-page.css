@@ -5,16 +5,6 @@
   padding: 0;
   font-family: "Poppins", Arial, Helvetica, sans-serif;
   box-sizing: border-box;
-  /* background: linear-gradient(
-    to right,
-    #ffffff 0%,
-    #ffffff 50%,
-    #000000 50%,
-    #000000 100%
-  ); */
-  /* background-color: rgb(32, 45, 58); */
-  /* background-color: rgb(32, 45, 58); */
-  /* background-color: rgb(63, 76, 119);rgb(32, 45, 58) */
 }
 
 html {
@@ -81,10 +71,6 @@ img {
   backdrop-filter: blur(10.2px);
   -webkit-backdrop-filter: blur(10.2px);
   border: 1px solid rgba(255, 255, 255, 0.3);
-  /* background-color: #0d284c; */
-  /* background-color: #814692; */
-  /* background-color: #a367b1; */
-  /* background-color: rgb(63, 76, 119); */
 }
 
 .container nav ul li a::after {
@@ -92,7 +78,6 @@ img {
   width: 100%;
   height: 3px;
   background-color: rgb(157, 126, 97);
-
   box-shadow: 0 0 10px #f4d8af, 0 0 20px #a57135, 0 0 30px #b0742b;
   /* box-shadow: 0 0 10px #fdd692, 0 0 20px #e6c99b, 0 0 30px #ecd999; */
   position: absolute;
@@ -120,6 +105,7 @@ img {
   margin-bottom: 10px;
 }
 
+/* refference - youtube */
 .back {
   width: 110%;
   height: 110%;
@@ -134,6 +120,7 @@ img {
   mask-position: center;
   margin-left: 250px;
   margin-top: 100px;
+  /* -webkit-mask & mask properties Applies a circular image mask (circlee.png) to the element, showing only the masked portion. The mask is centered, covers the entire element, and doesn’t repeat. */
 }
 .full {
   background: radial-gradient(
@@ -155,15 +142,8 @@ img {
   left: 42%;
   transform: translate(-50%, -50%);
   font-size: 20px;
-
-  /* background: rgba(129, 129, 129, 0.153);
-  border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(127, 58, 58, 0.1);
-  backdrop-filter: blur(4.7px);
-  -webkit-backdrop-filter: blur(4.7px); */
-  /* 
-  width: 750px; */
 }
+
 .middle-part h1 {
   padding: 10px;
   font-size: 58px;
@@ -177,13 +157,6 @@ img {
   width: 600px;
 }
 
-/* 
- rgb(255, 124, 0) 0%,
-    rgb(255, 124, 0) 15.9%,
-    rgb(255, 163, 77) 15.9%,
-    rgb(255, 163, 77) 24.4%,
-rgb(19, 30, 37) 24.5%,
-rgb(19, 30, 37) 66% */
 
 /* ////////////////// products//////////////// */
 
