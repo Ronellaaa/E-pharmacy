@@ -28,6 +28,36 @@ if (isset($_GET['remove'])) {
     $delete_row = mysqli_query($conn, "DELETE FROM cart WHERE cartId ='$removeId' AND custId = '$userId'");
 }
 
+//inserting data into the order table
+
+if (isset($_GET['cartId'])) {
+    $_SESSION['cartId'] = $_GET['cartId']; // Store cartId in session for future use
+} 
+
+$cartId = $_SESSION['cartId']; // Now cartId is available throughout the session
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['order_confirm'])) {
+    // Retrieve cartId from session
+    if (isset($_SESSION['cartId'])) {
+        $cartId = $_SESSION['cartId'];
+
+        // Get current date and time
+        $currentDateTime = date('Y-m-d H:i:s');
+        $totalOrder = $_POST['total'];
+
+        // Insert data into orders table
+        $order_insert = mysqli_query($conn, "INSERT INTO orders (custId, orderDate, orderStatus, totalAmount, payment_status, cartId) VALUES ('$userId', '$currentDateTime', 'Confirm', '$totalOrder', 'Pending', '$cartId')");
+        if ($order_insert) {
+            echo "<script>alert('Confirm order successfully.');</script>";
+            header('Location: cart.php');
+            exit();
+        } else {
+            echo "<script>alert('Error confirming order.');</script>";
+        }
+    } else {echo "<script>alert('Cart ID not found.');</script>";
+    }
+}
+
 ?>
 
 
@@ -64,6 +94,7 @@ if (isset($_GET['remove'])) {
             if (mysqli_num_rows($show_cart) > 0) {
                 while ($row = mysqli_fetch_assoc($show_cart)) {
                     $pID = $row["productId"];
+                    
                     // Get product details
                    
                     $show_cart2 = mysqli_query($conn, "SELECT image_path, productName FROM products WHERE productId ='$pID'");
@@ -81,10 +112,12 @@ if (isset($_GET['remove'])) {
                 <td><?php echo $row2["productName"]; ?></td>
                 <td class="price">Rs. <?php echo $row["price"]; ?>/-</td>
                 <td>
-                    <form method="post" action="cart.php">
+                    <form method="post" action="cart.php" name="update_form">
                         <input type="hidden" value="<?php echo $row["cartId"]; ?>" name="cartId">
                         <input type="number" min="1" value="<?php echo $row["quantity"]; ?>" name="update_quan">
                         <input type="submit" value="Update" name="update">
+                        
+                        
                     </form>
                 </td>
                 <td>Rs.<?php echo $sub_total = $row["price"] * $row["quantity"]; ?>/-</td>
@@ -94,8 +127,8 @@ if (isset($_GET['remove'])) {
                             $total += $sub_total;
                         }
                     }
-                }
-            }
+                    }
+                    }      
             ?>
         </table>
     </div>
@@ -109,7 +142,12 @@ if (isset($_GET['remove'])) {
 
     <div class="btn-group">
         <button class="btn"><i class="fa fa-arrow-left"></i><a href="./product.php"> Continue shopping</a></button>
-        <button class="btn"><a href="../../payment.php?TOTAL=<?php echo $total; ?>">Checkout </a>&nbsp<i class="fa fa-arrow-right"></i></button>
+        
+        <button class="btn"><a href="../../payment-new.php">Checkout </a>&nbsp<i class="fa fa-arrow-right"></i></button>
+        <form action="cart.php" method="post" name="order_insert_form">
+        <input type="hidden" value="<?php echo $total; ?>" name="total">
+        <input type="submit" value ="Confirm order"  name="order_confirm">
+        </form>
     </div>
 </div>
 

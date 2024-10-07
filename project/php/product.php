@@ -32,7 +32,16 @@ if (isset($_POST['addtocart'])) {
 
         if ($insert) {
             echo '<script>alert("Successfully added to the cart");</script>';
-        } else {
+
+            // Get the last inserted cartId and send it to the cart.php file
+            //since cartID is a foriegn key in the orders table
+            
+              $cartId = $conn->insert_id; 
+              header("Location: cart.php?cartId=" . $cartId);
+              exit();
+          
+        }
+         else {
             echo '<script>alert("Error adding to the cart");</script>';
         }
     }
@@ -191,7 +200,6 @@ echo '<img src="/E-pharmacy/' . $row['image_path'] . '" alt="Image not found">';
               <input type="hidden" name="pID" value="<?php echo $row["productId"];?>">
               <input type="hidden" name="price" value="<?php echo $row["productPrice"] ;?>">
               <input type="hidden" name="img" value="<?php echo $row["image_path"] ;?>">
-              <input type="hidden" name="cId" value="<?php echo  $crow["custId"] ;?>">
                <input type="submit" name="addtocart" value="Add to cart" >
               </form>
             </div>
