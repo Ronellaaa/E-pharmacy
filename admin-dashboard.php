@@ -27,13 +27,13 @@ if (!isset($_SESSION['userId']) || $_SESSION['userRole'] !== 'Admin') {
            FROM categories c 
            LEFT JOIN products p ON c.categoryId = p.categoryId 
            GROUP BY c.categoryName";
-           
-           $sqlBar = "SELECT p.productName, c.quantity AS ProductQty
+           $sqlBar ="SELECT p.productName, SUM(c.quantity) AS ProductQty
            FROM products p
            INNER JOIN cart c ON p.productId = c.productId
-           ORDER BY c.quantity DESC
-           LIMIT 5";
-
+           GROUP BY p.productName
+           ORDER BY SUM(c.quantity) DESC
+           LIMIT 5;";
+          
 
     $sqlOrders= "SELECT COUNT(orderId) AS total_orders FROM orders";
     $sqlProducts="SELECT COUNT(ProductId) AS total_products FROM products";

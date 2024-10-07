@@ -10,6 +10,9 @@
 <body>
   <?php 
   require 'dbconnection.php';
+
+  
+
   $query = "SELECT p.productId, p.productName, p.productQty, p.productDescription, p.productPrice, p.image_path, c.categoryName 
             FROM products p
             JOIN categories c ON p.categoryId = c.categoryId";

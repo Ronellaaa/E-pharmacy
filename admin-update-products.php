@@ -131,12 +131,20 @@ $conn->close();
 
     <label for="product_image">Product Image</label>
 
+      <?php if (!empty($product['image_path'])): ?>
+            <div class="current-image">
+                <img src="<?php echo $product['image_path']; ?>" alt="Product Image" style="max-width: 200px; max-height: 200px;">
+                <p>Current Image</p>
+                <p>Current file: <?php echo basename($product['image_path']); ?></p>
+            </div>
+        <?php endif; ?>
+
         <div class="custom-file-input">
             <label for="product_image">Select Product Image</label>
-            <input type="file" id="product_image" name="product_image" >
+            <input type="file" id="product_image" name="product_image">
             <span class="file-name" id="file-name">No file selected</span>
         </div>
-      <br>
+        <br>
 
       <label for="product_name">Product Name</label>
       <input type="text" id="product_name" name="product_name" value="<?php echo $product['productName']?>" required>

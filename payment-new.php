@@ -10,12 +10,12 @@ if (!isset($_SESSION['userId'])) {
 $userId = $_SESSION['userId'];
 
 // Retrieve the `orderId` from the URL
-if (isset($_GET['orderId'])) {
-    $orderId = intval($_GET['orderId']);
-} else {
-    echo "<script>alert('No order found for this user.'); window.location.href='../../cart.php';</script>";
-    exit();
-}
+// if (isset($_GET['orderId'])) {
+//     $orderId = intval($_GET['orderId']);
+// } else {
+//     echo "<script>alert('No order found for this user.'); window.location.href='../../cart.php';</script>";
+//     exit();
+// }
 
 // Process the form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -29,21 +29,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $paymentStatus = 'Pending Confirmation';
         }
 
-        // Fetching order details
-        $sql = "SELECT totalAmount FROM orders WHERE orderId = ? AND custId = ?";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("ii", $orderId, $userId); 
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $order = $result->fetch_assoc();
+        // // Fetching order details
+        // $sql = "SELECT totalAmount FROM orders WHERE orderId = 33 AND custId = 2 ";
+        // $stmt = $conn->prepare($sql);
+        // $stmt->bind_param("ii", $orderId, $userId); 
+        // $stmt->execute();
+        // $result = $stmt->get_result();
+        // $order = $result->fetch_assoc();
 
-        if ($order) {
-            $totalAmount = $order['totalAmount'];
+        // if ($order) {
+        //     $totalAmount = $order['totalAmount'];
 
-            // Insert payment details
-            $stmt = $conn->prepare("INSERT INTO payments (orderId, paymentMethod, paymentStatus, amount) VALUES (?, ?, ?, ?)");
-            $stmt->bind_param("issd", $orderId, $paymentMethod, $paymentStatus, $totalAmount);
-            $stmt->execute();
+        //     // Insert payment details
+        //     $stmt = $conn->prepare("INSERT INTO payments (orderId, paymentMethod, paymentStatus, amount) VALUES (?, ?, ?, ?)");
+        //     $stmt->bind_param("issd", $orderId, $paymentMethod, $paymentStatus, $totalAmount);
+        //     $stmt->execute();
+        $sql = "SELECT totalAmount FROM orders WHERE orderId = 33 AND custId = 2";
+$stmt = $conn->prepare($sql);
+$stmt->execute();
+$result = $stmt->get_result();
+$order = $result->fetch_assoc();
 
             if ($paymentMethod === 'Online') {
                 $stmt = $conn->prepare("UPDATE orders SET payment_status = 'Completed' WHERE orderId = ?");
@@ -62,7 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     $conn->close();
-}
+
 ?>
 
 
