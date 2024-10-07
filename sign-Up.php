@@ -111,9 +111,10 @@ include_once 'homepage-header.php';
           
           
                 <label  for="gender" class="gender">Gender</label>
+                <div class="gender-con">
                 <input type="radio" id="male" name="gender" value="male" class="gender" required> Male
                 <input type="radio" id="female" name="gender" value="female" required class= "gender"> Female
-         
+                </div>
           
                 <label for="phone">Phone Number</label>
                 <input type="text" id="phone" name="phone" maxlength="10" required>

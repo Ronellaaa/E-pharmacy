@@ -72,7 +72,9 @@ body {
 }
 
 .form-group input[type="radio"] {
-  width: auto;
+  width: 20px;
+  height: 20px;
+  background-color: #000;
 }
 
 .submit-btn {
@@ -102,4 +104,16 @@ textarea {
 
 .form-group .gender {
   font-size: 30px;
+}
+
+
+.gender-con {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 19px;
+
+}
+#female{
+    font-size: 19px;
 }

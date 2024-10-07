@@ -72,10 +72,10 @@ if (isset($_POST['addtocart'])) {
 
 
 <section class="header">
-
+<marquee class="marq" direction="left" loop="">
     <h1>CARE MEDS</h1>
-  
     
+</marquee>
 </section>
 
 <section>
@@ -93,6 +93,7 @@ if (isset($_POST['addtocart'])) {
     <div class="cat">
       
         <img src="../images/50de437c40bba6893a0041e13031b741.jpg" >
+       
         <div class="container-1">
         <h4><b>TABLETS</b></h4>
 </div>
