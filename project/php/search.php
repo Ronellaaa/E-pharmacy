@@ -78,7 +78,7 @@ if(mysqli_num_rows($search)>0){
 
 <a href="../php/details.php?ID=<?=$productId;?>">
 
-<div class="column">
+<div class="column-product">
 <div class="card">
 <?php 
 //path of the where images are stored
