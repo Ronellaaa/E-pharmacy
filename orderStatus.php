@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 // Include the database connection file
 require 'dbconnection.php';
 
@@ -8,7 +10,6 @@ $sql = $conn->prepare("
     FROM orders o 
     JOIN customer c ON o.custId = c.custId 
     ORDER BY o.orderId DESC 
-    LIMIT 1
 ");
 
 // Execute the query
@@ -16,15 +17,15 @@ $sql->execute();
 $result = $sql->get_result();
 
 // Check if any results were returned
-if ($result->num_rows > 0) {
+//if ($result->num_rows > 0) {
     // Fetch the data as an associative array
     $row = $result->fetch_assoc();
     // Output the fetched data as JSON
-    echo json_encode($row);
-} else {
+    //echo json_encode($row);
+//} else {
     // Return an error message if no order was found
-    echo json_encode(['error' => 'Order not found']);
-}
+    //echo json_encode(['error' => 'Order not found']);
+//}
 
 // Close the database connection
 $conn->close();
@@ -51,9 +52,9 @@ $conn->close();
 <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script><lottie-player src="https://lottie.host/7c28de65-75a0-4545-a896-7e6ba41dbc7e/pBp6UWhpee.json" background="transparent" speed="1" style="width: 300px; height: 300px" direction="1" mode="normal" loop autoplay></lottie-player>
 </div>
      <div class="order-status">
-            <p><strong>Order ID :</strong> <span id="orderId"></span></p> 
-            <p><strong>Name :</strong> <span id="customerName"></span></p> 
-            <p><strong>Address :</strong> <span id="customerAddress"></span></p> 
+            <p><strong>Order ID :</strong> <span id="orderId"><?php echo $row['orderId']; ?></span></p> 
+            <p><strong>Name :</strong> <span id="customerName"><?php echo $row['custName']; ?></span></p> 
+            <p><strong>Address :</strong> <span id="customerAddress"><?php echo $row['custAddress']; ?></span></p> 
     </div>
            
             <section class="step-wizard">

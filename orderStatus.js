@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
     fetch('orderStatus.php')
         .then(response => {
             if (!response.ok) {
@@ -10,14 +9,16 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(data => {
             if (data.error) {
                 console.error(data.error); 
+                document.getElementById('orderId').innerText = "N/A"; // Show N/A if no order found
+                document.getElementById('customerName').innerText = "N/A"; // Show N/A
+                document.getElementById('customerAddress').innerText = "N/A"; // Show N/A
                 return;
             }
 
             // Update the HTML elements with the fetched data
-            document.getElementById('orderId').innerText = data.orderId;
-            document.getElementById('customerName').innerText = data.custName;
-            document.getElementById('customerAddress').innerText = data.custAddress;
-            document.getElementById('orderStatus').innerText = data.orderStatus || "N/A"; // Fallback if status is empty
+            document.getElementById('orderId').innerText = data.orderId || "N/A"; // Fallback if orderId is empty
+            document.getElementById('customerName').innerText = data.custName || "N/A"; // Fallback if custName is empty
+            document.getElementById('customerAddress').innerText = data.custAddress || "N/A"; // Fallback if custAddress is empty
 
             // Update progress bar based on orderStatus
             if (data.orderStatus.toLowerCase() === 'pending') {
@@ -27,24 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.getElementById('step2').classList.add('current-item');
             } 
         })
-        fetch('driver-update.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body:`orderId=${orderId}&orderStatus=${orderStatus}` // Ensure correct variable names
-        })
-        .then(response => response.json())  // Change this line to parse JSON
-        .then(data => {
-            if (data.error) {
-                alert(data.error);  // Show error message if there is an error
-            } else {
-                alert(data.message);  // Show success message
-            }
-            location.reload(); // Reload the page to update the displayed status
-        })
         .catch(error => {
-            console.error('Error updating order status:', error);
+            console.error('Error fetching order status:', error);
         });
-        
 });
