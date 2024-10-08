@@ -1,7 +1,7 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+// ini_set('display_errors', 1);
+// ini_set('display_startup_errors', 1);
+// error_reporting(E_ALL);
 require '../../dbconnection.php';
 session_start(); // Start session to track logged-in users
 
@@ -29,21 +29,35 @@ if (isset($_GET['remove'])) {
     $removeId = $_GET['remove'];
     $delete_row = mysqli_query($conn, "DELETE FROM cart WHERE cartId ='$removeId' AND custId = '$userId'");
 }
-// //inserting data into the order table
+//place order
+// if (isset($_POST['placeOrder'])) {
+//     $Total = $total ;
+//     $orderDate= date('Y-m-d');
+//     $payment_status= 'Pending';
+//     $orderStatus= 'Confirmed';
+   
+    
+//     $place_order = mysqli_query($conn, "INSERT INTO orders(	orderId ,custId,orderDate,orderStatus,totalAmount,payment_status) VALUES ('','$userId','$orderDate','$orderStatus',' $Total','$payment_status')");
+//     if ($place_order) {
+//         echo "<script>alert('Placed order successfully... ');</script>";
+//         // get the order id of the odrers table
+//         $order_id= mysqli_insert_id($conn);
 
-//  if (isset($_GET['cartId'])) {
-//    $_SESSION['cartId'] = $_GET['cartId']; // Store cartId in session for future use
-//  } 
+//         // insert data in to the order_items table
+//         foreach($row as $item){
+            
+//             $update = $item['quantity'];
+//             $price = $item['price'];
+//             foreach($show_cart2 as $pitem){
+//                 $productId = $pitem['productId'];
+//         $order_items = mysqli_query($conn, "INSERT INTO order_items(orderItemId,orderId,productId,quantity,price) VALUES ('','$order_id',' $productId','$update',' $price')");
+//         }
+//         header('location:cart.php');
 
-//  $cartId = $_SESSION['cartId']; // Now cartId is available throughout the session
-
-// if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['order_confirm'])) {
-//     // Retrieve cartId from session
-//     if (isset($_SESSION['cartId'])) {
-//         $cartId = $_SESSION['cartId'];
-
-//     }
+//         exit();
+//     }}
 // }
+
 
 ?>
 
@@ -90,6 +104,7 @@ if (isset($_GET['remove'])) {
                         
                         {
             ?>
+            <!-- <form method="post" action="cart.php" name="order_form"> -->
             <tr> 
                 <td>
                     <?php
@@ -131,11 +146,10 @@ if (isset($_GET['remove'])) {
         <button class="btn"><i class="fa fa-arrow-left"></i><a href="./product.php"> Continue shopping</a></button>
         
         <button class="btn"><a href="../../payment-new.php">Checkout </a>&nbsp<i class="fa fa-arrow-right"></i></button>
+        <!-- <button class="btn" type="submit" name="placeOrder">Confirm Order </button> -->
 
-        <!-- <form action="cart.php" method="post" name="order_insert_form">
-        <input type="hidden" value="<?php echo $total; ?>" name="total">
-        <input type="submit" value ="Confirm order"  name="order_confirm">
-        </form> -->
+        
+        <!-- </form>  -->
     </div>
 </div>
 
