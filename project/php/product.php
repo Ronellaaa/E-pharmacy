@@ -28,7 +28,7 @@ if (isset($_POST['addtocart'])) {
         echo '<script>alert("Product is already in the cart!");</script>';
     } else {
         // Insert the product into the cart
-        $insert = mysqli_query($conn, "INSERT INTO cart (productId, quantity, price, custId) VALUES ('$productId', '$quantity', '$price', '$custId')");
+        $insert = mysqli_query($conn, "INSERT INTO cart (cartId,custId,productId,quantity,price) VALUES ('','$custId','$productId', $quantity, '$price')");
 
         if ($insert) {
             echo '<script>alert("Successfully added to the cart");</script>';

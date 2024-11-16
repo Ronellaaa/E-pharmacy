@@ -1,7 +1,8 @@
 <?php
 require 'dbconnection.php';
-session_start(); // Start session to track logged-in users
+session_start();
 
+// Ensure user is logged in
 if (!isset($_SESSION['userId'])) {
     echo "<script>alert('Please log in first!'); window.location.href='../../login.php';</script>";
     exit();
@@ -9,66 +10,57 @@ if (!isset($_SESSION['userId'])) {
 
 $userId = $_SESSION['userId'];
 
-// Retrieve the `orderId` from the URL
-// if (isset($_GET['orderId'])) {
-//     $orderId = intval($_GET['orderId']);
-// } else {
-//     echo "<script>alert('No order found for this user.'); window.location.href='../../cart.php';</script>";
-//     exit();
-// }
+// Retrieve orderId from URL
+if (!isset($_GET['orderId'])) {
+    echo "<script>alert('No order found.'); window.location.href='../../cart.php';</script>";
+    exit();
+}
+$orderId = intval($_GET['orderId']);
 
-// Process the form submission
+
+// Process payment form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (isset($_POST['orderId'])) {
-        $orderId = $_POST['orderId']; 
-        $paymentMethod = $_POST['paymentMethod'];
-        $paymentStatus = 'Pending';
+    $orderId = intval($_POST['orderId']);
+    $paymentMethod = $_POST['paymentMethod'];
+    $paymentStatus = ($paymentMethod === 'Online') ? 'Completed' : 'Pending Confirmation';
 
-        // Cash on Delivery cancels form completion
-        if ($paymentMethod === 'Cash on Delivery') {
-            $paymentStatus = 'Pending Confirmation';
-        }
-
-        // // Fetching order details
-        // $sql = "SELECT totalAmount FROM orders WHERE orderId = 33 AND custId = 2 ";
-        // $stmt = $conn->prepare($sql);
-        // $stmt->bind_param("ii", $orderId, $userId); 
-        // $stmt->execute();
-        // $result = $stmt->get_result();
-        // $order = $result->fetch_assoc();
-
-        // if ($order) {
-        //     $totalAmount = $order['totalAmount'];
-
-        //     // Insert payment details
-        //     $stmt = $conn->prepare("INSERT INTO payments (orderId, paymentMethod, paymentStatus, amount) VALUES (?, ?, ?, ?)");
-        //     $stmt->bind_param("issd", $orderId, $paymentMethod, $paymentStatus, $totalAmount);
-        //     $stmt->execute();
-        $sql = "SELECT totalAmount FROM orders WHERE orderId = 33 AND custId = 2";
-$stmt = $conn->prepare($sql);
+    // Fetch the totalAmount from the order
+    $stmt = $conn->prepare("SELECT totalAmount FROM orders WHERE orderId = ? AND custId = ?");
+$stmt->bind_param("ii", $orderId, $userId);
 $stmt->execute();
 $result = $stmt->get_result();
+if ($result->num_rows === 0) {
+    echo "<script>alert('Order not found for this user.');</script>";
+    exit();
+}
 $order = $result->fetch_assoc();
 
-            if ($paymentMethod === 'Online') {
-                $stmt = $conn->prepare("UPDATE orders SET payment_status = 'Completed' WHERE orderId = ?");
-                $stmt->bind_param("i", $orderId);
-                $stmt->execute();
 
-                echo "Payment successful!";
-            } else {
-                echo "Cash on Delivery selected. Please confirm.";
-            }
+    if ($order) {
+        $totalAmount = $order['totalAmount'];
+
+        // Insert payment details
+        $stmt = $conn->prepare("INSERT INTO payments (orderId, paymentMethod, paymentStatus, amount) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("issd", $orderId, $paymentMethod, $paymentStatus, $totalAmount);
+        $stmt->execute();
+
+        // Update order payment status if paid online
+        if ($paymentMethod === 'Online') {
+            $stmt = $conn->prepare("UPDATE orders SET payment_status = 'Completed' WHERE orderId = ?");
+            $stmt->bind_param("i", $orderId);
+            $stmt->execute();
+
+            echo "<script>alert('Payment successful!'); window.location.href='../../order-confirmation.php';</script>";
         } else {
-            echo "Order not found.";
+            echo "<script>alert('Cash on Delivery selected. Your order is pending confirmation.'); window.location.href='../../order-confirmation.php';</script>";
         }
     } else {
-        echo "No order ID provided.";
+        echo "<script>alert('Order not found.'); window.location.href='../../cart.php';</script>";
     }
-
-    $conn->close();
-
+}
 ?>
+
+
 
 
 
@@ -145,7 +137,8 @@ $order = $result->fetch_assoc();
                     </div>
                 </div>
             </div>
-            
+            <input type="hidden" name="orderId" value="<?php echo $orderId; ?>">
+
             <input type="submit" value="Proceed to Checkout" class="submit-btn">
             <input type="button" value="Cancel Payment" class="cancel-btn" id="cancelPaymentBtn">
         </form>
