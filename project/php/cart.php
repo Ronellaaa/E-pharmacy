@@ -1,3 +1,4 @@
+
 <?php
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -31,7 +32,6 @@ if (isset($_GET['remove'])) {
     $delete_row = mysqli_query($conn, "DELETE FROM cart WHERE cartId ='$removeId' AND custId = '$userId'");
 }
 
-// Place order on Checkout button click
 if (isset($_POST['placeOrder'])) {
     $total = $_POST['total'];
     $orderDate = date('Y-m-d H:i:s');
@@ -39,11 +39,14 @@ if (isset($_POST['placeOrder'])) {
     $orderStatus = 'Confirmed';
 
     // Insert a new order
-    $place_order = mysqli_query($conn, "INSERT INTO orders (custId, orderDate, orderStatus, totalAmount, payment_status) VALUES ('$userId', '$orderDate', 'Pending', $total, '$payment_status')");
+    $place_order = mysqli_query($conn, "
+        INSERT INTO orders (custId, orderDate, orderStatus, totalAmount, payment_status) 
+        VALUES ('$userId', '$orderDate', 'Pending', $total, '$payment_status')");
 
     if ($place_order) {
-        // Get the new order ID
+        // Get the ID of the newly created order
         $order_id = mysqli_insert_id($conn);
+        
 
         // Fetch all items from the cart for the current user
         $cart_items = mysqli_query($conn, "SELECT * FROM cart WHERE custId = '$userId'");
@@ -53,20 +56,23 @@ if (isset($_POST['placeOrder'])) {
             $quantity = $item['quantity'];
             $price = $item['price'];
 
-            // Insert each item from the cart into the order_items table
-            $order_items = mysqli_query($conn, "INSERT INTO order_items (orderId, productId, quantity, price) VALUES ('$order_id', '$productId', '$quantity', '$price')");
+            // Insert each item into the order_items table
+            $order_items = mysqli_query($conn, "
+                INSERT INTO order_items (orderId, productId, quantity, price) 
+                VALUES ('$order_id', '$productId', '$quantity', '$price')");
         }
 
         // Clear the cart after placing the order
         mysqli_query($conn, "DELETE FROM cart WHERE custId = '$userId'");
 
-        // Redirect to payment page with the order ID
+        // Redirect to the payment page with the new order ID
         header("Location: ../../payment-new.php?orderId=$order_id");
         exit();
     } else {
         echo "<script>alert('Failed to place order. Please try again.');</script>";
     }
 }
+
 
 
 ?>

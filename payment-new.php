@@ -4,8 +4,7 @@
 require 'dbconnection.php';
 session_start();
 
-
-// Ensure user is logged in
+// Ensure the user is logged in
 if (!isset($_SESSION['userId'])) {
     echo "<script>alert('Please log in first!'); window.location.href='../../login.php';</script>";
     exit();
@@ -13,64 +12,50 @@ if (!isset($_SESSION['userId'])) {
 
 $userId = $_SESSION['userId'];
 
-
 // Retrieve orderId from URL
 if (!isset($_GET['orderId'])) {
     echo "<script>alert('No order found.'); window.location.href='./project/php/cart.php';</script>";
     exit();
 }
-
 $orderId = intval($_GET['orderId']);
 
-
 // Process payment form submission
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
-    
-
-    $orderId = intval($_POST['orderId']);
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit'])) {
     $paymentMethod = $_POST['paymentMethod'];
     $paymentStatus = ($paymentMethod === 'Online') ? 'Completed' : 'Pending Confirmation';
 
-    
-    exit();
-
     // Fetch the totalAmount from the order
     $stmt = $conn->prepare("SELECT totalAmount FROM orders WHERE orderId = ? AND custId = ?");
-$stmt->bind_param("ii", $orderId, $userId);
-$stmt->execute();
-$result = $stmt->get_result();
-if ($result->num_rows === 0) {
-    echo "<script>alert('Order not found for this user.');</script>";
-    exit(); 
-} else {
+    $stmt->bind_param("ii", $orderId, $userId);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows === 0) {
+        echo "<script>alert('Order not found for this user.'); window.location.href='./project/php/cart.php';</script>";
+        exit();
+    }
+
     $order = $result->fetch_assoc();
-}
+    $totalAmount = $order['totalAmount'];
 
+    // Insert payment details
+    $stmt = $conn->prepare("INSERT INTO payments (orderId, paymentMethod, paymentStatus, amount) VALUES (?, ?, ?, ?)");
+    $stmt->bind_param("issd", $orderId, $paymentMethod, $paymentStatus, $totalAmount);
+    $stmt->execute();
 
-
-    if ($order) {
-        $totalAmount = $order['totalAmount'];
-
-        // Insert payment details
-        $stmt = $conn->prepare("INSERT INTO payments (orderId, paymentMethod, paymentStatus, amount) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("issd", $orderId, $paymentMethod, $paymentStatus, $totalAmount);
+    // Update order payment status if paid online
+    if ($paymentMethod === 'Online') {
+        $stmt = $conn->prepare("UPDATE orders SET payment_status = 'Completed' WHERE orderId = ?");
+        $stmt->bind_param("i", $orderId);
         $stmt->execute();
 
-        // Update order payment status if paid online
-        if ($paymentMethod === 'Online') {
-            $stmt = $conn->prepare("UPDATE orders SET payment_status = 'Completed' WHERE orderId = ?");
-            $stmt->bind_param("i", $orderId);
-            $stmt->execute();
-
-            echo "<script>alert('Payment successful!'); window.location.href='../../order-confirmation.php';</script>";
-        } else {
-            echo "<script>alert('Cash on Delivery selected. Your order is pending confirmation.'); window.location.href='../../orderStatus.php';</script>";
-        }
+        echo "<script>alert('Payment successful!'); window.location.href='../../order-confirmation.php';</script>";
     } else {
-        echo "<script>alert('Order not found.'); window.location.href='./project/php/cart.php';</script>";
+        echo "<script>alert('Cash on Delivery selected. Your order is pending confirmation.'); window.location.href='../../orderStatus.php';</script>";
     }
 }
 ?>
+
 
 
 
