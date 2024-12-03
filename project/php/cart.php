@@ -39,7 +39,7 @@ if (isset($_POST['placeOrder'])) {
     $orderStatus = 'Confirmed';
 
     // Insert a new order
-    $place_order = mysqli_query($conn, "INSERT INTO orders (custId, orderDate, orderStatus, totalAmount, payment_status) VALUES ('$userId', '$orderDate', '$orderStatus', $total, '$payment_status')");
+    $place_order = mysqli_query($conn, "INSERT INTO orders (custId, orderDate, orderStatus, totalAmount, payment_status) VALUES ('$userId', '$orderDate', 'Pending', $total, '$payment_status')");
 
     if ($place_order) {
         // Get the new order ID

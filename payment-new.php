@@ -1,6 +1,9 @@
+
+
 <?php
 require 'dbconnection.php';
 session_start();
+
 
 // Ensure user is logged in
 if (!isset($_SESSION['userId'])) {
@@ -10,19 +13,26 @@ if (!isset($_SESSION['userId'])) {
 
 $userId = $_SESSION['userId'];
 
+
 // Retrieve orderId from URL
 if (!isset($_GET['orderId'])) {
-    echo "<script>alert('No order found.'); window.location.href='../../cart.php';</script>";
+    echo "<script>alert('No order found.'); window.location.href='./project/php/cart.php';</script>";
     exit();
 }
+
 $orderId = intval($_GET['orderId']);
 
 
 // Process payment form submission
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
+    
+
     $orderId = intval($_POST['orderId']);
     $paymentMethod = $_POST['paymentMethod'];
     $paymentStatus = ($paymentMethod === 'Online') ? 'Completed' : 'Pending Confirmation';
+
+    
+    exit();
 
     // Fetch the totalAmount from the order
     $stmt = $conn->prepare("SELECT totalAmount FROM orders WHERE orderId = ? AND custId = ?");
@@ -31,9 +41,11 @@ $stmt->execute();
 $result = $stmt->get_result();
 if ($result->num_rows === 0) {
     echo "<script>alert('Order not found for this user.');</script>";
-    exit();
+    exit(); 
+} else {
+    $order = $result->fetch_assoc();
 }
-$order = $result->fetch_assoc();
+
 
 
     if ($order) {
@@ -52,14 +64,13 @@ $order = $result->fetch_assoc();
 
             echo "<script>alert('Payment successful!'); window.location.href='../../order-confirmation.php';</script>";
         } else {
-            echo "<script>alert('Cash on Delivery selected. Your order is pending confirmation.'); window.location.href='../../order-confirmation.php';</script>";
+            echo "<script>alert('Cash on Delivery selected. Your order is pending confirmation.'); window.location.href='../../orderStatus.php';</script>";
         }
     } else {
-        echo "<script>alert('Order not found.'); window.location.href='../../cart.php';</script>";
+        echo "<script>alert('Order not found.'); window.location.href='./project/php/cart.php';</script>";
     }
 }
 ?>
-
 
 
 
@@ -76,7 +87,7 @@ $order = $result->fetch_assoc();
 </head>
 <body>
     <div class="container">
-        <form id="paymentForm" action="payment-new.php" method="POST">
+        <form id="paymentForm" action="/E-pharmacy/payment-new.php" method="POST">
         <input type="hidden" name="orderId" id="orderId" value="<?php echo htmlspecialchars($orderId); ?>">
             
             
@@ -132,14 +143,14 @@ $order = $result->fetch_assoc();
                     </div>
                     <div class="inputBox">
                         <span>Payment Method :</span>
-                        <input type="radio" name="paymentMethod" value="Online" id="onlinePaymentBtn"> Online Payment
-                        <input type="radio" name="paymentMethod" value="Cash on Delivery" id="cashOnDeliveryBtn"> Cash on Delivery
+                        <input type="radio" name="paymentMethod" value="Online" id="onlinePaymentBtn" required> Online Payment
+                        <input type="radio" name="paymentMethod" value="Cash on Delivery" id="cashOnDeliveryBtn" required> Cash on Delivery
                     </div>
                 </div>
             </div>
             <input type="hidden" name="orderId" value="<?php echo $orderId; ?>">
 
-            <input type="submit" value="Proceed to Checkout" class="submit-btn">
+            <input type="submit" name="submit" value="Proceed to Checkout" class="submit-btn">
             <input type="button" value="Cancel Payment" class="cancel-btn" id="cancelPaymentBtn">
         </form>
     </div>    

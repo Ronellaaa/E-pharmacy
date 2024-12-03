@@ -5,9 +5,6 @@ document.getElementById('cashOnDeliveryBtn').addEventListener('click', function(
     }
 });
 
-document.getElementById('onlinePaymentBtn').addEventListener('click', function() {
-    enableForm();
-});
 
 document.getElementById('cancelPaymentBtn').addEventListener('click', function() {
     if (confirm("Are you sure you want to cancel the payment?")) {
@@ -16,13 +13,22 @@ document.getElementById('cancelPaymentBtn').addEventListener('click', function()
 });
 
 function disableForm() {
-    document.querySelectorAll('input[type="text"], input[type="email"]').forEach(input => {
-        input.disabled = true;
+    const cardFields = ['cardName', 'cardNumber', 'expiryMonth', 'expiryYear', 'cvc'];
+    cardFields.forEach(fieldId => {
+        const input = document.getElementById(fieldId);
+        if (input) {
+            input.disabled = true;
+        }
     });
 }
 
-function enableForm() {
+document.getElementById('paymentForm').addEventListener('submit', function() {
     document.querySelectorAll('input[type="text"], input[type="email"]').forEach(input => {
         input.disabled = false;
     });
-}
+});
+
+document.getElementById('paymentForm').addEventListener('submit', function(event) {
+    const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked');
+    console.log(paymentMethod ? paymentMethod.value : "No payment method selected");
+});
